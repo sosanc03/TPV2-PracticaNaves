@@ -1,10 +1,9 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #include <iostream>
-
+#include "utils/checkML.h"
 #include "sdlutils/sdlutils_demo.h"
 
 int main(int ac, char **av) {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);// detector de basura
 	try {
 		sdlutils_basic_demo();
 	} catch (const std::string &e) { // catch exceptions thrown as strings
