@@ -31,30 +31,6 @@
     <Filter Include="Source Files\json">
       <UniqueIdentifier>{f050c7fb-d995-4366-9eaf-e78d399a13f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ecs">
-      <UniqueIdentifier>{04027113-1ec1-46c6-8f40-753c9c3337db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ecs">
-      <UniqueIdentifier>{ff5cee41-e02b-47b6-9b01-101cb8c07130}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\components">
-      <UniqueIdentifier>{a93903aa-8933-4546-b6d0-2a79206fae1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\components">
-      <UniqueIdentifier>{410b116c-b128-42d3-b8b2-8ee6484bb7f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\game">
-      <UniqueIdentifier>{83933010-c5d7-4dfb-af74-0bdc1fdf612b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game">
-      <UniqueIdentifier>{f34d9553-0754-4a73-a808-5b2f41a731e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\entidades">
-      <UniqueIdentifier>{c91ae088-bfab-4848-a779-ebe6d5762ec8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\entidades">
-      <UniqueIdentifier>{b8b3a306-1360-4aa7-9956-6ee47f559936}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSONValue.h">
@@ -111,62 +87,53 @@
     <ClInclude Include="src\sdlutils\SDLNetUtils.h">
       <Filter>Header Files\sdlutil</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\checkML.h">
-      <Filter>Header Files\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ecs\Component.h">
-      <Filter>Header Files\ecs</Filter>
+    <ClInclude Include="src\game\Game.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ecs\ecs.h">
-      <Filter>Header Files\ecs</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\Component.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ecs\Entity.h">
-      <Filter>Header Files\ecs</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ecs\Manager.h">
-      <Filter>Header Files\ecs</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Fighter.h">
-      <Filter>Header Files\entidades</Filter>
+    <ClInclude Include="src\components\Transform.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\components\FighterCtrl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DeAcceleration.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\components\Image.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FighterCtrl.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\components\Health.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gun.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\components\Gun.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Health.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\components\ShowAtOpposideSide.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\states\GameState.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShowAtOppositeSide.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\states\GameStateMachine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FrameImage.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="src\states\PlayState.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroid.h">
-      <Filter>Header Files\entidades</Filter>
+    <ClInclude Include="src\components\DeAcceleration.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Follow.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files\entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="DisableOnExit.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="AsteroidsManager.h">
-      <Filter>Header Files\game</Filter>
+    <ClInclude Include="src\game\AsteroidsManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,47 +167,47 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fighter.cpp">
-      <Filter>Source Files\entidades</Filter>
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\ecs\Manager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\Transform.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\FighterCtrl.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShowAtOppositeSide.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\Image.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gun.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\Health.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FighterCtrl.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\Gun.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DeAcceleration.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\components\ShowAtOppositeSide.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FrameImage.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\states\GameState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroid.cpp">
-      <Filter>Source Files\entidades</Filter>
+    <ClCompile Include="src\states\GameStateMachine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Follow.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\states\PlayState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\entidades</Filter>
+    <ClCompile Include="src\components\DeAcceleration.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DisableOnExit.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="src\game\AsteroidsManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AsteroidsManager.cpp">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\config\asteroid.resources.json" />
   </ItemGroup>
 </Project>

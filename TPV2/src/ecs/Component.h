@@ -1,20 +1,23 @@
 #pragma once
+
 class Entity;
 
-class Component
-{
+#include "Manager.h"
+
+class Component {
 protected:
 	Entity* ent_;
-public:
-	Component() : ent_() {}
-	virtual ~Component() {}
-	inline void setContext(Entity* ent) {
-		ent_ = ent;
-	}
+	Manager* mngr_;
 
+public:
+	Component() { ent_ = nullptr; mngr_ = nullptr; }
+	virtual ~Component() { }
+	inline void setContext(Entity* ent, Manager* mngr) {
+		ent_ = ent;
+		mngr_ = mngr;
+	}
+	//…
 	virtual void initComponent() { }
 	virtual void update() { }
 	virtual void render() { }
-
 };
-

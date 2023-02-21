@@ -1,18 +1,18 @@
 #pragma once
-#ifndef ECS_H_
-#define ECS_H_
 
-using cmpId_type = int;
-enum cmpId : cmpId_type {
-	//_TRANSFORM_H_ =0,
-	// ... (compoment ids)
-	//RENDERCOMPONENT_H = 1,
-	//INPUTCOMPONENT_H = 2,
-	//MOVEMENTCOMPONENT_H = 3,
-	//CHECKCOLLISION_H=4,
-	// do not remove this
-	_LAST_CMP_ID
-};
-constexpr cmpId_type maxComponentId = _LAST_CMP_ID;
+namespace ecs {
+	using cmpId_type = unsigned __int8;
+	enum cmpId : cmpId_type {
+		_TRANSFORM = 0,
+		_IMAGE = 1,
+		_CTRL = 2,
+		_HEALTH = 3,
+		_DEACCELERATION = 4,
+		_GUN = 5,
+		_OPPOSITESIDE = 6,
 
-#endif // !ECS_H_
+		// do not remove this
+		_LAST_CMP_ID
+	};
+	constexpr cmpId_type maxComponentId = _LAST_CMP_ID;
+}
