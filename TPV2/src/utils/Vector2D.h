@@ -91,6 +91,11 @@ public:
 		return *this;
 	}
 
+	inline Vector2D& operator*(const float f) {
+		x_ *= f;
+		y_ *= f;
+		return *this;
+	}
 	// ** various operations
 
 	// length of the vector

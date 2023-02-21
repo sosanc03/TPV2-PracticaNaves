@@ -8,7 +8,7 @@
 #include "../json/JSON.h"
 
 SDLUtils::SDLUtils() :
-		SDLUtils("SDL Demo", 600, 400) {
+		SDLUtils("Asteroids", 1300, 800, "resources/config/asteroid.resources.json") {
 }
 
 SDLUtils::SDLUtils(std::string windowTitle, int width, int height) :
@@ -67,7 +67,8 @@ void SDLUtils::initWindow() {
 
 	// hide cursor by default
 	hideCursor();
-
+	// black background color
+	SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
 }
 
 void SDLUtils::closeWindow() {

@@ -1,0 +1,26 @@
+{
+
+  "fonts": [
+
+  ],
+
+  "images": [
+    {
+      "id": "fighter",
+      "file": "resources/images/fighter.png"
+    }
+  ],
+
+  "messages": [
+
+  ],
+
+  "sounds": [
+   
+  ],
+
+  "musics": [
+
+  ]
+
+}
