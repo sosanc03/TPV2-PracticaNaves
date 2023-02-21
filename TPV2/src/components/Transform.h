@@ -7,8 +7,8 @@ const float PI = 3.1415;
 
 class Transform : public Component {
 private:
-	Vector2D position;
-	Vector2D velocity;
+	Vector2D pos;
+	Vector2D speed;
 	Vector2D dir;
 	float width;
 	float height;
@@ -26,8 +26,8 @@ public:
 	float getH();
 	float getR();
 	Vector2D getDir();
-	inline Vector2D getPos() { return position; }
-	inline Vector2D getVel() { return velocity; }
+	inline Vector2D getPos() { return pos; }
+	inline Vector2D getVel() { return speed; }
 
 	void setDir();
 	void setR(float valRot);

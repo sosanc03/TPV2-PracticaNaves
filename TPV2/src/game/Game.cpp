@@ -5,8 +5,8 @@ Game::Game() {
 	renderer = SDLUtils::instance()->renderer();
 	window = SDLUtils::instance()->window();
 
-	gameStateMachine = new GameStateMachine(this);
-	gameStateMachine->pushState(new PlayState(this));
+	gameStateMachine = new GameStateMachine();
+	gameStateMachine->pushState(new PlayState());
 }
 
 void Game::initSDL() {

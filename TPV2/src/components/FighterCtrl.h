@@ -11,7 +11,7 @@ using namespace ecs;
 class FighterCtrl : public Component {
 private:
 	Transform* tr = nullptr;
-	float velocity, maxVelocity, rotation;
+	float speed, maxSpeed, rotation;
 public:
 	FighterCtrl();
 	FighterCtrl(float Velocity, float MaxVelocity, float Rotation);

@@ -10,7 +10,7 @@ using namespace std;
 
 class GameState{
 protected:
-	GameStateMachine* gameStateMachine; 
+	GameStateMachine* gameStMachine; 
 public:
 	GameState();
 	virtual ~GameState(); 

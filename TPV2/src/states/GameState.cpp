@@ -2,7 +2,7 @@
 #include "GameState.h"
 
 GameState::GameState() {
-	gameStateMachine = static_cast<GameStateMachine*>(GameStateMachine::instance());
+	gameStMachine = static_cast<GameStateMachine*>(GameStateMachine::instance());
 }
 
 void GameState::render() {

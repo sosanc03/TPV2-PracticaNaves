@@ -11,8 +11,6 @@ using namespace std;
 using uint = unsigned int;
 
 //CONSTANTES
-const uint WIN_W = 800;
-const uint WIN_H = 900;
 const uint FRAME_RATE = 3;
 const uint FIGHTER_SIZE = 75;
 

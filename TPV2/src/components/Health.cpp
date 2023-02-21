@@ -1,18 +1,18 @@
 #include "Health.h"
 
 Health::Health(int vidas) : Component() {
-	lifes = vidas;
+	life = vidas;
 	maxLife = vidas;
 }
 
 int Health::getLifes() {
-	return lifes;
+	return life;
 }
 
-void Health::subLife() {
-	lifes--;
+void Health::lessLife() {
+	life--;
 }
 
 void Health::resetLifes() {
-	lifes = maxLife;
+	life = maxLife;
 }

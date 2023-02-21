@@ -14,13 +14,12 @@ class Game;
 
 class PlayState : public GameState {
 private:
-	Game* g;
 	Entity* fighter;
-	FighterCtrl* fi;
+	FighterCtrl* fiCtrl;
 
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
-	PlayState(Game* G);
+	PlayState();
 	~PlayState();
 
 	void update();

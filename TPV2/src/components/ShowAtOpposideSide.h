@@ -5,14 +5,13 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Transform.h"
 
+const float WIDTH = SDLUtils::instance()->width();
+const float HEIGHT = SDLUtils::instance()->height();
 class ShowAtOppositeSide : public Component {
 private: 
 	Transform* tr = nullptr;
-	float WIDTH;
-	float HEIGHT;
 
 public:
-	ShowAtOppositeSide();
 	void initComponent();
 
 	void update();

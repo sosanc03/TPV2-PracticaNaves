@@ -10,11 +10,11 @@ using namespace ecs;
 
 class Gun : public Component {
 private:
-	float delayTime;
+	float delay;
 	Transform* tr = nullptr;
 	VirtualTimer* timer = nullptr;
 public:
-	Gun(float DelayTime = 0.25f);
+	Gun();
 	void initComponent();
 
 	void update();

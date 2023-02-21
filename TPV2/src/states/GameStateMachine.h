@@ -4,16 +4,11 @@
 #include "../ecs/Manager.h"
 #include "GameState.h"
 
-class Game;
-
 class GameStateMachine: public Singleton <GameStateMachine> {
 private:
-	stack<GameState*> states; // pila de escenas
-	stack<GameState*> statesToDelete; // pila de escenas a borrar
-	Game* game;
+	stack<GameState*> st; // pila de escenas
+	stack<GameState*> stToDelete; // pila de escenas a borrar
 public:
-	GameStateMachine() {}
-	GameStateMachine(Game* Game);
 	~GameStateMachine(); 
 	GameState* currentState(); 
 

@@ -1,8 +1,7 @@
 #include "PlayState.h"
 #include "../game/Game.h"
 
-PlayState::PlayState(Game* G) {
-	g = G;
+PlayState::PlayState() {
 	createShip();
 }
 
@@ -20,7 +19,7 @@ void PlayState::update() {
 
 void PlayState::handleEvents() {
 	SDL_Event event;
-	while (SDL_PollEvent(&event)) fi->handleEvents(event);
+	while (SDL_PollEvent(&event)) fiCtrl->handleEvents(event);
 }
 
 void PlayState::createShip() {
@@ -28,7 +27,7 @@ void PlayState::createShip() {
 	Vector2D v = Vector2D(0, 0);
 	int rotation = 0;
 	fighter->addComponent<Transform>(_TRANSFORM, v, v, FIGHTER_SIZE, FIGHTER_SIZE, rotation);
-	fi = fighter->addComponent<FighterCtrl>(_CTRL);
+	fiCtrl = fighter->addComponent<FighterCtrl>(_CTRL);
 	Texture* text = &(SDLUtils::instance()->images().at("fighter"));
 	fighter->addComponent<Image>(_IMAGE, text);
 

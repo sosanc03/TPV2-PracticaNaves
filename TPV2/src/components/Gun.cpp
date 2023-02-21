@@ -1,7 +1,7 @@
 #include "Gun.h"
 
-Gun::Gun(float DelayTime) : Component() {
-	delayTime = DelayTime;
+Gun::Gun() : Component() {
+	delay = 0.25f;
 }
 
 void Gun::initComponent() {

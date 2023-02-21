@@ -1,13 +1,7 @@
 #include "ShowAtOpposideSide.h"
 
-ShowAtOppositeSide::ShowAtOppositeSide() : Component() {
-
-}
-
 void ShowAtOppositeSide::initComponent() {
 	tr = ent_->getComponent<Transform>(_TRANSFORM);
-	WIDTH = SDLUtils::instance()->width();
-	HEIGHT = SDLUtils::instance()->height();
 }
 
 void ShowAtOppositeSide::update() {

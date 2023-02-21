@@ -5,11 +5,10 @@
 class Health : public Component {
 private:
 	Texture* te = nullptr;
-	int lifes;
-	int maxLife;
+	int life, maxLife;
 public:
 	Health(int vidas);
 	int getLifes();
-	void subLife();
+	void lessLife();
 	void resetLifes();
 };

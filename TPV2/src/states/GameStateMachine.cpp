@@ -1,26 +1,21 @@
 #include "GameStateMachine.h"
-#include "../game/Game.h"
-
-GameStateMachine::GameStateMachine(Game* Game) {
-	game = Game;
-}
 
 GameStateMachine::~GameStateMachine(){
 	clearStates();
-	while (!states.empty()){
-		delete(states.top());
-		states.pop();
+	while (!st.empty()){
+		delete(st.top());
+		st.pop();
 	}
 }
 
 
 
 GameState* GameStateMachine::currentState(){ // Devuelve estado actual
-	return states.top();
+	return st.top();
 }
 
 void GameStateMachine::pushState(GameState* myState){ // Push del nuevo estado
-	states.push(myState);
+	st.push(myState);
 }
 
 void GameStateMachine::changeState(GameState* myState) { // cambio de estado
@@ -31,16 +26,16 @@ void GameStateMachine::changeState(GameState* myState) { // cambio de estado
 }
 
 void GameStateMachine::popState(){ // pop si la pila no está vacía y salida del estado
-	if (!states.empty()){
-		statesToDelete.push(states.top());
-		states.pop();
+	if (!st.empty()){
+		stToDelete.push(st.top());
+		st.pop();
 	}
 }
 
 void GameStateMachine::clearStates(){
-	while (!statesToDelete.empty()){
-		delete(statesToDelete.top());// elimina estado
-		statesToDelete.pop();// quita estado de la lista de eliminados
+	while (!stToDelete.empty()){
+		delete(stToDelete.top());// elimina estado
+		stToDelete.pop();// quita estado de la lista de eliminados
 	}
 }
 

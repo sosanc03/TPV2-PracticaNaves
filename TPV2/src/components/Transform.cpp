@@ -2,8 +2,8 @@
 
 
 Transform::Transform() : Component() {
-	position = new Vector2D(0, 0);
-	velocity = new Vector2D(0, 0);
+	pos = new Vector2D(0, 0);
+	speed = new Vector2D(0, 0);
 	width = 0;
 	height = 0;
 	rotation = 0;
@@ -11,15 +11,15 @@ Transform::Transform() : Component() {
 }
 
 Transform::Transform(Vector2D Position, Vector2D Velocity, float Width, float Heigth,  float Rotation) : Component() {
-	position = Position;
-	velocity = Velocity;
+	pos = Position;
+	speed = Velocity;
 	width = Width;
 	height = Heigth;
 	rotation = Rotation;
 }
 
 void Transform::update()  {	
-	position = position + velocity;	
+	pos = pos + speed;	
 }
 
 float Transform::getW() {
@@ -53,11 +53,11 @@ void Transform::setW(float Width) {
 }
 
 void Transform::setPos(Vector2D Position) {
-	position = Position;
+	pos = Position;
 }
 
 void Transform::setPosX(float X) {
-	position.setX(X);
+	pos.setX(X);
 }
 
 void Transform::setDir() {
@@ -66,9 +66,9 @@ void Transform::setDir() {
 }
 
 void Transform::setPosY(float Y) {
-	position.setY(Y);
+	pos.setY(Y);
 }
 
 void Transform::setVel(Vector2D Velocity) {
-	velocity = Velocity;
+	speed = Velocity;
 }

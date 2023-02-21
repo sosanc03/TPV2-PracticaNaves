@@ -2,14 +2,14 @@
 
 
 FighterCtrl::FighterCtrl() : Component() {
-	velocity = 0;
-	maxVelocity = 0;
+	speed = 0;
+	maxSpeed = 0;
 	rotation = 0;
 }
 
 FighterCtrl::FighterCtrl(float Velocity, float MaxVelocity, float Rotation) :Component() {
-	velocity = Velocity;
-	maxVelocity = MaxVelocity;
+	speed = Velocity;
+	maxSpeed = MaxVelocity;
 	rotation = Rotation;
 }
 
