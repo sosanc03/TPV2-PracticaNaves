@@ -1,19 +1,23 @@
 #include "ShowAtOpposideSide.h"
 
 void ShowAtOppositeSide::initComponent() {
-	tr = ent_->getComponent<Transform>(_TRANSFORM);
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
+	margin_ = 20;
+	wWidth_ = sdlutils().width();
+	wHeight_ = sdlutils().height();
+	w_ = tr_->getW();
+	h_ = tr_->getH();
+
 }
 
 void ShowAtOppositeSide::update() {
-	Vector2D pos = tr->getPos();
-	float w = tr->getW();
-	float h = tr->getH();
-	
-	// Comprueba eje X
-	if (pos.getX() > WIDTH) { tr->setPosX(0 - w); }
-	else if (pos.getX() < 0 - w) { tr->setPosX(WIDTH); }
+	Vector2D pos_ = tr_->getPos();
 
-	// Comprueba eje Y
-	if (pos.getY() > HEIGHT) { tr->setPosY(0 - h); }
-	else if(pos.getY() < 0 - h){ tr->setPosY(HEIGHT); }
+	// X
+	if (pos_.getX() > wWidth_ + margin_) { tr_->setPosX(0 - margin_); }
+	else if (pos_.getX() < 0 - margin_) { tr_->setPosX(wWidth_ + margin_); }
+
+	// Y
+	if (pos_.getY() > wHeight_ + margin_) { tr_->setPosY(0 - margin_); }
+	else if (pos_.getY() < 0 - margin_) { tr_->setPosY(wHeight_ + margin_); }
 }

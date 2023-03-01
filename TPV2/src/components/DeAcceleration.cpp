@@ -1,18 +1,18 @@
 #include "DeAcceleration.h"
 
 DeAcceleration::DeAcceleration() {
-	deaFactor = 0.995f;
-	limit = 0.005;
+	deaF_ = 0.995f;
+	limit_ = 0.005;
 }
 
 DeAcceleration::~DeAcceleration() {
 }
 
 void DeAcceleration::initComponent() {
-	tr = ent_->getComponent<Transform>(_TRANSFORM);
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
 }
 
 void DeAcceleration::update() {
-	if (tr->getVel().magnitude() <= limit) tr->setVel(Vector2D(0, 0));
-	else tr->setVel(tr->getVel() * deaFactor); 
+	if (tr_->getVel().magnitude() <= limit_) tr_->setVel(Vector2D(0, 0));
+	else tr_->setVel(tr_->getVel() * deaF_); 
 }

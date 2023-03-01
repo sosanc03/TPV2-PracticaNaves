@@ -10,28 +10,8 @@ Game::Game() {
 }
 
 void Game::initSDL() {
-	/*
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) { cout << "SDL init success\n"; } // Initialize SDL
-	window = SDL_CreateWindow("Asteroids", 0, 25, WIN_W, WIN_H, 0); // Init the window
-	if (window != nullptr) { cout << "window creation success\n"; }
-	renderer = SDL_CreateRenderer(window, -1, 0); // Init the renderer
-	if (renderer != nullptr) { cout << "renderer creation success\n"; }
-	*/
-
 	SDLUtils::instance(); // Crea la instancia de SDLUtils
 }
-
-/*while (!exit_) {
-	…
-		manager_->update();
-	…
-		sdlutils().clearRenderer();
-	manager_->render();
-	sdlutils().presentRenderer();
-	…
-		manager_->refresh();
-	…
-}*/
 
 
 Game::~Game(){ // destructora
@@ -55,7 +35,6 @@ void Game::run(){ // bucle de juego
 		if (!exit){
 			SDL_RenderClear(renderer);
 			render();
-			SDL_Delay(10);
 		}
 	}
 }

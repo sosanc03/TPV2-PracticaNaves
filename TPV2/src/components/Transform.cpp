@@ -2,73 +2,72 @@
 
 
 Transform::Transform() : Component() {
-	pos = new Vector2D(0, 0);
-	speed = new Vector2D(0, 0);
-	width = 0;
-	height = 0;
-	rotation = 0;
-	dir = Vector2D(0, 0);
+	pos_ = new Vector2D(0, 0);
+	speed_ = new Vector2D(0, 0);
+	w_ = 0;
+	h_ = 0;
+	rot_ = 0;
+	dir_ = Vector2D(0, 0);
 }
 
-Transform::Transform(Vector2D Position, Vector2D Velocity, float Width, float Heigth,  float Rotation) : Component() {
-	pos = Position;
-	speed = Velocity;
-	width = Width;
-	height = Heigth;
-	rotation = Rotation;
+Transform::Transform(Vector2D pos, Vector2D velocity, float width, float height,  float rot) : Component() {
+	pos_ = pos;
+	speed_ = velocity;
+	w_ = width;
+	h_ = height;
+	rot_ = rot;
 }
 
 void Transform::update()  {	
-	pos = pos + speed;	
+	pos_ = pos_ + speed_;	
 }
 
 float Transform::getW() {
-	return width;
+	return w_;
 }
 
 float Transform::getH() {
-	return height;
+	return h_;
 }
 
 float Transform::getR() {
-	return rotation;
+	return rot_;
 }
 
 Vector2D Transform::getDir() {
-	return dir;
+	return dir_;
 }
 
-void Transform::setR(float Rotation) {
-	rotation += Rotation;
-	std::cout << rotation << endl;
+void Transform::setR(float rot) {
+	rot_ += rot;
 	setDir();
 }
 
-void Transform::setH(float Height) {
-	height = Height;
+void Transform::setH(float height) {
+	h_ = height;
 }
 
-void Transform::setW(float Width) {
-	width = Width;
+void Transform::setW(float width) {
+	w_ = width;
 }
 
-void Transform::setPos(Vector2D Position) {
-	pos = Position;
+void Transform::setPos(Vector2D pos) {
+	pos_ = pos;
 }
 
-void Transform::setPosX(float X) {
-	pos.setX(X);
+void Transform::setPosX(float x) {
+	pos_.setX(x);
 }
 
 void Transform::setDir() {
-	float angle = (rotation*PI)/180.0f;
-	dir = Vector2D(sin(angle), -cos(angle));
+	float angle = (rot_*PI)/180.0f;
+	dir_ = Vector2D(sin(angle), -cos(angle));
 }
 
-void Transform::setPosY(float Y) {
-	pos.setY(Y);
+void Transform::setPosY(float y) {
+	pos_.setY(y);
 }
 
-void Transform::setVel(Vector2D Velocity) {
-	speed = Velocity;
+void Transform::setVel(Vector2D velocity) {
+	speed_ = velocity;
 }

@@ -9,8 +9,8 @@ using namespace ecs;
 
 class DeAcceleration : public Component{
 private:
-	Transform* tr = nullptr;
-	float deaFactor, limit;
+	Transform* tr_ = nullptr;
+	float deaF_, limit_;
 public:
 	DeAcceleration();
 	~DeAcceleration();

@@ -1,14 +1,17 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "../sdlutils/Texture.h"
-
+#include "../sdlutils/SDLUtils.h"
 class Health : public Component {
 private:
-	Texture* te = nullptr;
-	int life, maxLife;
+	Texture* t_ = nullptr;
+	Vector2D renderPos = Vector2D(0, 0);
+	int lifes_;
+	int maxHP_;
+	int tSize_;
 public:
 	Health(int vidas);
 	int getLifes();
-	void lessLife();
+	void subLife();
 	void resetLifes();
+	void render();
 };

@@ -7,17 +7,17 @@ const float PI = 3.1415;
 
 class Transform : public Component {
 private:
-	Vector2D pos;
-	Vector2D speed;
-	Vector2D dir;
-	float width;
-	float height;
-	float rotation;
+	Vector2D pos_;
+	Vector2D speed_;
+	Vector2D dir_;
+	float w_;
+	float h_;
+	float rot_;
 
 
 public:
 	Transform();
-	Transform(Vector2D Position, Vector2D Velocity, float Width, float Heigth, float Rotation = 0);
+	Transform(Vector2D pos, Vector2D velocity, float width, float height, float rot = 0);
 	virtual ~Transform() {}
 
 	void update();
@@ -26,15 +26,15 @@ public:
 	float getH();
 	float getR();
 	Vector2D getDir();
-	inline Vector2D getPos() { return pos; }
-	inline Vector2D getVel() { return speed; }
+	inline Vector2D getPos() { return pos_; }
+	inline Vector2D getVel() { return speed_; }
 
+	void setW(float width);
+	void setH(float height);
+	void setR(float rot);
 	void setDir();
-	void setR(float valRot);
-	void setH(float valHei);
-	void setW(float valWid);
-	void setPos(Vector2D Velocity);
-	void setPosX(float X);
-	void setPosY(float Y);
-	void setVel(Vector2D Velocity);
+	void setPos(Vector2D pos);
+	void setPosX(float x);
+	void setPosY(float y);
+	void setVel(Vector2D velocity);
 };

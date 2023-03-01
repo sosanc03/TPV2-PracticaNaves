@@ -16,7 +16,6 @@ public:
 		ent_ = ent;
 		mngr_ = mngr;
 	}
-	//…
 	virtual void initComponent() { }
 	virtual void update() { }
 	virtual void render() { }

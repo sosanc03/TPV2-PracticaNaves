@@ -3,6 +3,12 @@
 
 PlayState::PlayState() {
 	createShip();
+	
+	// 10 primeros asteroides
+	astM_ = new AsteroidsManager(Manager::instance());
+	for (int i = 0; i < 5; i++) {
+		astM_->createAsteroids(2);
+	}
 }
 
 PlayState::~PlayState(){
@@ -11,31 +17,23 @@ PlayState::~PlayState(){
 
 void PlayState::update() {
 	GameState::update();
-	handleEvents();
-	/*cout << fighter->getComponent<Transform>(_TRANSFORM)->getPos().getX()
-		<< fighter->getComponent<Transform>(_TRANSFORM)->getPos().getY()
-		<< endl;*/
+	astM_->addAsteroidFrequently();
 }
 
-void PlayState::handleEvents() {
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) fiCtrl->handleEvents(event);
-}
 
 void PlayState::createShip() {
-	fighter = Manager::instance()->addEntity();
-	Vector2D v = Vector2D(0, 0);
-	int rotation = 0;
-	fighter->addComponent<Transform>(_TRANSFORM, v, v, FIGHTER_SIZE, FIGHTER_SIZE, rotation);
-	fiCtrl = fighter->addComponent<FighterCtrl>(_CTRL);
+	fighter_ = Manager::instance()->addEntity();
+	Vector2D vel_ = Vector2D(0, 0);
+	int rot_ = 0;
+	Vector2D centralPos_ = Vector2D(sdlutils().width() / 2 - FIGHTER_SIZE / 2, sdlutils().height() / 2 - FIGHTER_SIZE / 2);
+	fighter_->addComponent<Transform>(TRANSFORM_H, centralPos_, vel_ , FIGHTER_SIZE, FIGHTER_SIZE, rot_);
+	fighter_->addComponent<FighterCtrl>(FIGHTERCTRL_H);
 	Texture* text = &(SDLUtils::instance()->images().at("fighter"));
-	fighter->addComponent<Image>(_IMAGE, text);
-
-	fighter->addComponent<DeAcceleration>(_DEACCELERATION);
+	fighter_->addComponent<Image>(IMAGE_H, text);
+	fighter_->addComponent<DeAcceleration>(DEACCELERATION_H);
 	int lifes = 3;
-	fighter->addComponent<Health>(_HEALTH, lifes);
-	fighter->addComponent<ShowAtOppositeSide>(_OPPOSITESIDE);
-
-	fighter->addComponent<Gun>(_GUN);
+	fighter_->addComponent<Health>(HEALTH_H, lifes);
+	fighter_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);
+	fighter_->addComponent<Gun>(GUN_H);
 
 }

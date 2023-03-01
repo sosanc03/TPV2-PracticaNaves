@@ -6,6 +6,7 @@
 #include "Manager.h"
 #include "ecs.h"
 #include "../components/Image.h"
+#include <bitset>
 
 using namespace ecs;
 using namespace std;
@@ -16,6 +17,7 @@ private:
 	Manager* mngr_;
 	vector<Component*> currCmps_;
 	array<Component*, ecs::maxComponentId> cmps_;
+	bitset<maxGroupId> groups_;
 
 public:
 	Entity() : mngr_(nullptr), cmps_(), currCmps_(), alive_() {
@@ -59,6 +61,16 @@ public:
 
 	inline bool hasComponent(ecs::cmpId_type cId) {
 		return cmps_[cId] != nullptr;
+	}
+
+	inline void addToGroup(grpId_type gId) {
+		if (!groups_[gId]) groups_[gId] = true;
+	}
+	inline void removeFromGroup(grpId_type gId) {
+		if (groups_[gId]) groups_[gId] = false;
+	}
+	inline bool hasGroup(grpId_type gId) {
+		return groups_[gId];
 	}
 
 	inline void update() {

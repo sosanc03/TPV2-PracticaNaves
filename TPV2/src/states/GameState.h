@@ -3,6 +3,7 @@
 #include <list>
 #include "../ecs/Manager.h"
 #include "../ecs/Entity.h"
+#include "../sdlutils/InputHandler.h"
 
 class GameStateMachine;
 

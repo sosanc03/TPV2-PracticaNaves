@@ -11,9 +11,9 @@ using namespace std;
 using uint = unsigned int;
 
 //CONSTANTES
-const uint FRAME_RATE = 3;
-const uint FIGHTER_SIZE = 75;
-
+const uint FRAME_RATE = 15;
+const uint FIGHTER_SIZE = 60;
+const uint ANIMATION_SPEED = 10;
 
 class Game :public Singleton <Game>{
 private:

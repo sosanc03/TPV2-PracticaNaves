@@ -1,51 +1,29 @@
 #include "FighterCtrl.h"
 
-
-FighterCtrl::FighterCtrl() : Component() {
-	speed = 0;
-	maxSpeed = 0;
-	rotation = 0;
-}
-
-FighterCtrl::FighterCtrl(float Velocity, float MaxVelocity, float Rotation) :Component() {
-	speed = Velocity;
-	maxSpeed = MaxVelocity;
-	rotation = Rotation;
+FighterCtrl::FighterCtrl(float maxVel, float rot, float thrust) :Component() {
+	maxVel_ = maxVel;
+	rot_ = rot;
+	thrust_ = thrust;
 }
 
 void FighterCtrl::initComponent() {
-	tr = ent_->getComponent<Transform>(_TRANSFORM);
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
+	tr_->setDir();
 }
 
 void FighterCtrl::update() {
-	
-}	
-
-void FighterCtrl::handleEvents(SDL_Event event)
-{
-
-	InputHandler::instance()->update(event);
-
-	if (InputHandler::instance()->keyDownEvent())
-	{
-
+	if (InputHandler::instance()->keyDownEvent()) {
 		//Rotación
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-			tr->setR(-5.0f);
+			tr_->setR(-rot_);
 		}
 		else if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-			tr->setR(5.0f);
+			tr_->setR(rot_);
 		}
 		//Movimiento
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_UP)) {
-			tr->setVel(tr->getVel() + (tr->getDir() * 0.1f));
-
+			tr_->setVel(tr_->getVel() + (tr_->getDir() * thrust_));
+			sdlutils().soundEffects().at("thrust").play();
 		}
-		/*if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_A)) {
-			cout << "SOFIA CUANTO POR MEARME EN LA CARA?";
-		}*/
-
-
-
 	}
 }

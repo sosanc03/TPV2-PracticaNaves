@@ -9,21 +9,19 @@
 #include "../components/FighterCtrl.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/Gun.h"
+#include "../game/AsteroidsManager.h"
 
 class Game;
 
 class PlayState : public GameState {
 private:
-	Entity* fighter;
-	FighterCtrl* fiCtrl;
-
+	Entity* fighter_ = nullptr;
+	AsteroidsManager* astM_ = nullptr;
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
 	PlayState();
 	~PlayState();
-
 	void update();
-	void handleEvents();
 	void createShip();
 };
 

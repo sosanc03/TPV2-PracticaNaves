@@ -1,45 +1,6 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  Game.cpp
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(65,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(71,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,48): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,19): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,50): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,20): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-  main.cpp
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(65,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(71,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,48): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,19): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,50): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,20): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-  PlayState.cpp
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(65,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(71,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,48): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(8,19): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,50): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\ShowAtOpposideSide.h(9,20): warning C4244: 'inicializando': conversión de 'int' a 'const float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(37,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(29,89): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,const uint,const uint,int>(ecs::cmpId_type,Vector2D &,Vector2D &,const uint &,const uint &,int &)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(37,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=const uint
-          ]
-  Generando código...
-  TPV2.vcxproj -> C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\bin\TPV2Debug.exe
+  GameState.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  TPV2.vcxproj -> D:\GitHub\TPV2-PracticaNaves\bin\TPV2Debug.exe
