@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\Generations.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\Follow.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="src\components\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\Generations.cpp" />
     <ClCompile Include="src\components\DisableOnExit.cpp" />
     <ClCompile Include="src\components\Follow.cpp" />
     <ClCompile Include="src\components\DeAcceleration.cpp" />

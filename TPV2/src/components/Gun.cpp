@@ -14,7 +14,7 @@ void Gun::initComponent() {
 
 void Gun::update() {
 	if (ih().keyDownEvent()) {
-		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_S)) {
 			if (sdlutils().currRealTime() >= lastTime_) {
 				createBullet();
 				sdlutils().soundEffects().at("fire").play();

@@ -15,6 +15,7 @@ private:
 	float rot_;
 
 
+
 public:
 	Transform();
 	Transform(Vector2D pos, Vector2D velocity, float width, float height, float rot = 0);

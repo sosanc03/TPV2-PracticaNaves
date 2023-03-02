@@ -1,8 +1,11 @@
 #include "AsteroidsManager.h"
+#include "../states/PlayState.h"
 
 
-AsteroidsManager::AsteroidsManager(Manager* manager) {
+AsteroidsManager::AsteroidsManager(Manager* manager, Entity* player, PlayState* plSt) {
 	mngr_ = manager;
+	player_ = player;
+	pSt_ = plSt;
 	astWidth_ = 510;
 	astHeight_ = 500;
 	nF_ = 6;
@@ -12,36 +15,42 @@ AsteroidsManager::AsteroidsManager(Manager* manager) {
 	cont_ = 5000;
 }
 
-void AsteroidsManager::createAsteroids(int n) {
+void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 	int i = 0;
 	while (nAsteroids_ < maxAsteroids_ && i < n) {
+		Vector2D pos_;
+		if(pos == Vector2D(-1, -1))pos_ = generateAstPos();// posición aleatoria de aparición
 
-		Entity* ast_ = Manager::instance()->addEntity();
-		Texture* t_;
+		Vector2D c = sCenter_ + Vector2D(sdlutils().rand().nextInt(-100, 100), sdlutils().rand().nextInt(-100, 100));
+
+		float speed_ = sdlutils().rand().nextInt(1, 10) / 10.0f;// factor velocidad
+		Vector2D vel_ = (c - pos_).normalize() * speed_;// vector velocidad
+
+		float size_ = 25.0f + 8.0f * g;
+
+		Entity* ast_ = Manager::instance()->addEntity();// crea el asteroide
+		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, astWidth_, astHeight_);// añade componente transform
+
+		Texture* t_;// textura
 
 		if (nAsteroids_ < maxAsteroids_) {
 			if (sdlutils().rand().nextInt(0, 10) < 3) //tipo b
 			{
 				t_ = &(SDLUtils::instance()->images().at("goldAsteroid"));
-				ast_->addComponent<Follow>(FOLLOW_H);
+				ast_->addComponent<Follow>(FOLLOW_H, player_);// componente follow
 			}
 			else t_ = &(SDLUtils::instance()->images().at("asteroid")); //tipo A
 		}
 
-		Vector2D pos_ = generateAstPos();
+		
 
-		Vector2D c = sCenter_ + Vector2D(sdlutils().rand().nextInt(-100, 100), sdlutils().rand().nextInt(-100, 100));
+		ast_->addComponent<Image>(IMAGE_H, t_, astWidth_, astHeight_, nF_, nC_, size_);// componente de renderizado
+		ast_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);// componente toroidal
+		ast_->addComponent<Generations>(GENERATIONS_H, g);
 
-		float speed_ = sdlutils().rand().nextInt(1, 10) / 10.0f;
-		Vector2D vel_ = (c - pos_).normalize() * speed_;
+		ast_->addToGroup(_grp_ASTEROIDS);// añadir al grupo de asteroides
 
-		float size_ = 25.0f + 8.0f * n;
-
-		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, astWidth_, astHeight_);
-		ast_->addComponent<Image>(IMAGE_H, t_, astWidth_, astHeight_, nF_, nC_, size_);
-		ast_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);
-		ast_->addToGroup(_grp_ASTEROIDS);
-		nAsteroids_++;
+		nAsteroids_++;// aumenta el número de asteroiodes
 		i++;
 	}
 }
@@ -49,19 +58,66 @@ void AsteroidsManager::createAsteroids(int n) {
 void AsteroidsManager::addAsteroidFrequently() {
 	if (sdlutils().currRealTime() >= cont_) {
 		int rnd = sdlutils().rand().nextInt(1, 4);
-		createAsteroids(rnd);
+		createAsteroids(1, rnd);
 		cont_ = sdlutils().currRealTime() + 5000; // 5 secs
 	}
 }
-void AsteroidsManager::destroyAllAsteroids() {
-	// setAlive(false) a todos los asteroides de la lista de grupo correspondiente del Manager
+
+void  AsteroidsManager::checkCollision()
+{
+	Transform* plTr_ = player_->getComponent<Transform>(TRANSFORM_H);
+	for (auto& as : Manager::instance()->getEntities()) {
+		if (as->hasGroup(_grp_ASTEROIDS)) {
+			Transform* asTr_ = as->getComponent<Transform>(TRANSFORM_H);
+			if (collides(plTr_, asTr_)) pSt_->playerCollides();// colision entre asteroide y player
+			else {
+				for (auto& b : Manager::instance()->getEntities()) {
+					if (b->hasGroup(_grp_BULLETS)) {
+						Transform* bTr_ = b->getComponent<Transform>(TRANSFORM_H);
+						if (collides(bTr_, asTr_)) // colisión entre bala y asteroide
+						{
+							onCollision(as);
+							b->removeFromGroup(_grp_BULLETS);
+							b->setAlive(false);
+						}
+					}
+				}
+			}
+		}
+	}
 }
+
+bool AsteroidsManager::collides(Transform* obj1_, Transform* obj2_) {
+	return (Collisions::collidesWithRotation(obj1_->getPos(), obj1_->getW(),
+		obj1_->getH(), obj1_->getR(), obj2_->getPos(), obj2_->getW(),
+		obj2_->getH(), obj2_->getR()));
+}
+
+void AsteroidsManager::destroyAllAsteroids() {
+	for (auto& as : Manager::instance()->getEntities()) {
+		if (as->hasGroup(_grp_ASTEROIDS)) {
+			as->removeFromGroup(_grp_ASTEROIDS);
+			as->setAlive(false);
+		}
+	}
+}
+
 void AsteroidsManager::onCollision(Entity* a) {
-	//genera 2 asteroides (si su numero de generaciones lo permite, si hay 29 asteroides solo genera 1, si hay 30 no genera)
-	// TENER EN CUENTA QUE HAY nAsteroides-1 YA QUE EL ASTEROIDE DESTRUIDO SE ELIMINA DESPUES
-	createAsteroids(2); //Generar los dos nuevos. 
+	nAsteroids_--;
+
+	Generations* gen_ = a->getComponent<Generations>(GENERATIONS_H);
+	int g = gen_->getGen();// generación del actual
+
+	if (g != 1) {
+		Transform* tr_ = a->getComponent<Transform>(TRANSFORM_H);
+		if(g == 2)createAsteroids(2, 1, tr_->getPos()); //Genera los dos nuevos de generación 1
+		else createAsteroids(2, 2, tr_->getPos()); //Genera los dos nuevos de generación 2
+	} 
+
 	// Desactiva la entidad tras generar los nuevos
 	a->setAlive(false);
+	a->removeFromGroup(_grp_ASTEROIDS);
+	if (nAsteroids_ == 0) pSt_->setEndGame();
 }
 
 Vector2D AsteroidsManager::generateAstPos() {

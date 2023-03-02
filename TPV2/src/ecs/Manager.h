@@ -14,7 +14,7 @@ public:
 	Manager();
 	virtual ~Manager();
 	Entity* addEntity();
-	//inline const auto& getEntities() { return ents_; }
+	inline const auto& getEntities() { return ents_; }
 
 	void refresh();
 	void update();

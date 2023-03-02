@@ -11,17 +11,24 @@
 #include "../components/Gun.h"
 #include "../game/AsteroidsManager.h"
 
+
 class Game;
 
 class PlayState : public GameState {
 private:
 	Entity* fighter_ = nullptr;
 	AsteroidsManager* astM_ = nullptr;
+	Health* plHealth_;
+	Transform* playerTr_;
+
+	Vector2D plCentralPos_;
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
 	PlayState();
 	~PlayState();
 	void update();
 	void createShip();
+	void playerCollides();
+	void setEndGame();
 };
 

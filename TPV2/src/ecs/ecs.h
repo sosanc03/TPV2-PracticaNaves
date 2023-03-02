@@ -12,6 +12,7 @@ namespace ecs {
 		OPPOSITESIDE_H = 6,
 		FOLLOW_H = 7,
 		DISABLEONEXIT_H = 8,
+		GENERATIONS_H = 9,
 		// do not remove this
 		_LAST_CMP_ID
 	};

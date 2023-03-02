@@ -7,6 +7,8 @@ Game::Game() {
 
 	gameStateMachine = new GameStateMachine();
 	gameStateMachine->pushState(new PlayState());
+
+	pause = false;
 }
 
 void Game::initSDL() {
@@ -25,16 +27,19 @@ void Game::run(){ // bucle de juego
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
 	while (!exit) {
-
-		frameTime = SDL_GetTicks() - startTime;
-		if (frameTime >= FRAME_RATE){
-			update();
-			gameStateMachine->clearStates(); // elimina estados
-			startTime = SDL_GetTicks();
-		}
-		if (!exit){
-			SDL_RenderClear(renderer);
-			render();
+		handlePause();
+		if (!pause) 
+		{
+			frameTime = SDL_GetTicks() - startTime;
+			if (frameTime >= FRAME_RATE) {
+				update();
+				gameStateMachine->clearStates(); // elimina estados
+				startTime = SDL_GetTicks();
+			}
+			if (!exit) {
+				SDL_RenderClear(renderer);
+				render();
+			}
 		}
 	}
 }
@@ -47,4 +52,15 @@ void Game::render() { // Dibuja en pantalla el estado actual del juego
 	SDL_RenderClear(renderer);
 	gameStateMachine->render();
 	SDL_RenderPresent(renderer); 
+}
+
+void Game::handlePause() {
+	/*InputHandler::instance()->refresh();
+	if (InputHandler::instance()->keyDownEvent()) {
+		//Pausa SDL_SCANCODE_SPACE
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+			if (pause) pause = false;
+			else pause = true;
+		}
+	}*/
 }

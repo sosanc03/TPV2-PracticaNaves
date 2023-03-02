@@ -20,7 +20,8 @@ private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	GameStateMachine* gameStateMachine;
-	bool exit;
+
+	bool exit, pause;
 
 public:
 	Game();
@@ -29,4 +30,5 @@ public:
 	void update();
 	void render();
 	void run();
+	void handlePause();
 };

@@ -5,25 +5,36 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Follow.h"
 #include "../components/ShowAtOpposideSide.h"
+#include "../components/Generations.h"
+#include "../utils/Collisions.h"
 
+class PlayState;
 
 class AsteroidsManager{
 private:
+	Manager* mngr_ = nullptr;
+	Entity* player_;
+	PlayState* pSt_;// referencia a play state
+
 	float astWidth_, astHeight_;
 	int nF_, nC_;
-	Manager* mngr_ = nullptr;
 	int nAsteroids_;
 	int maxAsteroids_;
+
 	Vector2D sCenter_;
 
 	int cont_;
 
 public:
-	AsteroidsManager(Manager* Manager);
-	void createAsteroids(int n);
+	AsteroidsManager(Manager* Manager, Entity* player, PlayState* pSt);
+	void createAsteroids(int n, int g = 3, Vector2D pos_ = Vector2D(-1, -1));
 	void addAsteroidFrequently();
+
+	void checkCollision();
+	bool collides(Transform* obj1_, Transform* obj2_);
 	void destroyAllAsteroids();
 	void onCollision(Entity* a);
+	
 	Vector2D generateAstPos();
 };
 
