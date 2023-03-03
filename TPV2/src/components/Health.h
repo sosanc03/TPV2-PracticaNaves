@@ -4,15 +4,14 @@
 
 class Health : public Component {
 private:
-	Texture* t_ = nullptr;
-	Vector2D renderPos = Vector2D(0, 0);
-	int lifes_;
-	int maxHP_;
-	int tSize_;
+	Texture* t_ = nullptr;// textura
+	Vector2D renderPos;// posición
+	int lifes_;// vidas
+	int maxHP_;// vida máxima
+	int tSize_;// tamaño
 public:
-	Health(int vidas);
-	int getLifes();
-	void subLife();
-	void resetLifes();
-	void render();
+	Health(int vidas);// constructora
+	int getLifes();// devulve el númerod de vidas
+	void subLife();// resta vida
+	void render();// render
 };

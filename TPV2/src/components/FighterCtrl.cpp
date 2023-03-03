@@ -1,14 +1,14 @@
 #include "FighterCtrl.h"
 
 FighterCtrl::FighterCtrl(float maxVel, float rot, float thrust) :Component() {
-	maxVel_ = maxVel;
-	rot_ = rot;
-	thrust_ = thrust;
+	maxVel_ = maxVel;// máxima velocidad
+	rot_ = rot;// rotación
+	thrust_ = thrust;// empuje
 }
 
-void FighterCtrl::initComponent() {
-	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
-	tr_->setDir();
+void FighterCtrl::initComponent() {// init
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);// transform
+	tr_->setDir();// setea la dirección
 }
 
 void FighterCtrl::update() {
@@ -17,7 +17,7 @@ void FighterCtrl::update() {
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 			tr_->setR(-rot_);
 		}
-		else if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 			tr_->setR(rot_);
 		}
 		//Movimiento

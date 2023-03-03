@@ -7,12 +7,12 @@
 class PauseState :public GameState
 {
 private: 
-	Entity* text_;
-	Texture* t_;
+	Entity* text_;// texto
+	Texture* t_;// textura
 public:
 	virtual string getStateID() { return "PauseState"; }; // stringID
-	PauseState();
-	~PauseState();
-	void update();
+	PauseState();// constructora
+	~PauseState();// destructora
+	void update();// update
 };
 

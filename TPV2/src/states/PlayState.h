@@ -11,31 +11,34 @@
 #include "../components/Gun.h"
 #include "../game/AsteroidsManager.h"
 #include "../utils/Collisions.h"
+#include "GameOverState.h"
+#include "PauseState.h"
 
 
-class Game;
 
 class PlayState : public GameState {
 private:
-	Entity* fighter_ = nullptr;
-	AsteroidsManager* astM_ = nullptr;
-	Health* plHealth_;
-	Transform* playerTr_;
+	Entity* fighter_ = nullptr;// nave
+	AsteroidsManager* astM_ = nullptr;// asteroid manager
+	Health* plHealth_;// vida/salud
+	Transform* playerTr_;// transform del player
 
-	Vector2D plCentralPos_;
+	Vector2D plCentralPos_;// posición central
 
-	bool sublife, generate;
+	bool sublife, generate;// booleanos de restar vida y generar asteroides
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
-	PlayState();
-	~PlayState();
-	void update();
-	void createShip();
-	void playerCollides();
-	void setEndGame();
-	void handlePause();
+	PlayState();// constructora
+	~PlayState();// destructora
+	void update();// update
+	void createShip();// crea una nueva nave
+	void playerCollides();// colisión de player y asteroide
+	void handlePause();// gestión de pausa
 
-	void checkCollision();
-	bool collides(Transform* obj1_, Transform* obj2_);
+	void checkCollision();// comprueba si hay colisión
+	bool collides(Transform* obj1_, Transform* obj2_);// booleano a true si hay colisión entre las entidades
+	void GameOver();// fin de juego
+
+	void subLife();// player pierde una vida
 };
 

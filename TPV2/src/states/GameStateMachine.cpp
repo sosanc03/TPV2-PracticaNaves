@@ -1,8 +1,8 @@
 #include "GameStateMachine.h"
 
-GameStateMachine::~GameStateMachine(){
-	clearStates();
-	while (!st.empty()){
+GameStateMachine::~GameStateMachine(){// constructora
+	clearStates();// borra los estados de la pila de borrado
+	while (!st.empty()){// vacía la pila de estados
 		delete(st.top());
 		st.pop();
 	}
@@ -40,10 +40,10 @@ void GameStateMachine::clearStates(){
 }
 
 void GameStateMachine::update() {
-	currentState()->update();
+	currentState()->update();// update del estado actual
 }
 
 void GameStateMachine::render() {
-	currentState()->render();
+	currentState()->render();// render del estado actual
 }
 

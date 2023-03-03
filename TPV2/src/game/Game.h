@@ -5,7 +5,6 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../states/GameStateMachine.h"
 #include "../states/PlayState.h"
-#include "../states/PauseState.h"
 
 using namespace std;
 
@@ -18,17 +17,18 @@ const uint ANIMATION_SPEED = 10;
 
 class Game :public Singleton <Game>{
 private:
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
-	GameStateMachine* gameStateMachine;
+	SDL_Window* window = nullptr;// ventana
+	SDL_Renderer* renderer = nullptr;// renderer
+	GameStateMachine* gameStateMachine;// máquina de estados
 
-	bool exit, pause;
+	bool exit;// booleano de salida
 
 public:
-	Game();
-	void initSDL();
-	virtual ~Game();
-	void update();
-	void render();
-	void run();
+	Game();// contructora
+	void initSDL();// inicio de SDL
+	virtual ~Game();// destructora
+	void update();// udate
+	void render();// render
+	void run(); // ejecución
+
 };

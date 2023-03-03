@@ -10,10 +10,10 @@ using namespace std;
 
 class GameState{
 public:
-	GameState();
-	virtual ~GameState(); 
-	virtual void update();
-	virtual void render();
-	virtual string getStateID() = 0;
+	GameState();// constructora
+	virtual ~GameState(); // destructora
+	virtual void update();// update
+	virtual void render();// render
+	virtual string getStateID() = 0;// id
 };
 

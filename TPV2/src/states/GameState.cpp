@@ -4,7 +4,7 @@ GameState::GameState() {
 	
 }
 
-void GameState::render() {
+void GameState::render() {// renderizado
 	Manager::instance()->render();
 }
 

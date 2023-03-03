@@ -4,14 +4,14 @@ class Generations :
     public Component
 {
 private:
-    int gen_;
+    int gen_;// número de generación
 public:
-    Generations(int gen) {
-        gen_ = gen;
+    Generations(int gen) {// constructora
+        gen_ = gen;// generación
     }
 
-    int getGen() { return gen_; }
+    int getGen() { return gen_; }// devuelve la generación
 
-    void setGen(int gen) { gen_ = gen; }
+    void setGen(int gen) { gen_ = gen; }// setea la generación
 };
 

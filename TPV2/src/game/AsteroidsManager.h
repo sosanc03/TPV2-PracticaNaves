@@ -11,28 +11,31 @@ class PlayState;
 
 class AsteroidsManager{
 private:
-	Manager* mngr_ = nullptr;
-	Entity* player_;
+	Manager* mngr_ = nullptr;// manager
+	Entity* player_;// jugador
 	PlayState* pSt_;// referencia a play state
 
+	
+	// sprites
 	float astWidth_, astHeight_;
 	int nF_, nC_;
 	int nAsteroids_;
-	int maxAsteroids_;
 
-	Vector2D sCenter_;
+	int maxAsteroids_;// máximo número de asteroides
 
-	int cont_;
+	Vector2D sCenter_;// vector central
+
+	int cont_;// contador
 
 public:
-	AsteroidsManager(Manager* Manager, Entity* player, PlayState* pSt);
-	void createAsteroids(int n, int g = 3, Vector2D pos_ = Vector2D(-1, -1));
-	void addAsteroidFrequently();
+	AsteroidsManager(Manager* Manager, Entity* player, PlayState* pSt);// constructora
+	void createAsteroids(int n, int g = 3, Vector2D pos_ = Vector2D(-1, -1));// generador de asteroides
+	void addAsteroidFrequently();// añade asteroides cada 5 segundos
 
 	
-	void destroyAllAsteroids();
-	void onCollision(Entity* a);
+	void destroyAllAsteroids();// destruye todos los asteroides
+	void onCollision(Entity* a);// colisión entre bala y asteroide
 	
-	Vector2D generateAstPos();
+	Vector2D generateAstPos();// genera una posición aleatoria en los bordes de la ventana
 };
 

@@ -7,35 +7,35 @@ const float PI = 3.1415;
 
 class Transform : public Component {
 private:
-	Vector2D pos_;
-	Vector2D speed_;
-	Vector2D dir_;
-	float w_;
-	float h_;
-	float rot_;
+	Vector2D pos_;// posiciones
+	Vector2D speed_;// velocidad
+	Vector2D dir_;// dirección
+	float w_;// ancho
+	float h_;// altura
+	float rot_;// rotación
 
 
 
 public:
-	Transform();
-	Transform(Vector2D pos, Vector2D velocity, float width, float height, float rot = 0);
-	virtual ~Transform() {}
+	Transform();// contructora que setea todo a 0 por defecto
+	Transform(Vector2D pos, Vector2D velocity, float width, float height, float rot = 0);// contructora
+	virtual ~Transform() {}// destructora
 
-	void update();
+	void update();// update
 
-	float getW();
-	float getH();
-	float getR();
-	Vector2D getDir();
-	inline Vector2D getPos() { return pos_; }
-	inline Vector2D getVel() { return speed_; }
+	float getW();// devuelve el ancho
+	float getH();// devuelve el alto
+	float getR();// devuelve la rota´ción
+	Vector2D getDir();// devuelve la dirección
+	inline Vector2D getPos() { return pos_; }// devuelve la posición
+	inline Vector2D getVel() { return speed_; }// devuelve la velocidad
 
-	void setW(float width);
-	void setH(float height);
-	void setR(float rot);
-	void setDir();
-	void setPos(Vector2D pos);
-	void setPosX(float x);
-	void setPosY(float y);
-	void setVel(Vector2D velocity);
+	void setW(float width);// setea  el ancho
+	void setH(float height);// setea el alto
+	void setR(float rot);// setea la rotación
+	void setDir();// setea la dirección
+	void setPos(Vector2D pos);// setea la posición
+	void setPosX(float x);// setea la posición en X
+	void setPosY(float y);// setea la posición en Y
+	void setVel(Vector2D velocity);// setea la velocidad
 };

@@ -5,19 +5,19 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Transform.h"
 
-const float WIDTH = SDLUtils::instance()->width();
-const float HEIGHT = SDLUtils::instance()->height();
+const float WIDTH = SDLUtils::instance()->width();// ancho de pantalla
+const float HEIGHT = SDLUtils::instance()->height();// alto de pantalla
 class ShowAtOppositeSide : public Component {
 private: 
-	Transform* tr_ = nullptr;
-	float wWidth_;
-	float wHeight_;
-	float w_;
-	float h_;
-	float margin_;
+	Transform* tr_ = nullptr;// transform
+	float wWidth_;// ancho de pantalla
+	float wHeight_;// alto de pantalla
+	float w_;// ancho
+	float h_;// alto
+	float margin_;// margen
 
 public:
-	void initComponent();
+	void initComponent();// inti
 
-	void update();
+	void update();// update
 };

@@ -9,11 +9,11 @@ using namespace ecs;
 
 class DeAcceleration : public Component{
 private:
-	Transform* tr_ = nullptr;
-	float deaF_, limit_;
+	Transform* tr_ = nullptr;// transform
+	float deaF_, limit_;// variables
 public:
-	DeAcceleration();
-	~DeAcceleration();
-	void initComponent();
-	void update();
+	DeAcceleration();// constructora
+	~DeAcceleration();// destructora
+	void initComponent();// inicio de componente
+	void update();// update
 };

@@ -3,31 +3,33 @@
 
 
 AsteroidsManager::AsteroidsManager(Manager* manager, Entity* player, PlayState* plSt) {
-	mngr_ = manager;
-	player_ = player;
-	pSt_ = plSt;
-	astWidth_ = 510;
-	astHeight_ = 500;
-	nF_ = 6;
-	nC_ = 5;
-	maxAsteroids_ = 30;
-	sCenter_ = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2);
-	cont_ = 5000;
+	mngr_ = manager;// manager
+	player_ = player;// figther
+	pSt_ = plSt;// play State
+	astWidth_ = 510;// ancho de sprite
+	astHeight_ = 500;// altura de sprite
+	nF_ = 6;// número de filas
+	nC_ = 5;// número de columnas
+	maxAsteroids_ = 30;// máximo de asteroides 
+	sCenter_ = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2);// vector central
+	cont_ = 5000;// contador de 5 segundos
 }
 
 void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 	int i = 0;
-	while (nAsteroids_ < maxAsteroids_ && i < n) {
+	while (nAsteroids_ < maxAsteroids_ && i < n) {// los asteroides no superan el máximo
 		Vector2D pos_;
 		if (pos == Vector2D(-1, -1))pos_ = generateAstPos();// posición aleatoria de aparición
-		else pos_ = pos;
+		else pos_ = pos;// posición no aleatoria
 
+		
+		// vector central pero con un random entre -100 y 100 para que los asteroides vayan a la zona central en un rango
 		Vector2D c = sCenter_ + Vector2D(sdlutils().rand().nextInt(-100, 100), sdlutils().rand().nextInt(-100, 100));
 
 		float speed_ = sdlutils().rand().nextInt(1, 10) / 10.0f;// factor velocidad
 		Vector2D vel_ = (c - pos_).normalize() * speed_;// vector velocidad
 
-		float size_ = 25.0f + 8.0f * g;
+		float size_ = 25.0f + 8.0f * g;// tamaño
 
 		Entity* ast_ = Manager::instance()->addEntity();// crea el asteroide
 		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, size_, size_);// añade componente transform
@@ -47,7 +49,7 @@ void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 
 		ast_->addComponent<Image>(IMAGE_H, t_, astWidth_, astHeight_, nF_, nC_, size_);// componente de renderizado
 		ast_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);// componente toroidal
-		ast_->addComponent<Generations>(GENERATIONS_H, g);
+		ast_->addComponent<Generations>(GENERATIONS_H, g);// número de generación
 
 		ast_->addToGroup(_grp_ASTEROIDS);// añadir al grupo de asteroides
 
@@ -58,15 +60,17 @@ void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 
 void AsteroidsManager::addAsteroidFrequently() {
 	if (sdlutils().currRealTime() >= cont_) {
-		int rnd = sdlutils().rand().nextInt(1, 4);
+		int rnd = sdlutils().rand().nextInt(1, 4);// generación entre [0, 4)
 		createAsteroids(1, rnd);
 		cont_ = sdlutils().currRealTime() + 5000; // 5 secs
 	}
 }
 
 void AsteroidsManager::destroyAllAsteroids() {
+	nAsteroids_ = 0;// número de asteroides a 0
 	for (auto& as : Manager::instance()->getEntities()) {
 		if (as->hasGroup(_grp_ASTEROIDS)) {
+			//desactiva los asteroides y los borra del grupo
 			as->removeFromGroup(_grp_ASTEROIDS);
 			as->setAlive(false);
 		}
@@ -74,21 +78,22 @@ void AsteroidsManager::destroyAllAsteroids() {
 }
 
 void AsteroidsManager::onCollision(Entity* a) {
-	nAsteroids_--;
+	sdlutils().soundEffects().at("explosion").play();// sonido de explosión
+	nAsteroids_--;// resta asteroide
 
 	Generations* gen_ = a->getComponent<Generations>(GENERATIONS_H);
 	int g = gen_->getGen();// generación del actual
 
 	if (g != 1) {
 		Transform* tr_ = a->getComponent<Transform>(TRANSFORM_H);
-		if(g == 2)createAsteroids(2, 1, tr_->getPos()); //Genera los dos nuevos de generación 1
-		else createAsteroids(2, 2, tr_->getPos()); //Genera los dos nuevos de generación 2
+		if(g == 2)createAsteroids(2, 1, tr_->getPos()); //Genera los dos nuevos asteroirdes de generación 1
+		else createAsteroids(2, 2, tr_->getPos()); //Genera los dos nuevos asteroides de generación 2
 	} 
 
 	// Desactiva la entidad tras generar los nuevos
 	a->setAlive(false);
 	a->removeFromGroup(_grp_ASTEROIDS);
-	if (nAsteroids_ == 0) pSt_->setEndGame();
+	if (nAsteroids_ == 0) pSt_->GameOver();// victoria
 }
 
 Vector2D AsteroidsManager::generateAstPos() {

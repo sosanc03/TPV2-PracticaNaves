@@ -2,24 +2,24 @@
 
 
 Transform::Transform() : Component() {
-	pos_ = new Vector2D(0, 0);
-	speed_ = new Vector2D(0, 0);
-	w_ = 0;
-	h_ = 0;
-	rot_ = 0;
-	dir_ = Vector2D(0, 0);
+	pos_ = new Vector2D(0, 0);// posición
+	speed_ = new Vector2D(0, 0);// velocidad
+	w_ = 0;// ancho
+	h_ = 0;// alto
+	rot_ = 0;// rotación
+	dir_ = Vector2D(0, 0);// dirección
 }
 
 Transform::Transform(Vector2D pos, Vector2D velocity, float width, float height,  float rot) : Component() {
-	pos_ = pos;
-	speed_ = velocity;
-	w_ = width;
-	h_ = height;
-	rot_ = rot;
+	pos_ = pos;// posición
+	speed_ = velocity;// velocidad
+	w_ = width;// ancho
+	h_ = height;// alto
+	rot_ = rot;// rotación
 }
 
 void Transform::update()  {	
-	pos_ = pos_ + speed_;	
+	pos_ = pos_ + speed_;// actualiza la posición	
 }
 
 float Transform::getW() {
@@ -60,7 +60,7 @@ void Transform::setPosX(float x) {
 }
 
 void Transform::setDir() {
-	float angle = (rot_*PI)/180.0f;
+	float angle = (rot_*PI)/180.0f;// ángulo en radianes
 	dir_ = Vector2D(sin(angle), -cos(angle));
 }
 

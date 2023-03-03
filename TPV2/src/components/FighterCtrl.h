@@ -11,10 +11,10 @@ using namespace ecs;
 
 class FighterCtrl : public Component {
 private:
-	Transform* tr_ = nullptr;
-	float maxVel_, rot_, thrust_;
+	Transform* tr_ = nullptr;// transform
+	float maxVel_, rot_, thrust_;// variables
 public:
-	FighterCtrl(float maxVel = 40.0f, float rot = 5.0f, float thrust = 0.2f);
-	void initComponent();
-	void update();
+	FighterCtrl(float maxVel = 40.0f, float rot = 5.0f, float thrust = 0.2f);// constructora
+	void initComponent();// init
+	void update();// update
 };

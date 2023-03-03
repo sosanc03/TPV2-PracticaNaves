@@ -9,17 +9,17 @@ private:
 	stack<GameState*> st; // pila de escenas
 	stack<GameState*> stToDelete; // pila de escenas a borrar
 public:
-	~GameStateMachine(); 
-	GameState* currentState(); 
+	~GameStateMachine(); // destructora
+	GameState* currentState(); // estado actual
 
-	void pushState(GameState* myState); 
-	void popState();
+	void pushState(GameState* myState); // push de un nuevo estado
+	void popState();// quita un estado
 
-	void changeState(GameState* myState);
-	void clearStates(); 
+	void changeState(GameState* myState);// cambia de estado
+	void clearStates(); // borra los estados de la pila de borrado
 
 
-	void update();
-	void render();
+	void update();// update
+	void render();// render
 };
 

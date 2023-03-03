@@ -2,30 +2,30 @@
 #include "../game/Game.h"
 
 Image::Image(Texture* t, float w, float h, int nFil, int nCol, float s) {
-	t_ = t;
-	matrix_ = true;
-	w_ = w;
-	h_ = h;
-	nframesF_ = nFil;
-	nframesC_ = nCol;
-	i = 0;
-	cont_ = 0;
-	fila_ = 0;
-	size_ = s;
+	t_ = t;// textura
+	matrix_ = true;// matriz
+	w_ = w;// ancho
+	h_ = h;// altura
+	nframesF_ = nFil;// número de filas
+	nframesC_ = nCol;// número de columnas
+	i = 0;// primer frame
+	cont_ = 0;// contador
+	fila_ = 0;// fila
+	size_ = s;// tamaño
 }
 
 
 Image::Image(Texture* t) : Component() {
-	t_ = t;
-	matrix_ = false;
+	t_ = t;// textura
+	matrix_ = false;// matriz
 }
 
 void Image::initComponent() {
-	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);// transform
 }
 
 void Image::render() {
-	SDL_Rect dest_ = { tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), tr_->getH() };
+	SDL_Rect dest_ = { tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), tr_->getH() };// rectángulo destino
 	if (!matrix_) t_->render(dest_, tr_->getR());
 	else
 	{

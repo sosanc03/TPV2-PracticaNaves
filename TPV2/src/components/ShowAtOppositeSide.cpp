@@ -1,17 +1,17 @@
 #include "ShowAtOpposideSide.h"
 
 void ShowAtOppositeSide::initComponent() {
-	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);
-	margin_ = 20;
-	wWidth_ = sdlutils().width();
-	wHeight_ = sdlutils().height();
-	w_ = tr_->getW();
-	h_ = tr_->getH();
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);// transform
+	margin_ = 20;// margen
+	wWidth_ = sdlutils().width();// ancho de ventana
+	wHeight_ = sdlutils().height();// alto de ventana
+	w_ = tr_->getW();// ancho
+	h_ = tr_->getH();// altura
 
 }
 
 void ShowAtOppositeSide::update() {
-	Vector2D pos_ = tr_->getPos();
+	Vector2D pos_ = tr_->getPos();// posición
 
 	// X
 	if (pos_.getX() > wWidth_ + margin_) { tr_->setPosX(0 - margin_); }
