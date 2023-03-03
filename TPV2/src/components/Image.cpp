@@ -33,10 +33,10 @@ void Image::render() {
 		dest_.w = size_;
 
 		SDL_Rect src_;
-		src_.x = i * (tr_->getW() / nframesF_);
+		src_.x = i * (w_ / nframesF_);
 		src_.y = 0;
-		src_.h = tr_->getH() / nframesC_;
-		src_.w = tr_->getW() / nframesF_;
+		src_.h = h_ / nframesC_;
+		src_.w = w_ / nframesF_;
 		t_->render(src_, dest_, 0, nullptr, SDL_FLIP_NONE);
 		if (cont_ >= ANIMATION_SPEED) {
 			if (i < nframesC_)i++;

@@ -22,6 +22,8 @@ private:
 	Transform* playerTr_;
 
 	Vector2D plCentralPos_;
+
+	bool sublife;
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
 	PlayState();
@@ -30,5 +32,7 @@ public:
 	void createShip();
 	void playerCollides();
 	void setEndGame();
+	void handlePause();
+	void subLife();
 };
 

@@ -5,6 +5,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../states/GameStateMachine.h"
 #include "../states/PlayState.h"
+#include "../states/PauseState.h"
 
 using namespace std;
 
@@ -30,5 +31,5 @@ public:
 	void update();
 	void render();
 	void run();
-	void handlePause();
+	SDL_Renderer* getRenderer() { return renderer; }
 };

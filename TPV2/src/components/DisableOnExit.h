@@ -25,6 +25,7 @@ public:
 		int x = tr_->getPos().getX();
 		int y = tr_->getPos().getY();
 		if ((x < 0 - w_) || (x + w_ > wWidth_) || (y < 0 - h_) || (y + h_ > wHeight_)) {
+			ent_->removeComponent(_grp_BULLETS);
 			ent_->setAlive(false);
 		}
 	}

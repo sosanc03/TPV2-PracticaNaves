@@ -1,7 +1,21 @@
 {
 
   "fonts": [
-
+    {
+      "id": "ARIAL16",
+      "file": "resources/fonts/ARIAL.ttf",
+      "size": 16
+    },
+    {
+      "id": "ARIAL24",
+      "file": "resources/fonts/ARIAL.ttf",
+      "size": 24
+    },
+    {
+      "id": "ARIAL48",
+      "file": "resources/fonts/ARIAL.ttf",
+      "size": 48
+    }
   ],
 
   "images": [
@@ -28,7 +42,12 @@
   ],
 
   "messages": [
-
+    {
+      "id": "space",
+      "text": "Press SPACE to continue",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
+    }
   ],
 
   "sounds": [

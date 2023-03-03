@@ -19,7 +19,8 @@ void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 	int i = 0;
 	while (nAsteroids_ < maxAsteroids_ && i < n) {
 		Vector2D pos_;
-		if(pos == Vector2D(-1, -1))pos_ = generateAstPos();// posición aleatoria de aparición
+		if (pos == Vector2D(-1, -1))pos_ = generateAstPos();// posición aleatoria de aparición
+		else pos_ = pos;
 
 		Vector2D c = sCenter_ + Vector2D(sdlutils().rand().nextInt(-100, 100), sdlutils().rand().nextInt(-100, 100));
 
@@ -29,7 +30,7 @@ void AsteroidsManager::createAsteroids(int n, int g, Vector2D pos) {
 		float size_ = 25.0f + 8.0f * g;
 
 		Entity* ast_ = Manager::instance()->addEntity();// crea el asteroide
-		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, astWidth_, astHeight_);// añade componente transform
+		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, size_, size_);// añade componente transform
 
 		Texture* t_;// textura
 
@@ -88,9 +89,9 @@ void  AsteroidsManager::checkCollision()
 }
 
 bool AsteroidsManager::collides(Transform* obj1_, Transform* obj2_) {
-	return (Collisions::collidesWithRotation(obj1_->getPos(), obj1_->getW(),
-		obj1_->getH(), obj1_->getR(), obj2_->getPos(), obj2_->getW(),
-		obj2_->getH(), obj2_->getR()));
+	return (Collisions::collides(obj1_->getPos(), obj1_->getW(),
+		obj1_->getH(), obj2_->getPos(), obj2_->getW(),
+		obj2_->getH()));
 }
 
 void AsteroidsManager::destroyAllAsteroids() {

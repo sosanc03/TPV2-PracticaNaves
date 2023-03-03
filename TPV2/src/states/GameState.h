@@ -5,13 +5,10 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
-class GameStateMachine;
 
 using namespace std;
 
 class GameState{
-protected:
-	GameStateMachine* gameStMachine; 
 public:
 	GameState();
 	virtual ~GameState(); 
