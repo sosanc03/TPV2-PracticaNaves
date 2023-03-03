@@ -64,36 +64,6 @@ void AsteroidsManager::addAsteroidFrequently() {
 	}
 }
 
-void  AsteroidsManager::checkCollision()
-{
-	Transform* plTr_ = player_->getComponent<Transform>(TRANSFORM_H);
-	for (auto& as : Manager::instance()->getEntities()) {
-		if (as->hasGroup(_grp_ASTEROIDS)) {
-			Transform* asTr_ = as->getComponent<Transform>(TRANSFORM_H);
-			if (collides(plTr_, asTr_)) pSt_->playerCollides();// colision entre asteroide y player
-			else {
-				for (auto& b : Manager::instance()->getEntities()) {
-					if (b->hasGroup(_grp_BULLETS)) {
-						Transform* bTr_ = b->getComponent<Transform>(TRANSFORM_H);
-						if (collides(bTr_, asTr_)) // colisión entre bala y asteroide
-						{
-							onCollision(as);
-							b->removeFromGroup(_grp_BULLETS);
-							b->setAlive(false);
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-bool AsteroidsManager::collides(Transform* obj1_, Transform* obj2_) {
-	return (Collisions::collides(obj1_->getPos(), obj1_->getW(),
-		obj1_->getH(), obj2_->getPos(), obj2_->getW(),
-		obj2_->getH()));
-}
-
 void AsteroidsManager::destroyAllAsteroids() {
 	for (auto& as : Manager::instance()->getEntities()) {
 		if (as->hasGroup(_grp_ASTEROIDS)) {

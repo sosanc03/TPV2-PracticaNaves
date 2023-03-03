@@ -44,12 +44,12 @@ C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2)
 C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
 C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
 C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(60,32): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(130,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(130,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(134,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(138,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(138,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(142,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(100,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(100,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(104,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(108,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(108,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(112,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Game.cpp
 C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
 C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
@@ -111,7 +111,7 @@ C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2)
           [
               _Ty=int
           ]
-C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(38,115): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,const uint,const uint,int>(ecs::cmpId_type,Vector2D &,Vector2D &,const uint &,const uint &,int &)" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(46,115): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,const uint,const uint,int>(ecs::cmpId_type,Vector2D &,Vector2D &,const uint &,const uint &,int &)" que se está compilando
           with
           [
               T=Transform
@@ -122,4 +122,5 @@ C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2)
               _Ty=const uint
           ]
   Generando código...
+     Creando biblioteca C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\bin\TPV2Debug.lib y objeto C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\bin\TPV2Debug.exp
   TPV2.vcxproj -> C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\(TPV 2) Tecnología de Videojuegos II\TPV2-PracticaNaves\bin\TPV2Debug.exe

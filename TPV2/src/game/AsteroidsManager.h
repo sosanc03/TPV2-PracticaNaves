@@ -6,7 +6,6 @@
 #include "../components/Follow.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/Generations.h"
-#include "../utils/Collisions.h"
 
 class PlayState;
 
@@ -30,8 +29,7 @@ public:
 	void createAsteroids(int n, int g = 3, Vector2D pos_ = Vector2D(-1, -1));
 	void addAsteroidFrequently();
 
-	void checkCollision();
-	bool collides(Transform* obj1_, Transform* obj2_);
+	
 	void destroyAllAsteroids();
 	void onCollision(Entity* a);
 	

@@ -15,7 +15,6 @@ GameState::~GameState() // destructora
 
 void GameState::update() // ir a juego
 {
-	InputHandler::instance()->refresh();
 	Manager::instance()->update();
 	Manager::instance()->refresh();
 }

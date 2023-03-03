@@ -25,6 +25,7 @@ Game::~Game(){ // destructora
 }
 
 void Game::run(){ // bucle de juego
+	InputHandler::instance()->refresh();
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
 	while (!exit) {

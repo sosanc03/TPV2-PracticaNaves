@@ -6,7 +6,7 @@
 
 class PauseState :public GameState
 {
-private:
+private: 
 	Entity* text_;
 	Texture* t_;
 public:

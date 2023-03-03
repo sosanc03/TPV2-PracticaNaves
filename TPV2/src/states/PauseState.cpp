@@ -18,7 +18,7 @@ PauseState::PauseState()
 
 PauseState::~PauseState() {
 	text_->setAlive(false);
-	delete(text_);
+	//delete(text_);
 	//delete(t_);
 }
 
@@ -26,7 +26,7 @@ void PauseState::update() {
 	InputHandler::instance()->refresh();
 	if (InputHandler::instance()->keyDownEvent()) {
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-			GameStateMachine::instance()->popState();
+ 			GameStateMachine::instance()->popState();
 		}
 	}
 }

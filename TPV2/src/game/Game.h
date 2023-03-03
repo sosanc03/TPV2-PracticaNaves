@@ -31,5 +31,4 @@ public:
 	void update();
 	void render();
 	void run();
-	SDL_Renderer* getRenderer() { return renderer; }
 };

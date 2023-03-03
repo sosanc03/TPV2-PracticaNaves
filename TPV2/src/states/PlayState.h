@@ -10,6 +10,7 @@
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/Gun.h"
 #include "../game/AsteroidsManager.h"
+#include "../utils/Collisions.h"
 
 
 class Game;
@@ -23,7 +24,7 @@ private:
 
 	Vector2D plCentralPos_;
 
-	bool sublife;
+	bool sublife, generate;
 public:
 	virtual string getStateID() { return "PlayState"; }; // stringID
 	PlayState();
@@ -33,6 +34,8 @@ public:
 	void playerCollides();
 	void setEndGame();
 	void handlePause();
-	void subLife();
+
+	void checkCollision();
+	bool collides(Transform* obj1_, Transform* obj2_);
 };
 

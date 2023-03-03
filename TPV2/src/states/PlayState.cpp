@@ -13,20 +13,28 @@ PlayState::PlayState() {
 }
 
 PlayState::~PlayState(){
-	delete(fighter_);
+	/*delete(fighter_);
 	delete(astM_);
-	//delete(playerTr_);
-	//delete(plHealth_);
+	delete(playerTr_);
+	delete(plHealth_);*/
 }
 
 void PlayState::update() {
-	GameState::update();
 	handlePause();
-	astM_->addAsteroidFrequently();
-	astM_->checkCollision();
-	if (sublife) {
+	GameState::update();
+
+	if (generate) {
 		astM_->createAsteroids(10, 3);
+		generate = false;
+	}
+
+	astM_->addAsteroidFrequently();
+	checkCollision();
+	if (sublife) {
 		sublife = false;
+		Manager::instance()->refresh();
+		GameStateMachine::instance()->pushState(new PauseState());
+		generate = true;
 	}
 }
 
@@ -60,11 +68,10 @@ void PlayState::playerCollides() {
 
 	astM_->destroyAllAsteroids();// destruye todos los asteroides
 
-	//Manager::instance()->refresh();
 
 	plHealth_->subLife();// quita vida
 	if (plHealth_->getLifes() == 0) setEndGame();
-	else subLife();
+	else sublife = true;
 }
 
 void PlayState::setEndGame() {
@@ -80,19 +87,44 @@ void PlayState::setEndGame() {
 }
 
 void PlayState::handlePause() {
+	InputHandler::instance()->refresh();
 	if (InputHandler::instance()->keyDownEvent()) {
 		//Pausa SDL_SCANCODE_SPACE
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-			InputHandler::instance()->refresh();
 			GameStateMachine::instance()->pushState(new PauseState());
 		}
 	}
 
 }
 
-void PlayState::subLife() {
-	sublife = true;
-	//GameStateMachine::instance()->pushState(new PauseState());
-	//astM_->createAsteroids(10, 3);
+void  PlayState::checkCollision()
+{
+	Transform* plTr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
+	for (auto& as : Manager::instance()->getEntities()) {
+		if (as->hasGroup(_grp_ASTEROIDS)) {
+			Transform* asTr_ = as->getComponent<Transform>(TRANSFORM_H);
+			if (collides(plTr_, asTr_)) playerCollides();// colision entre asteroide y player
+			else {
+				for (auto& b : Manager::instance()->getEntities()) {
+					if (b->hasGroup(_grp_BULLETS)) {
+						Transform* bTr_ = b->getComponent<Transform>(TRANSFORM_H);
+						if (collides(bTr_, asTr_)) // colisión entre bala y asteroide
+						{
+							astM_->onCollision(as);
+							b->removeFromGroup(_grp_BULLETS);
+							b->setAlive(false);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+bool PlayState::collides(Transform* obj1_, Transform* obj2_) {
+	return (Collisions::collidesWithRotation(obj1_->getPos(), obj1_->getW(),
+		obj1_->getH(), obj1_->getR(), obj2_->getPos(), obj2_->getW(),
+		obj2_->getH(), obj2_->getR()));
+	//return false;
 }
 
