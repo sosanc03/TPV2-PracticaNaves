@@ -29,6 +29,7 @@ private:
 
 public:
 	AsteroidsManager(Manager* Manager, Entity* player, PlayState* pSt);// constructora
+	
 	void createAsteroids(int n, int g = 3, Vector2D pos_ = Vector2D(-1, -1));// generador de asteroides
 	void addAsteroidFrequently();// añade asteroides cada 5 segundos
 

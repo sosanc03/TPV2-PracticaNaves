@@ -19,7 +19,6 @@ class Game :public Singleton <Game>{
 private:
 	SDL_Window* window = nullptr;// ventana
 	SDL_Renderer* renderer = nullptr;// renderer
-	GameStateMachine* gameStateMachine;// máquina de estados
 
 	bool exit;// booleano de salida
 

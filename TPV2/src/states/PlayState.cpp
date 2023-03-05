@@ -23,6 +23,7 @@ PlayState::~PlayState(){
 	fighter_->setAlive(false); // destruye el player
 	// llamará a game o hará un cambio de estado para que salga el mensaje de pulsar el espacio
 	Manager::instance()->refresh();
+	delete(astM_);
 }
 
 void PlayState::update() {
