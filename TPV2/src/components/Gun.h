@@ -11,15 +11,11 @@
 
 using namespace ecs;
 
-class Gun : public Component {
+struct Gun : public Component {
 private:
-	float delayTime_, lastTime_;// variables
-	Transform* tr_ = nullptr;// transoform
-	Texture* t_ = nullptr;// textura
-	int w_, h_;// anchura y altura
+	
 public:
-	Gun(float delayTime = 250.0f);// contructora
-	void initComponent();// init
-	void update();// update
-	void createBullet();// crea bala
+	Gun() {};// contructora
+	float delayTime_ = 250.0f, lastTime_ = 0.0f;// variables
+	int w_ = 10, h_ = 25;// anchura y altura
 };

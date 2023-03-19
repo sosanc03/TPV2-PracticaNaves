@@ -1,87 +1,90 @@
+// This file is part of the course TPV2@UCM - Samir Genaim
+
 #pragma once
-
 #include <array>
-#include <vector>
-#include "Component.h"
-#include "Manager.h"
-#include "ecs.h"
-#include "../components/Image.h"
 #include <bitset>
+#include <cassert>
+#include <vector>
 
-using namespace ecs;
-using namespace std;
+#include "Component.h"
+#include "ecs.h"
 
-class Entity {
-private:
-	bool alive_;
-	Manager* mngr_;
-	vector<Component*> currCmps_;
-	array<Component*, ecs::maxComponentId> cmps_;
-	bitset<maxGroupId> groups_;
+namespace ecs {
 
-public:
-	Entity() : mngr_(nullptr), cmps_(), currCmps_(), alive_() {
-		currCmps_.reserve(ecs::maxComponentId);
-	}
-
-	virtual ~Entity() {
-		for (auto it = currCmps_.begin(); it != currCmps_.end(); ++it) {
-			delete (*it);
+	/*
+	 * A class that represents a collection of components. In principle,
+	 * we could remove methods update/render since they won't be really
+	 * called when using Systems (also the field currCmps_). Nevertheless,
+	 * we leave them just to be able to use this code without systems as
+	 * well.
+	 *
+	 * Managing components is not done any more in the class, we move to the
+	 * manager (just thinking in the next step where we'll have automatic
+	 * memory management)
+	 *
+	 */
+	class Entity {
+	public:
+		Entity(ecs::grpId_type gId) :
+			currCmps_(),
+			cmps_(), //
+			alive_(),  //
+			gId_(gId) //
+		{
+			// We reserve the a space for the maximum number of
+			// components. This way we avoid resizing the vector.	
+			//
+			currCmps_.reserve(ecs::maxComponentId);
 		}
-	}
 
-	inline void setContext(Manager* mngr) { mngr_ = mngr; }
-	inline bool isAlive() { return alive_; }
-	inline void setAlive(bool alive) { alive_ = alive; }
+		// we delete the copy constructor/assignment because it is
+		// not clear how to copy the components
+		//
+		Entity(const Entity&) = delete;
+		Entity& operator=(const Entity&) = delete;
 
-	template<typename T, typename ...Ts>
-	inline T* addComponent(cmpId_type cId, Ts&... args) {
-		T* c = new T(forward<Ts>(args)...);
-		removeComponent(cId);
-		currCmps_.push_back(c);
-		cmps_[cId] = c;
-		c->setContext(this, mngr_);
-		c->initComponent();
-		return c;
-	}
+		// Exercise: define move constructor/assignment for class Entity
 
-	inline void removeComponent(ecs::cmpId_type cId) {
-		if (cmps_[cId] != nullptr) {
-			auto it = std::find(currCmps_.begin(), currCmps_.end(), cmps_[cId]);
-			currCmps_.erase(it);
-			delete cmps_[cId];
-			cmps_[cId] = nullptr;
+		// Destroys the entity
+		//
+		virtual ~Entity() {
+
+			// we delete all available components
+			//
+			for (auto c : cmps_)
+				if (c != nullptr)
+					delete c;
 		}
-	}
 
-	template<typename T>
-	inline T* getComponent(ecs::cmpId_type cId) {
-		return static_cast<T*>(cmps_[cId]);
-	}
+		// Updating  an entity simply calls the update of all
+		// components
+		//
+		void update() {
+			auto n = currCmps_.size();
+			for (auto i = 0u; i < n; i++)
+				currCmps_[i]->update();
+		}
 
-	inline bool hasComponent(ecs::cmpId_type cId) {
-		return cmps_[cId] != nullptr;
-	}
+		// Rendering an entity simply calls the render of all
+		// components
+		//
+		void render() {
+			auto n = currCmps_.size();
+			for (auto i = 0u; i < n; i++)
+				currCmps_[i]->render();
+		}
 
-	inline void addToGroup(grpId_type gId) {
-		if (!groups_[gId]) groups_[gId] = true;
-	}
-	inline void removeFromGroup(grpId_type gId) {
-		if (groups_[gId]) groups_[gId] = false;
-	}
-	inline bool hasGroup(grpId_type gId) {
-		return groups_[gId];
-	}
 
-	inline void update() {
-		int n = currCmps_.size();
-		for (int i = 0; i < n; i++)
-			currCmps_[i]->update();
-	}
+	private:
+		friend Manager;
 
-	inline void render() {
-		int n = currCmps_.size();
-		for (int i = 0; i < n; i++)
-			currCmps_[i]->render();
-	}
-};
+		// the list of components is not really needed when using systems,
+		// but for now we keep it just in case
+		//
+		std::vector<Component*> currCmps_;
+		std::array<Component*, maxComponentId> cmps_;
+		bool alive_;
+		ecs::grpId_type gId_;
+	};
+
+} // end of name space

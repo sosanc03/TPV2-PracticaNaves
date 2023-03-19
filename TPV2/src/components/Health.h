@@ -2,16 +2,9 @@
 #include "../ecs/Component.h"
 #include "../sdlutils/SDLUtils.h"
 
-class Health : public Component {
-private:
-	Texture* t_ = nullptr;// textura
-	Vector2D renderPos;// posición
-	int lifes_;// vidas
-	int maxHP_;// vida máxima
-	int tSize_;// tamaño
+struct Health : public Component {
 public:
-	Health(int vidas);// constructora
-	int getLifes();// devulve el númerod de vidas
-	void subLife();// resta vida
-	void render();// render
+	Health();// constructora
+	int lifes = 3; int maxHP_ = 3;
+	int tSize_ = 50;// tamaño
 };

@@ -7,13 +7,9 @@
 
 using namespace ecs;
 
-class DeAcceleration : public Component{
-private:
-	Transform* tr_ = nullptr;// transform
-	float deaF_, limit_;// variables
+struct DeAcceleration : public Component{
 public:
-	DeAcceleration();// constructora
-	~DeAcceleration();// destructora
-	void initComponent();// inicio de componente
-	void update();// update
+	DeAcceleration() {}// constructora
+	float deaF_ = 0.995f;// factor de deceleración
+	float limit_ = 0.005;// mínimo de velocidad antes de que la nave se pare
 };

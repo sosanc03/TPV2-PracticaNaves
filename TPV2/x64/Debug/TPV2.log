@@ -1,1 +1,231 @@
-﻿
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  GameOverState.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.h(12,8): error C2143: error de sintaxis: falta ';' delante de '*'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.h(12,8): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.h(12,15): error C2238: símbolos (token) inesperados delante de ';'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(9,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(9,19): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(9,27): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(15,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(17,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameOverState.cpp(21,2): error C2065: 'text_': identificador no declarado
+  PauseState.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.h(10,8): error C2143: error de sintaxis: falta ';' delante de '*'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.h(10,8): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.h(10,15): error C2238: símbolos (token) inesperados delante de ';'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(8,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(8,19): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(8,27): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(14,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(16,2): error C2065: 'text_': identificador no declarado
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PauseState.cpp(20,2): error C2065: 'text_': identificador no declarado
+  DeAcceleration.cpp
+  FighterCtrl.cpp
+  Gun.cpp
+  Health.cpp
+  Image.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(24,14): error C2039: "getComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,39): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,39): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,61): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,61): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,74): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,74): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,87): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,87): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(32,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(33,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(36,14): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(38,15): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(39,15): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  ShowAtOppositeSide.cpp
+  Manager.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+  AsteroidsManager.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(14,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(14,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(27,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(27,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(34,27): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(34,35): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(35,9): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(43,11): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(50,9): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(51,9): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(52,9): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(54,9): error C2039: "addToGroup": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(62,32): warning C4018: '>=': no coinciden signed/unsigned
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,27): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,2): error C2530: 'as': se deben inicializar las referencias
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,2): error C3531: 'as': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,16): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,2): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(71,52): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(84,25): error C2039: "getComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(85,16): error C2039: "getGen": no es un miembro de "Generations"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Generations.h(3,8): message : vea la declaración de 'Generations'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(88,23): error C2039: "getComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(94,5): error C2039: "setAlive": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(95,5): error C2039: "removeFromGroup": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(105,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(105,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(109,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(113,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(113,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.cpp(117,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Game.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  JSON.cpp
+  JSONValue.cpp
+  json_demo.cpp
+  main.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  SDLUtils.cpp
+  sdlutils_demo.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+  SoundEffect.cpp
+  Texture.cpp
+  GameState.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(8,2): error C2653: 'Manager': no es un nombre de clase o espacio de nombres
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(8,11): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(18,2): error C2653: 'Manager': no es un nombre de clase o espacio de nombres
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(18,11): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(19,2): error C2653: 'Manager': no es un nombre de clase o espacio de nombres
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\GameState.cpp(19,11): error C3861: 'instance': no se encontró el identificador
+  Generando código...
+  Compilando...
+  GameStateMachine.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+  PlayState.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(14): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(6,94): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(6,50): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(9,40): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(9,48): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,26): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,2): error C2530: 'b': se deben inicializar las referencias
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,2): error C3531: 'b': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,15): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,2): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(16,51): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(23,12): error C2039: "setAlive": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(25,11): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(25,19): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(45,22): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(45,30): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(49,24): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(50,12): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(52,12): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(53,12): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(55,24): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(56,12): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(57,12): error C2039: "addComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,26): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,2): error C2530: 'b': se deben inicializar las referencias
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,2): error C3531: 'b': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,15): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,2): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(66,51): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(76,13): error C2039: "subLife": no es un miembro de "Health"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Health.h(5,8): message : vea la declaración de 'Health'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(93,31): error C2039: "getComponent": no es un miembro de "ecs::Entity"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(26,8): message : vea la declaración de 'ecs::Entity'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,27): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,2): error C2530: 'as': se deben inicializar las referencias
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,2): error C3531: 'as': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,16): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,2): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(94,52): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,29): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,5): error C2530: 'b': se deben inicializar las referencias
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,5): error C3531: 'b': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,18): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,5): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(99,54): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(104,13): error C2664: 'void AsteroidsManager::onCollision(ecs::Entity *)': el argumento 1 no puede convertirse de 'int' a 'ecs::Entity *'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(104,27): message : La conversión de un tipo entero a un tipo de puntero requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función entre paréntesis
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\game\AsteroidsManager.h(38,7): message : vea la declaración de 'AsteroidsManager::onCollision'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(104,13): message : al hacer coincidir la lista de argumentos '(int)'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(127,11): error C2039: "instance": no es un miembro de "ecs::Manager"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Manager.h(28,7): message : vea la declaración de 'ecs::Manager'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(127,19): error C3861: 'instance': no se encontró el identificador
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\states\PlayState.cpp(128,17): error C2039: "getLifes": no es un miembro de "Health"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Health.h(5,8): message : vea la declaración de 'Health'
+  Collisions.cpp
+  Vector2D.cpp
+  Transform.cpp
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(113,23): error C2374: 'ecs::maxGroupId': nueva definición; inicialización múltiple
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\ecs.h(94,23): message : vea la declaración de 'ecs::maxGroupId'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(8,37): error C2504: 'Component': clase base sin definir
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.cpp(4,26): error C2614: 'Transform': inicialización de miembro no válida: 'Component' no es una base o miembro
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.cpp(13,96): error C2614: 'Transform': inicialización de miembro no válida: 'Component' no es una base o miembro
+  Generando código...

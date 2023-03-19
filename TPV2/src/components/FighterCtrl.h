@@ -9,12 +9,8 @@
 
 using namespace ecs;
 
-class FighterCtrl : public Component {
-private:
-	Transform* tr_ = nullptr;// transform
-	float maxVel_, rot_, thrust_;// variables
+struct FighterCtrl : public Component {
 public:
-	FighterCtrl(float maxVel = 40.0f, float rot = 5.0f, float thrust = 0.2f);// constructora
-	void initComponent();// init
-	void update();// update
+	FighterCtrl() {};// constructora
+	float maxVel = 40.0f, rot = 5.0f, thrust = 0.2f;
 };

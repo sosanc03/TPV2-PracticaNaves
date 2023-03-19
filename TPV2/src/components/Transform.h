@@ -5,7 +5,7 @@
 
 const float PI = 3.1415;
 
-class Transform : public Component {
+struct Transform : public Component {
 private:
 	Vector2D pos_;// posiciones
 	Vector2D speed_;// velocidad
@@ -25,7 +25,7 @@ public:
 
 	float getW();// devuelve el ancho
 	float getH();// devuelve el alto
-	float getR();// devuelve la rota´ción
+	float getR();// devuelve la rotación
 	Vector2D getDir();// devuelve la dirección
 	inline Vector2D getPos() { return pos_; }// devuelve la posición
 	inline Vector2D getVel() { return speed_; }// devuelve la velocidad

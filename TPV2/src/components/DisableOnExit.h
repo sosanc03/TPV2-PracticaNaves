@@ -5,8 +5,12 @@
 #include"../sdlutils/SDLUtils.h"
 #include "Transform.h"
 
-class DisableOnExit :public Component {
-private:
+struct DisableOnExit :public Component {
+public:
+	DisableOnExit() {};
+
+	
+/*private:
 	Transform* tr_ = nullptr;// transform
 	int w_, h_;// ancho y alto
 	int wWidth_, wHeight_;// ancho y alto de ventana
@@ -29,5 +33,5 @@ public:
 			ent_->removeComponent(_grp_BULLETS);
 			ent_->setAlive(false);
 		}
-	}
+	}*/
 };
