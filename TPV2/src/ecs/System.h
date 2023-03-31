@@ -4,6 +4,7 @@
 
 #include "ecs.h"
 #include "messages.h"
+#include "messages_defs.h"
 
 namespace ecs {
 
@@ -47,7 +48,7 @@ public:
 	// the struct msg is forward declared in ecs.h, the actual meesage will
 	// be defined by the user
 	//
-	virtual void recieve(const Message&) {
+	virtual void receive(const Message& m) {
 	}
 
 protected:

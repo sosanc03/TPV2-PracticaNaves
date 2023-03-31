@@ -12,7 +12,8 @@ int main(int ac, char **av) {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	try {
 		Game* g = new Game(); // Crea el juego.
-		g->run(); // Inicia bucle de juego.
+		g->init(); // Inicia bucle de juego.
+		g->start();
 		SDL_Delay(2000); // Delay antes de cerrar el juego.
 		delete(g); // Elimina basura.
 	} 

@@ -1,32 +1,3 @@
-/*#pragma once
-
-namespace ecs {
-	using cmpId_type = unsigned __int8;
-	enum cmpId : cmpId_type {
-		TRANSFORM_H = 0,
-		IMAGE_H = 1,
-		FIGHTERCTRL_H = 2,
-		HEALTH_H = 3,
-		DEACCELERATION_H = 4,
-		GUN_H = 5,
-		OPPOSITESIDE_H = 6,
-		FOLLOW_H = 7,
-		DISABLEONEXIT_H = 8,
-		GENERATIONS_H = 9,
-		// do not remove this
-		_LAST_CMP_ID
-	};
-	constexpr cmpId_type maxComponentId = _LAST_CMP_ID;
-
-	using grpId_type = unsigned __int8;
-	enum grpId : grpId_type {
-		_grp_ASTEROIDS = 0,
-		_grp_BULLETS = 1,
-		_LAST_GRP_ID
-	};
-	constexpr grpId_type maxGroupId = _LAST_GRP_ID;
-}*/
-
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #pragma once
@@ -95,22 +66,25 @@ namespace ecs {
 
 	// list of handler identifiers
 	enum hdlrId : hdlrId_type {
-		_HDLRS_LIST_, /* taken from ../game/ecs_defs */
-
+		_HDLR_PLAYER,
 		// do not remove this
 		_LAST_HDLR_ID
 	};
 
 	// list of system identifiers
 	enum sysId : hdlrId_type {
-		_SYS_LIST_, /* taken from ../game/ecs_defs */
-
+		_SYS_ASTEROIDS = 0,
+		_SYS_BULLET = 1,
+		_SYS_COLLISIONS = 2,
+		_SYS_FIGHTER = 3,
+		_SYS_GAMECTRL = 4,
+		_SYS_RENDER = 5,
 		// do not remove this
 		_LAST_SYS_ID
 	};
 
 	//constexpr cmpId_type maxComponentId = cmpId::_LAST_CMP_ID;
-	constexpr cmpId_type maxGroupId = grpId::_LAST_GRP_ID;
+	//constexpr cmpId_type maxGroupId = grpId::_LAST_GRP_ID;
 	constexpr hdlrId_type maxHandlerId = hdlrId::_LAST_HDLR_ID;
 	constexpr sysId_type maxSystemId = sysId::_LAST_SYS_ID;
 

@@ -1,10 +1,9 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "../sdlutils/SDLUtils.h"
 
-struct Health : public Component {
+struct Health : public ecs::Component {
 public:
-	Health();// constructora
+	Health() {}// constructora
 	int lifes = 3; int maxHP_ = 3;
 	int tSize_ = 50;// tamaño
 };

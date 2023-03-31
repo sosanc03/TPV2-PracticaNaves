@@ -3,8 +3,16 @@
 #include <iostream>
 #include "SDL.h" 
 #include "../sdlutils/SDLUtils.h"
-#include "../states/GameStateMachine.h"
-#include "../states/PlayState.h"
+#include "../ecs/Manager.h"
+#include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../systems/CollisionsSystem.h"
+#include "../systems/GameCtrlSystem.h"
+#include "../systems/RenderSystem.h"
+#include "../systems/AsteroidsSystem.h"
+#include "../systems/BulletSystem.h"
+#include "../utils/Vector2D.h"
+#include "../utils/Collisions.h"
 
 using namespace std;
 
@@ -15,19 +23,22 @@ const uint FRAME_RATE = 15;
 const uint FIGHTER_SIZE = 60;
 const uint ANIMATION_SPEED = 10;
 
-class Game :public Singleton <Game>{
-private:
-	SDL_Window* window = nullptr;// ventana
-	SDL_Renderer* renderer = nullptr;// renderer
+class FighterSystem;
 
-	bool exit;// booleano de salida
-
+class Game {
 public:
-	Game();// contructora
-	void initSDL();// inicio de SDL
-	virtual ~Game();// destructora
-	void update();// udate
-	void render();// render
-	void run(); // ejecución
+	Game();
+	virtual ~Game();
+	void init();
+	void start();
+private:
+	ecs::Manager* mngr_;
 
+
+	GameCtrlSystem* gameCtrlSys_;
+	CollisionsSystem* collisionsSys_;
+	RenderSystem* renderSys_;
+	FighterSystem* fightSys_;
+	AsteroidsSystem* AstSys_;
+	BulletSystem* BullSys_;
 };

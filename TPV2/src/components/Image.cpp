@@ -21,12 +21,12 @@ Image::Image(Texture* t) : Component() {
 }
 
 void Image::initComponent() {
-	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);// transform
+	tr_ = mngr_->getComponent<Transform>(ent_);// transform
 }
 
 void Image::render() {
-	SDL_Rect dest_ = { tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), tr_->getH() };// rectángulo destino
-	if (!matrix_) t_->render(dest_, tr_->getR());
+	SDL_Rect dest_ = { tr_->pos_.getX(), tr_->pos_.getY(), tr_->w_, tr_->h_ };// rectángulo destino
+	if (!matrix_) t_->render(dest_, tr_->rot_);
 	else
 	{
 		dest_.h = size_;

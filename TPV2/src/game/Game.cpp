@@ -1,50 +1,75 @@
 #include "Game.h"
+#include "../systems/FighterSystem.h"
 
-Game::Game() {
-	initSDL();// incio de SDL
-	renderer = SDLUtils::instance()->renderer();// renderer
-	window = SDLUtils::instance()->window();// ventana
-
-	GameStateMachine::instance()->pushState(new PlayState());// comienza el juego en el playState
-	exit = false;// salida de juego a false
-
+Game::Game() :
+	mngr_(nullptr), //
+	gameCtrlSys_(nullptr), //
+	collisionsSys_(nullptr), //
+	renderSys_(nullptr),
+	fightSys_(nullptr),
+	AstSys_(nullptr),
+	BullSys_(nullptr) {
 }
 
-void Game::initSDL() {
-	SDLUtils::instance(); // Crea la instancia de SDLUtils
+Game::~Game() {
+	delete mngr_;
 }
 
+void Game::init() {
 
-Game::~Game(){ // destructora
-	SDL_DestroyRenderer(renderer);// detruye el renderer
-	SDL_DestroyWindow(window);// destruye la ventana
-	SDL_Quit();// sale del juego
+	// Initialize the SDLUtils singleton
+	SDLUtils::init("Ping Pong", 800, 600,
+		"resources/config/asteroid.resources.json");
+
+	sdlutils().hideCursor();
+
+	// Create the manager
+	mngr_ = new Manager();
+
+	//We add the systems that we are going to use
+	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
+	collisionsSys_ = mngr_->addSystem<CollisionsSystem>();
+	renderSys_ = mngr_->addSystem<RenderSystem>();
+	fightSys_ = mngr_->addSystem<FighterSystem>();
+	AstSys_ = mngr_->addSystem<AsteroidsSystem>();
+	BullSys_ = mngr_->addSystem<BulletSystem>();
 }
 
-void Game::run(){ // bucle de juego
-	InputHandler::instance()->refresh();// actualiza el input
-	uint32_t startTime, frameTime;
-	startTime = SDL_GetTicks();
-	while (!exit) {// bucle principal
-		frameTime = SDL_GetTicks() - startTime;
-		if (frameTime >= FRAME_RATE) {
-			update();
-			GameStateMachine::instance()->clearStates(); // elimina estados
-			startTime = SDL_GetTicks();
+void Game::start() {
+
+	// a boolean to exit the loop
+	bool exit = false;
+
+	auto& ihdlr = ih();
+
+	while (!exit) {
+		Uint32 startTime = sdlutils().currRealTime();
+
+		// refresh the input handler
+		ihdlr.refresh();
+
+		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
+			exit = true;
+			continue;
 		}
-		if (!exit) {
-			render();
-		}	
+
+		mngr_->refresh();
+
+
+		gameCtrlSys_->update();
+		collisionsSys_->update();
+		fightSys_->update();
+		AstSys_->update();
+		BullSys_->update();
+		fightSys_->update();
+		sdlutils().clearRenderer();
+		renderSys_->update();
+		sdlutils().presentRenderer();
+
+		Uint32 frameTime = sdlutils().currRealTime() - startTime;
+
+		if (frameTime < 10)
+			SDL_Delay(10 - frameTime);
 	}
-}
 
-void Game::update(){
-	GameStateMachine::instance()->update();// update de la máquina de estados
 }
-
-void Game::render() { // Dibuja en pantalla el estado actual del juego
-	SDL_RenderClear(renderer);
-	GameStateMachine::instance()->render();
-	SDL_RenderPresent(renderer); 
-}
-
