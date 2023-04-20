@@ -19,27 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CheckML.h" />
-    <ClInclude Include="src\ecs\messages_defs.h" />
-    <ClInclude Include="src\sdlutils\CheckML.h" />
-    <ClInclude Include="src\sdlutils\Header.h" />
-    <ClInclude Include="src\systems\RenderSystem.h" />
-    <ClInclude Include="src\systems\CollisionsSystem.h" />
-    <ClInclude Include="src\systems\FighterSystem.h" />
-    <ClInclude Include="src\systems\BulletSystem.h" />
-    <ClInclude Include="src\systems\AsteroidsSystem.h" />
-    <ClInclude Include="src\systems\GameCtrlSystem.h" />
-    <ClInclude Include="src\ecs\messages.h" />
-    <ClInclude Include="src\ecs\System.h" />
-    <ClInclude Include="src\components\Generations.h" />
-    <ClInclude Include="src\components\DisableOnExit.h" />
-    <ClInclude Include="src\components\Follow.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
+    <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\FighterCtrl.h" />
+    <ClInclude Include="src\components\Follow.h" />
+    <ClInclude Include="src\components\Generations.h" />
     <ClInclude Include="src\components\Gun.h" />
     <ClInclude Include="src\components\Health.h" />
     <ClInclude Include="src\components\Image.h" />
     <ClInclude Include="src\components\ShowAtOpposideSide.h" />
+    <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\ecs\ecs.h" />
     <ClInclude Include="src\ecs\Entity.h" />
@@ -59,20 +48,21 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
+    <ClInclude Include="src\systems\AsteroidsSystem.h" />
+    <ClInclude Include="src\systems\BulletSystem.h" />
+    <ClInclude Include="src\systems\CollisionsSystem.h" />
+    <ClInclude Include="src\systems\FighterSystem.h" />
+    <ClInclude Include="src\systems\GameCtrlSystem.h" />
+    <ClInclude Include="src\systems\RenderSystem.h" />
     <ClInclude Include="src\utils\Collisions.h" />
     <ClInclude Include="src\utils\mpl.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
-    <ClInclude Include="src\components\Transform.h" />
+    <ClInclude Include="src\ecs\System.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\systems\RenderSystem.cpp" />
-    <ClCompile Include="src\systems\CollisionsSystem.cpp" />
-    <ClCompile Include="src\systems\FighterSystem.cpp" />
-    <ClCompile Include="src\systems\BulletSystem.cpp" />
-    <ClCompile Include="src\systems\AsteroidsSystem.cpp" />
-    <ClCompile Include="src\systems\GameCtrlSystem.cpp" />
     <ClCompile Include="src\components\Image.cpp" />
+    <ClCompile Include="src\ecs\ecs.cpp" />
     <ClCompile Include="src\ecs\Manager.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
@@ -83,8 +73,15 @@
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\systems\AsteroidsSystem.cpp" />
+    <ClCompile Include="src\systems\BulletSystem.cpp" />
+    <ClCompile Include="src\systems\CollisionsSystem.cpp" />
+    <ClCompile Include="src\systems\FighterSystem.cpp" />
+    <ClCompile Include="src\systems\GameCtrlSystem.cpp" />
+    <ClCompile Include="src\systems\RenderSystem.cpp" />
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="src\ecs\System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\config\asteroid.resources.json" />

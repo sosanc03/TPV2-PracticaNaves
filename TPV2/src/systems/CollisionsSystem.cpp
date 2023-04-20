@@ -2,14 +2,17 @@
 
 void CollisionsSystem::receive(const Message& m) {
 	switch (m.id) {
-	case _MSG_COL_AST_PLAYER:
+	case _MSG_COL_AST_PLAYER: // perder ronda
 		onRoundOver();
 		break;
-	case _MSG_START:
+	case _MSG_START: // iniciar partida
 		initSystem();
 		break;
-	case _MSG_RESUME:
+	case _MSG_RESUME: // resume
 		onRoundStart();
+	case _MSG_GAMEOVER: // volver de perder ronda
+		active_ = true;
+		break;
 	default:
 		break;
 	}
@@ -17,17 +20,18 @@ void CollisionsSystem::receive(const Message& m) {
 
 void CollisionsSystem::initSystem() {
 	active_ = true;
+	fSys_ = mngr_->getSystem<FighterSystem>(_SYS_FIGHTER);
 }
 
 void CollisionsSystem::update() {
-	checkCollision();
+	if(active_)checkCollision();
 }
 
 void CollisionsSystem::checkCollision()
 {
-	Transform* plTr_ = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_HDLR_PLAYER));
-	for (auto as : mngr_->getEntities(ecs::_grp_ASTEROIDS)) {// recorre las entidades y comprueba que sea un asteroide
-		Transform* asTr_ = mngr_->getComponent<Transform>(as);
+	Transform* plTr_ = fSys_->fighter_->getComponent<Transform>(TRANSFORM_H);
+	for (auto as : mngr_->getEntitiesByGroup(_grp_ASTEROIDS)) {// recorre las entidades y comprueba que sea un asteroide
+		Transform* asTr_ = as->getComponent<Transform>(TRANSFORM_H);
 		if (collides(plTr_, asTr_)) // colision entre asteroide y player
 		{
 			Message m;
@@ -35,8 +39,8 @@ void CollisionsSystem::checkCollision()
 			mngr_->send(m);
 		}
 		else {
-			for (auto b : mngr_->getEntities(ecs::_grp_BULLETS)) {// recorre las entidades y comprueba que sea una bala
-					Transform* bTr_ = mngr_->getComponent<Transform>(b);
+			for (auto b : mngr_->getEntitiesByGroup(_grp_BULLETS)) {// recorre las entidades y comprueba que sea una bala
+					Transform* bTr_ = b->getComponent<Transform>(TRANSFORM_H);
 					if (collides(bTr_, asTr_)) // colisión entre bala y asteroide
 					{
 						Message m;
@@ -44,10 +48,6 @@ void CollisionsSystem::checkCollision()
 						m.hitBulAst.asteroid_ = as;
 						m.hitBulAst.bullet_ = b;
 						mngr_->send(m);
-
-						/*astM_->onCollision(as);
-						b->removeFromGroup(_grp_BULLETS);
-						b->setAlive(false);*/
 					}
 			}
 		}

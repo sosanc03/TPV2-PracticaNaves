@@ -5,7 +5,7 @@
 
 const float PI = 3.1415;
 
-struct Transform : public ecs::Component {
+struct Transform : public Component {
 	Vector2D pos_;// posiciones
 	Vector2D speed_;// velocidad
 	Vector2D dir_;// dirección

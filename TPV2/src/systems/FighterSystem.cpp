@@ -3,16 +3,19 @@
 void FighterSystem::receive(const Message& m) {
 	switch (m.id)
 	{
-	case _MSG_START:
+	case _MSG_START: // inicio partida
 		initSystem();
 		break;
-	case _MSG_PAUSE:
-		onRoundOver();
+	case _MSG_PAUSE: // pausa
+		active_ = false;
 		break;
-	case _MSG_RESUME:
+	case _MSG_RESUME: // resume
+		active_ = true;
+		break;
+	case _MSG_GAMEOVER: // volver de ronda perdida
 		onRoundStart();
 		break;
-	case _MSG_COL_AST_PLAYER:
+	case _MSG_COL_AST_PLAYER: // perder ronda
 		onCollision_FighterAsteroid();
 		break;
 	default:
@@ -21,28 +24,26 @@ void FighterSystem::receive(const Message& m) {
 }
 
 void FighterSystem::initSystem() {
-
 	active_ = true;
 	createShip();
 }
 
 void FighterSystem::createShip() {
 	fighter_ = mngr_->addEntity();// nave
-	mngr_->setHandler(ecs::_HDLR_PLAYER, fighter_);
 
 	Vector2D vel_ = Vector2D(0, 0);// velocidad incial
 	int rot_ = 0;// rotación inicial
-	Vector2D plCentralPos_ = Vector2D(sdlutils().width() / 2 - FIGHTER_SIZE / 2, sdlutils().height() / 2 - FIGHTER_SIZE / 2);
+	Vector2D plCentralPos_ = Vector2D(sdlutils().width() / 2 - FIGHTER_SIZE / 2,
+		sdlutils().height() / 2 - FIGHTER_SIZE / 2);
 
 	// transform del payer
-	Transform* playerTr_ = mngr_->addComponent<Transform>(fighter_, plCentralPos_, vel_, FIGHTER_SIZE, FIGHTER_SIZE, rot_);
-	mngr_->addComponent<Image>(fighter_, &sdlutils().images().at("fighter"));// componente imagen
-	mngr_->addComponent<FighterCtrl>(fighter_);// componente fighter
-	mngr_->addComponent<DeAcceleration>(fighter_);// componente de deaceleración
-	mngr_->addComponent<ShowAtOppositeSide>(fighter_);// componente toroidal
-
-	int lifes = 3;// número de vidas
-	mngr_->addComponent<Health>(fighter_, lifes);// componente de salud
+	Transform* playerTr_ = fighter_->addComponent<Transform>(TRANSFORM_H, plCentralPos_, vel_, FIGHTER_SIZE, FIGHTER_SIZE, rot_);
+	auto t = &sdlutils().images().at("fighter");
+	fighter_->addComponent<Image>(IMAGE_H, t);// componente imagen
+	fighter_->addComponent<FighterCtrl>(FIGHTERCTRL_H);// componente fighter
+	fighter_->addComponent<DeAcceleration>(DEACCELERATION_H);// componente de deaceleración
+	fighter_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);// componente toroidal
+	fighter_->addComponent<Health>(HEALTH_H);// componente de salud
 }
 
 
@@ -51,7 +52,7 @@ void FighterSystem::update() {
 		fighterCtrlUpdate();
 		deAccelerationUpdate();
 		showAtOppositeSideUpdate();
-		Transform* tr_ = mngr_->getComponent<Transform>(fighter_);
+		Transform* tr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
 		tr_->move();
 	}
 }
@@ -59,17 +60,20 @@ void FighterSystem::update() {
 
 void FighterSystem::fighterCtrlUpdate()
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(fighter_);
-	FighterCtrl* fi_ = mngr_->getComponent<FighterCtrl>(fighter_);
+	Transform* tr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
+	FighterCtrl* fi_ = fighter_->getComponent<FighterCtrl>(FIGHTERCTRL_H);
 
 	if (InputHandler::instance()->keyDownEvent()) {
 		//Rotación
-		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_LEFT))tr_->rot_ = -fi_->rot;
-		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_RIGHT))tr_->rot_ = fi_->rot;
-
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_LEFT))tr_->rot_ -= fi_->rot;
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_RIGHT))tr_->rot_ += fi_->rot;
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_S)) {
+			Message m;
+			m.id = _MSG_SHOT;
+			mngr_->send(m);
+		}
 		//Movimiento
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_UP)) {
-			// modificar dir
 			float angle = (tr_->rot_ * PI) / 180.0f;// ángulo en radianes
 			tr_->dir_ = Vector2D(sin(angle), -cos(angle));
 
@@ -81,8 +85,8 @@ void FighterSystem::fighterCtrlUpdate()
 
 void FighterSystem::deAccelerationUpdate()
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(fighter_);
-	DeAcceleration* de_ = mngr_->getComponent<DeAcceleration>(fighter_);
+	Transform* tr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
+	DeAcceleration* de_ = fighter_->getComponent<DeAcceleration>(DEACCELERATION_H);
 
 	if (tr_->speed_.magnitude() <= de_->limit_) tr_->speed_ = Vector2D(0, 0);// nave parada
 	else tr_->speed_ = tr_->speed_ * de_->deaF_; // velocidad 
@@ -90,8 +94,8 @@ void FighterSystem::deAccelerationUpdate()
 
 void FighterSystem::showAtOppositeSideUpdate()
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(fighter_);
-	ShowAtOppositeSide* op_ = mngr_->getComponent<ShowAtOppositeSide>(fighter_);
+	Transform* tr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
+	ShowAtOppositeSide* op_ = fighter_->getComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);
 
 	float wWidth_ = sdlutils().width();// ancho de ventana
 	float wHeight_ = sdlutils().height();// alto de ventana
@@ -107,11 +111,11 @@ void FighterSystem::showAtOppositeSideUpdate()
 
 void FighterSystem::resetPlayer()
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(fighter_);
+	Transform* tr_ = fighter_->getComponent<Transform>(TRANSFORM_H);
 
 	tr_->pos_ = Vector2D(sdlutils().width() / 2 - FIGHTER_SIZE / 2, sdlutils().height() / 2 - FIGHTER_SIZE / 2);// coloca al player en el centro
 	tr_->speed_ = Vector2D(0, 0);// velocidad a 0
-	tr_->rot_ = -tr_->rot_;// rotación a 0
+	tr_->rot_ -= tr_->rot_;// rotación a 0
 }
 
 void FighterSystem::onCollision_FighterAsteroid() {

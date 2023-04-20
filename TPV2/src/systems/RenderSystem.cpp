@@ -4,11 +4,23 @@ void RenderSystem::receive(const Message& m)
 {
 	switch (m.id)
 	{
-	case _MSG_NO_ASTEROIDS:
-		winner_ = 2;
+	case _MSG_NO_ASTEROIDS: // ganar
+		onGameOver();
 		break;
-	case _MSG_START:
-		winner_ = 0;
+	case _MSG_START: // iniciar partida
+		onGameStart();
+		break;
+	case _MSG_GAMEOVER: // volver de ronda perdida
+		onRoundStart();
+		break;
+	case _MSG_COL_AST_PLAYER: // perder ronda
+		onRoundOver();
+		break;
+	case _MSG_RESUME: // resume
+		state_ = 1;
+		break;
+	case _MSG_PAUSE: // pausa
+		state_ = 0;
 		break;
 	default:
 		break;
@@ -16,12 +28,10 @@ void RenderSystem::receive(const Message& m)
 }
 
 void RenderSystem::initSystem() {
-
+	fSys_ = mngr_->getSystem<FighterSystem>(_SYS_FIGHTER);
 }
 
 void RenderSystem::update() {
-	state_ = mngr_->getSystem<GameCtrlSystem>()->state_;
-
 	if (state_ == 1) {// running
 		renderFighter();
 		renderHealth();
@@ -33,20 +43,31 @@ void RenderSystem::update() {
 
 void RenderSystem::renderText()
 {
-	auto& t = sdlutils().msgs().at("space");
+	auto& t = sdlutils().msgs().at("space"); // espacio para continuar
 	t.render((sdlutils().width() - t.width()) / 2,
 		sdlutils().height() / 2 + t.height() * 2);
+
+	if (winner_ == 1) { // texto al perder
+		auto& t = sdlutils().msgs().at("defeat");
+		t.render((sdlutils().width() - t.width()) / 2,
+			sdlutils().height() / 4 + t.height() * 2);
+	}
+	else if (winner_ == 2) { // texto al ganar
+		auto& t = sdlutils().msgs().at("win");
+		t.render((sdlutils().width() - t.width()) / 2,
+			sdlutils().height() / 4 + t.height() * 2);
+	}
 }
 
 void RenderSystem::renderFighter()
 {
-	mngr_->getComponent<Image>(mngr_->getHandler(ecs::_HDLR_PLAYER))->render();
+	fSys_->fighter_->getComponent<Image>(IMAGE_H)->render();
 }
 
 void RenderSystem::renderHealth()
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_HDLR_PLAYER));
-	Health* health_ = mngr_->getComponent<Health>(mngr_->getHandler(ecs::_HDLR_PLAYER));
+	Transform* tr_ = fSys_->fighter_->getComponent<Transform>(TRANSFORM_H);
+	Health* health_ = fSys_->fighter_->getComponent<Health>(HEALTH_H);
 
 	//Dibuja las vidas
 	auto t_ = &(SDLUtils::instance()->images().at("heart"));// textura
@@ -63,16 +84,27 @@ void RenderSystem::renderHealth()
 
 void RenderSystem::renderAsteroids()
 {
-	for (auto as : mngr_->getEntities(ecs::_grp_ASTEROIDS)) mngr_->getComponent<Image>(as)->render();
-
+	for (auto as : mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS)) as->getComponent<Image>(IMAGE_H)->render();
 }
 
 void RenderSystem::renderBullet()
 {
-	for(auto b : mngr_->getEntities(ecs::_grp_BULLETS))mngr_->getComponent<Image>(b)->render();
+	for(auto b : mngr_->getEntitiesByGroup(ecs::_grp_BULLETS)) b->getComponent<Image>(IMAGE_H)->render();
 }
 
-void RenderSystem::onRoundStart(){}
-void RenderSystem::onRoundOver(){}
-void RenderSystem::onGameStart(){}
-void RenderSystem::onGameOver(){}
+void RenderSystem::onRoundStart(){
+	winner_ = 0; // nada
+	state_ = 1; // run
+}
+void RenderSystem::onRoundOver(){
+	winner_ = 1; // derrota
+	state_ = 0; // pausa
+}
+void RenderSystem::onGameStart(){
+	winner_ = 0; // nada
+	state_ = 1; // run
+}
+void RenderSystem::onGameOver(){
+	winner_ = mngr_->getSystem<GameCtrlSystem>(_SYS_GAMECTRL)->winner_; // victoria o derrota
+	state_ = 0; // pausa
+}

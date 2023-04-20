@@ -15,13 +15,13 @@ Image::Image(Texture* t, float w, float h, int nFil, int nCol, float s) {
 }
 
 
-Image::Image(Texture* t) : Component() {
+Image::Image(Texture* t) {
 	t_ = t;// textura
 	matrix_ = false;// matriz
 }
 
 void Image::initComponent() {
-	tr_ = mngr_->getComponent<Transform>(ent_);// transform
+	tr_ = ent_->getComponent<Transform>(TRANSFORM_H);// transform
 }
 
 void Image::render() {

@@ -17,8 +17,8 @@ private:
 	int nframesF_, nframesC_, i, cont_, fila_;// info de los sprites
 
 public:
+	Image(Texture* t);// constructora
 	Image(Texture* t, float w, float h, int nFil, int nCol, float s);// constructora de matriz
-	Image(Texture* t);// contructora
 	void initComponent();// init
 
 	void render();// render

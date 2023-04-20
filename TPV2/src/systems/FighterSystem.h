@@ -10,8 +10,9 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include "../sdlutils/InputHandler.h"
+#include "../components/ShowAtOpposideSide.h"
 
-class FighterSystem : public ecs::System
+class FighterSystem : public System
 {
 public:
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
@@ -33,6 +34,7 @@ public:
 	void showAtOppositeSideUpdate();
 
 	void resetPlayer();
+	Entity* fighter_;
 private:
 	// Para reaccionar al mensaje de que ha habido un choque entre el fighter y un
 	// un asteroide. Poner el caza en el centro con velocidad (0,0) y rotación 0. No
@@ -46,7 +48,7 @@ private:
 		// onRoundStart, y en update no hacer nada si no está activo)
 		bool active_;
 
-		ecs::Entity* fighter_;
+
 
 };
 

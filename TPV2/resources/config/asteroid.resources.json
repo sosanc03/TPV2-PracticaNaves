@@ -47,6 +47,18 @@
       "text": "Press SPACE to continue",
       "font": "ARIAL48",
       "color": "0xffffffff"
+    },
+    {
+      "id": "defeat",
+      "text": "YOU LOST",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
+    },
+    {
+      "id": "win",
+      "text": "YOU WIN",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
     }
   ],
 

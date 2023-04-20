@@ -1,55 +1,73 @@
 #include "AsteroidsSystem.h"
+#include "FighterSystem.h"
 
 void AsteroidsSystem::receive(const Message& m) {
 	switch (m.id)
 	{
-	case _MSG_COL_AST_PLAYER:
+	case _MSG_COL_AST_PLAYER: // perder ronda
 		destroyAllAsteroids();
 		break;
-	case _MSG_COL_AST_BULLET:
+	case _MSG_COL_AST_BULLET: // romper un asteroide
 		onCollision_AsteroidBullet(m.hitBulAst.asteroid_);
 		break;
-	case _MSG_START:
+	case _MSG_START: // inicio partida
 		initSystem();
 		break;
-	case _MSG_RESUME:
+	case _MSG_GAMEOVER: // volver de ronda perdida
 		onRoundStart();
+		break;
+	case _MSG_RESUME: // resume
+		active_ = true;
+		break;
+	case _MSG_PAUSE: // resume
+		active_ = false;
+		break;
 	default:
 		break;
 	}
 }
 
 void AsteroidsSystem::initSystem() {
-	active_ = true;
+	
+	sCenter_ = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2); // centro pantalla
+	fSys_ = mngr_->getSystem<FighterSystem>(_SYS_FIGHTER); // ref a fighter
+	active_ = false;
+	astWidth_ = 510;
+	astHeight_ = 500;
+	nF_ = 6;
+	nC_ = 5;
+	maxAsteroids_ = 30;
+	numOfAsteroids_ = 0;
 	createAsteroids(10, 3);
 	cont_ = 5000;
+
 }
 
 void AsteroidsSystem::update() {
 	if (active_) {
 		addAsteroidFrequently();
-		for (auto a : mngr_->getEntities(ecs::_grp_ASTEROIDS)) {
+		for (auto a : mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS)) {
 			showAtOppositeSideUpdate(a);
 			followUpdate(a);
-			mngr_->getComponent<Transform>(a)->move();
+			a->getComponent<Transform>(TRANSFORM_H)->move();
 		}
 	}
 }
 
-void AsteroidsSystem::onCollision_AsteroidBullet(ecs::Entity* a) {
+void AsteroidsSystem::onCollision_AsteroidBullet(Entity* a) {
 	sdlutils().soundEffects().at("explosion").play();// sonido de explosión
 	numOfAsteroids_--;// resta asteroide
 
-	int g = mngr_->getComponent<Generations>(a)->gen_;
+	int g = a->getComponent<Generations>(GENERATIONS_H)->gen_;
 
 	if (g != 1) {
-		Transform* tr_ = mngr_->getComponent<Transform>(a);
+		Transform* tr_ = a->getComponent<Transform>(TRANSFORM_H);
 		if (g == 2)createAsteroids(2, 1, tr_->pos_); //Genera los dos nuevos asteroirdes de generación 1
 		else createAsteroids(2, 2, tr_->pos_); //Genera los dos nuevos asteroides de generación 2
 	}
 
 	// Desactiva la entidad tras generar los nuevos
-	mngr_->setAlive(a, false);
+	a->setAlive(false);
 
 	//Comprobar aqui que queden asteroides
 	if (numOfAsteroids_ == 0) {
@@ -77,7 +95,6 @@ void AsteroidsSystem::createAsteroids(int n, int g, Vector2D pos) {
 		if (pos == Vector2D(-1, -1))pos_ = generateAstPos();// posición aleatoria de aparición
 		else pos_ = pos;// posición no aleatoria
 
-
 		// vector central pero con un random entre -100 y 100 para que los asteroides vayan a la zona central en un rango
 		Vector2D c = sCenter_ + Vector2D(sdlutils().rand().nextInt(-100, 100), sdlutils().rand().nextInt(-100, 100));
 
@@ -86,9 +103,9 @@ void AsteroidsSystem::createAsteroids(int n, int g, Vector2D pos) {
 
 		float size_ = 25.0f + 8.0f * g;// tamaño
 
-		ecs::Entity* ast_ = mngr_->addEntity(_grp_ASTEROIDS);// crea el asteroide
+		Entity* ast_ = mngr_->addEntity(_grp_ASTEROIDS);// crea el asteroide
 
-		mngr_->addComponent<Transform>(ast_, pos_, vel_, size_, size_);// añade componente transform
+		ast_->addComponent<Transform>(TRANSFORM_H, pos_, vel_, size_, size_);// añade componente transform
 
 		Texture* t_;// textura
 
@@ -96,16 +113,14 @@ void AsteroidsSystem::createAsteroids(int n, int g, Vector2D pos) {
 			if (sdlutils().rand().nextInt(0, 10) < 3) //tipo b
 			{
 				t_ = &(SDLUtils::instance()->images().at("goldAsteroid"));
-				mngr_->addComponent<Follow>(ast_);// componente follow
+				ast_->addComponent<Follow>(FOLLOW_H);// componente follow
 			}
 			else t_ = &(SDLUtils::instance()->images().at("asteroid")); //tipo A
 		}
 
-
-
-		mngr_->addComponent<Image>(ast_, t_, astWidth_, astHeight_, nF_, nC_, size_);// componente de renderizado
-		mngr_->addComponent<ShowAtOppositeSide>(ast_);// componente toroidal
-		mngr_->addComponent<Generations>(ast_, g);// número de generación
+		ast_->addComponent<Image>(IMAGE_H, t_, astWidth_, astHeight_, nF_, nC_, size_);// componente de renderizado
+		ast_->addComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);// componente toroidal
+		ast_->addComponent<Generations>(GENERATIONS_H, g);// número de generación
 
 		numOfAsteroids_++;// aumenta el número de asteroiodes
 		i++;
@@ -122,8 +137,8 @@ void AsteroidsSystem::addAsteroidFrequently() {
 
 void AsteroidsSystem::destroyAllAsteroids() {
 	numOfAsteroids_ = 0;// número de asteroides a 0
-	for (auto a : mngr_->getEntities(ecs::_grp_ASTEROIDS)) {
-		mngr_->setAlive(a, false);
+	for (auto a : mngr_->getEntitiesByGroup(_grp_ASTEROIDS)) {
+		a->setAlive(false);
 	}
 }
 
@@ -151,11 +166,11 @@ Vector2D AsteroidsSystem::generateAstPos() {
 	return pos_;
 }
 
-void AsteroidsSystem::followUpdate(ecs::Entity* a)
+void AsteroidsSystem::followUpdate(Entity* a)
 {
-	if (mngr_->hasComponent<Follow>(a)) {
-		Transform* playerTr_ = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_HDLR_PLAYER));
-		Transform* tr_ = mngr_->getComponent<Transform>(a);
+	if (a->hasComponent(FOLLOW_H)) {
+		Transform* playerTr_ = fSys_->fighter_->getComponent<Transform>(TRANSFORM_H);
+		Transform* tr_ = a->getComponent<Transform>(TRANSFORM_H);
 		Vector2D dir_ = Vector2D(playerTr_->pos_.getX() - tr_->pos_.getX(),
 			playerTr_->pos_.getY() - tr_->pos_.getY());// setea la dirección
 
@@ -164,10 +179,10 @@ void AsteroidsSystem::followUpdate(ecs::Entity* a)
 	}
 }
 
-void AsteroidsSystem::showAtOppositeSideUpdate(ecs::Entity* a)
+void AsteroidsSystem::showAtOppositeSideUpdate(Entity* a)
 {
-	Transform* tr_ = mngr_->getComponent<Transform>(a);
-	ShowAtOppositeSide* op_ = mngr_->getComponent<ShowAtOppositeSide>(a);
+	Transform* tr_ = a->getComponent<Transform>(TRANSFORM_H);
+	ShowAtOppositeSide* op_ = a->getComponent<ShowAtOppositeSide>(OPPOSITESIDE_H);
 
 	float wWidth_ = sdlutils().width();// ancho de ventana
 	float wHeight_ = sdlutils().height();// alto de ventana

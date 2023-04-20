@@ -3,11 +3,13 @@
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../components/Health.h"
+#include "FighterSystem.h"
 
-class GameCtrlSystem : public ecs::System {
+class GameCtrlSystem : public System {
 public:
 	int state_; // El estado actual del juego (en lugar del componente State)
 	// 0 - PAUSE, 1 - RUNNING
+	int winner_; // 0 - None, 1 - Asteroids, 2- Fighter
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
 	// Inicializar el sistema, etc.
@@ -25,7 +27,8 @@ private:
 	// Para gestionar el mensaje de que no hay más asteroides. Tiene que avisar que
 	// ha acabado la ronda y además que ha acabado el juego (y quien es el ganador)
 	void onAsteroidsExtinction();
-	//int winner_; // 0 - None, 1 - Asteroids, 2- Fighter
+	
+	FighterSystem* fSys_;
 
 };
 

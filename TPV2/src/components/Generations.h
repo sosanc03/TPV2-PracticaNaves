@@ -1,9 +1,10 @@
 #pragma once
 #include "../ecs/Component.h"
-struct Generations : public ecs::Component
+struct Generations : public Component
 {
-    Generations() {}
+    int gen_ = 3;// número de generación
+    Generations(int g) { gen_ = g; }
     ~Generations() {}
-    int gen_;// número de generación
+    
 };
 

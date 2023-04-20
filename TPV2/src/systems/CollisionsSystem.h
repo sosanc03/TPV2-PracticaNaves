@@ -4,8 +4,9 @@
 #include "../utils/Collisions.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
+#include "FighterSystem.h"
 
-class CollisionsSystem : public ecs::System
+class CollisionsSystem : public System
 {
 public:
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
@@ -26,6 +27,6 @@ private:
 		// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 		// onRoundStart, y en update no hacer nada si no está activo)
 		bool active_;
-
+		FighterSystem* fSys_;
 };
 

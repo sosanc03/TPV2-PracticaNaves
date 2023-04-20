@@ -1,75 +1,45 @@
 #include "Game.h"
-#include "../systems/FighterSystem.h"
 
-Game::Game() :
-	mngr_(nullptr), //
-	gameCtrlSys_(nullptr), //
-	collisionsSys_(nullptr), //
-	renderSys_(nullptr),
-	fightSys_(nullptr),
-	AstSys_(nullptr),
-	BullSys_(nullptr) {
+Game::Game() {
+	initSDL();// incio de SDL
+	renderer = SDLUtils::instance()->renderer();// renderer
+	window = SDLUtils::instance()->window();// ventana
+
+	exit = false;// salida de juego a false
+	manager = Manager::instance();
+	manager->addSystem<FighterSystem>(_SYS_FIGHTER);
+	manager->addSystem<GameCtrlSystem>(_SYS_GAMECTRL);
+	manager->addSystem<AsteroidsSystem>(_SYS_ASTEROIDS);
+	manager->addSystem<BulletSystem>(_SYS_BULLET);
+	manager->addSystem<CollisionsSystem>(_SYS_COLLISIONS);
+	manager->addSystem<RenderSystem>(_SYS_RENDER);
 }
 
-Game::~Game() {
-	delete mngr_;
+void Game::initSDL() {
+	SDLUtils::instance(); // Crea la instancia de SDLUtils
 }
 
-void Game::init() {
 
-	// Initialize the SDLUtils singleton
-	SDLUtils::init("Ping Pong", 800, 600,
-		"resources/config/asteroid.resources.json");
-
-	sdlutils().hideCursor();
-
-	// Create the manager
-	mngr_ = new Manager();
-
-	//We add the systems that we are going to use
-	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
-	collisionsSys_ = mngr_->addSystem<CollisionsSystem>();
-	renderSys_ = mngr_->addSystem<RenderSystem>();
-	fightSys_ = mngr_->addSystem<FighterSystem>();
-	AstSys_ = mngr_->addSystem<AsteroidsSystem>();
-	BullSys_ = mngr_->addSystem<BulletSystem>();
+Game::~Game(){ // destructora
+	SDL_DestroyRenderer(renderer);// detruye el renderer
+	SDL_DestroyWindow(window);// destruye la ventana
+	SDL_Quit();// sale del juego
 }
 
-void Game::start() {
-
-	// a boolean to exit the loop
-	bool exit = false;
-
-	auto& ihdlr = ih();
-
-	while (!exit) {
-		Uint32 startTime = sdlutils().currRealTime();
-
-		// refresh the input handler
-		ihdlr.refresh();
-
-		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
-			exit = true;
-			continue;
+void Game::run(){ // bucle de juego
+	uint32_t startTime, frameTime;
+	startTime = SDL_GetTicks();
+	while (!exit) {// bucle principal
+		frameTime = SDL_GetTicks() - startTime;
+		if (frameTime >= FRAME_RATE) {
+			SDL_RenderClear(renderer);
+			InputHandler::instance()->refresh();// actualiza el input
+			manager->updateSystems();
+			SDL_RenderPresent(renderer);
+			manager->refresh();
+			startTime = SDL_GetTicks();
 		}
-
-		mngr_->refresh();
-
-
-		gameCtrlSys_->update();
-		collisionsSys_->update();
-		fightSys_->update();
-		AstSys_->update();
-		BullSys_->update();
-		fightSys_->update();
-		sdlutils().clearRenderer();
-		renderSys_->update();
-		sdlutils().presentRenderer();
-
-		Uint32 frameTime = sdlutils().currRealTime() - startTime;
-
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
 	}
-
 }
+
+

@@ -3,7 +3,7 @@
 #include "../components/Transform.h"
 #include "../ecs/Component.h"
 
-struct Follow : public ecs::Component
+struct Follow : public Component
 {
 public:
 	Follow() {}

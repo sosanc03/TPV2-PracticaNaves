@@ -9,7 +9,9 @@
 #include "../components/Generations.h"
 #include "../components/Image.h"
 
-class AsteroidsSystem :public ecs::System
+class FighterSystem;
+
+class AsteroidsSystem :public System
 {
 public:
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
@@ -28,13 +30,13 @@ public:
 	void destroyAllAsteroids();// destruye todos los asteroides
 	Vector2D generateAstPos();// genera una posición aleatoria en los bordes de la ventana
 
-	void followUpdate(ecs::Entity* a);
-	void showAtOppositeSideUpdate(ecs::Entity* a);
+	void followUpdate(Entity* a);
+	void showAtOppositeSideUpdate(Entity* a);
 private:
 	// Para gestionar el mensaje de que ha habido un choque de un asteroide con una
 	// bala. Desactivar el asteroide “a” y crear 2 asteroides como en la práctica 1,
 	// y si no hay más asteroides enviar un mensaje correspondiente.
-	void onCollision_AsteroidBullet(ecs::Entity* a);
+	void onCollision_AsteroidBullet(Entity* a);
 		// Para gestionar el mensaje de que ha acabado la ronda. Desactivar todos los
 		// asteroides, y desactivar el sistema.
 	void onRoundOver();
@@ -55,7 +57,7 @@ private:
 	int maxAsteroids_;// máximo número de asteroides
 
 	Vector2D sCenter_;// vector central
-
+	FighterSystem* fSys_;
 	int cont_;// contador
 };
 

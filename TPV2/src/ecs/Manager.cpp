@@ -1,64 +1,65 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #include "Manager.h"
+#include "Entity.h"
 
-namespace ecs {
+Manager::Manager() : entsByGroup_() {
+    for (auto& groupEntities : entsByGroup_) {
+        groupEntities.reserve(100);
+    }
+}
 
-	Manager::Manager() :
-		hdlrs_(), //
-		entsByGroup_(), //
-		sys_(), //
-		msgs_(), //
-		msgs_aux_() //
-	{
+Manager::~Manager() {
+    for (auto& ents : entsByGroup_) {
+        for (auto e : ents)
+            delete &e;
+    }
+}
 
-		// for each group we reserve space for 100 entities,
-		// just to avoid resizing
-		//
-		for (auto& groupEntities : entsByGroup_) {
-			groupEntities.reserve(100);
-		}
+Entity* Manager::addEntity(grpId_type gId) {
+    Entity* e = new Entity();
+    e->setAlive(true);
+    e->setContext(this);
+    e->addToGroup(gId);
+    entsByGroup_[gId].push_back(e);
+    return e;
+}
 
-		// allocate enough space for the messages queue,
-		// just to avoid resizing
-		//
-		msgs_.reserve(100);
-		msgs_aux_.reserve(100);
-	}
+void Manager::refresh() {
+    for (grpId_type gId = 0; gId < maxGroupId; gId++) {
+        auto& grpEnts = entsByGroup_[gId];
+        grpEnts.erase(
+            std::remove_if(grpEnts.begin(), grpEnts.end(),
+                [](Entity* e) {
+                    if (e->isAlive()) {
+                        return false;
+                    }
+                    else {
+                        delete e;
+                        return true;
+                    }
+                }),
+            grpEnts.end());
+    }
+}
 
-	Manager::~Manager() {
+void Manager::update() {
+    for (auto& ents : entsByGroup_) {
+        auto n = ents.size();
+        for (auto i = 0u; i < n; i++)
+            ents[i]->update();
+    }
+}
+void Manager::render() {
+    for (auto& ents : entsByGroup_) {
+        auto n = ents.size();
+        for (auto i = 0u; i < n; i++)
+            ents[i]->render();
+    }
+}
 
-		// delete all entities
-		//
-		for (auto& ents : entsByGroup_) {
-			for (auto e : ents)
-				delete e;
-		}
 
-		for (auto i = 0u; i < maxSystemId; i++)
-			if (sys_[i] != nullptr)
-				delete sys_[i];
-	}
 
-	void Manager::refresh() {
-
-		// remove dead entities from the groups lists, and also those
-		// do not belong to the group anymore
-		for (ecs::grpId_type gId = 0; gId < ecs::maxGroupId; gId++) {
-			auto& groupEntities = entsByGroup_[gId];
-			groupEntities.erase(
-				std::remove_if(groupEntities.begin(), groupEntities.end(),
-					[](Entity* e) {
-						if (e->alive_) {
-							return false;
-						}
-						else {
-							delete e;
-							return true;
-						}
-					}), groupEntities.end());
-		}
-
-	}
-
-} // end of namespace
+void Manager::updateSystems() {
+    for (auto& system : sys) {
+        system->update();
+    }
+}

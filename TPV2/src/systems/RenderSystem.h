@@ -7,7 +7,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "GameCtrlSystem.h"
 
-class RenderSystem : public ecs::System
+class RenderSystem : public System
 {
 public:
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
@@ -35,5 +35,7 @@ private:
 	int winner_; // 0 - None, 1 - Asteroid, 2- Fighter
 	int state_; // El estado actual de juego (como en GameCtrlSystem)
 	// 0 - START, 1 - PAUSE, 2 - RUNNING
+	FighterSystem* fSys_;
+	//GameCtrlSystem* gSys_;
 };
 
