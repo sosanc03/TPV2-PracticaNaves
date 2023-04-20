@@ -5,14 +5,8 @@ Game::Game() {
 	renderer = SDLUtils::instance()->renderer();// renderer
 	window = SDLUtils::instance()->window();// ventana
 
-	exit = false;// salida de juego a false
+	pressed = started = exit = false;// salida de juego a false
 	manager = Manager::instance();
-	manager->addSystem<FighterSystem>(_SYS_FIGHTER);
-	manager->addSystem<GameCtrlSystem>(_SYS_GAMECTRL);
-	manager->addSystem<AsteroidsSystem>(_SYS_ASTEROIDS);
-	manager->addSystem<BulletSystem>(_SYS_BULLET);
-	manager->addSystem<CollisionsSystem>(_SYS_COLLISIONS);
-	manager->addSystem<RenderSystem>(_SYS_RENDER);
 }
 
 void Game::initSDL() {
@@ -27,19 +21,75 @@ Game::~Game(){ // destructora
 }
 
 void Game::run(){ // bucle de juego
-	uint32_t startTime, frameTime;
-	startTime = SDL_GetTicks();
-	while (!exit) {// bucle principal
-		frameTime = SDL_GetTicks() - startTime;
-		if (frameTime >= FRAME_RATE) {
-			SDL_RenderClear(renderer);
-			InputHandler::instance()->refresh();// actualiza el input
-			manager->updateSystems();
-			SDL_RenderPresent(renderer);
-			manager->refresh();
+	while (!exit) {
+		if (started) {
+			uint32_t startTime, frameTime;
 			startTime = SDL_GetTicks();
+			while (!exit) {// bucle principal
+				frameTime = SDL_GetTicks() - startTime;
+				if (frameTime >= FRAME_RATE) {
+					SDL_RenderClear(renderer);
+					InputHandler::instance()->refresh();// actualiza el input
+					manager->updateSystems();
+					SDL_RenderPresent(renderer);
+					manager->refresh();
+					startTime = SDL_GetTicks();
+				}
+			}
+		}
+		else {
+			if (!pressed) {
+				auto& t = sdlutils().msgs().at("mainMenu1"); // espacio para continuar
+				t.render((sdlutils().width() - t.width()) / 2,
+					sdlutils().height() / 2 + t.height() * 2);
+				auto& t2 = sdlutils().msgs().at("mainMenu2");
+				t2.render((sdlutils().width() - t2.width()) / 2,
+					sdlutils().height() / 4 + t2.height() * 2);
+				SDL_RenderPresent(renderer);
+			}
+			while (!pressed) {
+				InputHandler::instance()->refresh();// actualiza el input
+				if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_1)) {
+					pressed = true;
+					multi = false; // solitario
+					started = true;
+				}
+				else if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_2)) {
+					pressed = true;
+					multi = true; // multijugador
+				}
+			}
+			if (pressed) {
+				// inicio modo solitario
+				if (!multi) {
+					manager->addSystem<FighterSystem>(_SYS_FIGHTER);
+					manager->addSystem<GameCtrlSystem>(_SYS_GAMECTRL);
+					manager->addSystem<AsteroidsSystem>(_SYS_ASTEROIDS);
+					manager->addSystem<BulletSystem>(_SYS_BULLET);
+					manager->addSystem<CollisionsSystem>(_SYS_COLLISIONS);
+					manager->addSystem<RenderSystem>(_SYS_RENDER);
+				}
+				// preguntar nombre en multijugador
+				else {
+					SDL_RenderClear(renderer);
+					auto& t = sdlutils().msgs().at("nombre"); // espacio para continuar
+					t.render((sdlutils().width() - t.width()) / 2,
+						sdlutils().height() / 2 - t.height());
+					SDL_RenderPresent(renderer);
+
+					nombre = "";
+					while (nombre.size() > 10 || nombre.size() == 0)
+						cin >> nombre;
+
+					/*manager->addSystem<FighterSystem>(_SYS_FIGHTER);
+					manager->addSystem<RenderSystem>(_SYS_RENDER);*/
+					started = true;
+				}
+			}
 		}
 	}
+	
+	
 }
 
 

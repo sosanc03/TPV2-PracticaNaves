@@ -25,8 +25,8 @@ private:
 	SDL_Window* window = nullptr;// ventana
 	SDL_Renderer* renderer = nullptr;// renderer
 	Manager* manager = nullptr;
-	bool exit;// booleano de salida
-
+	bool exit, started, pressed, multi;// booleano de salida
+	string nombre;
 public:
 	Game();// contructora
 	void initSDL();// inicio de SDL

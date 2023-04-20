@@ -60,6 +60,6 @@ void Manager::render() {
 
 void Manager::updateSystems() {
     for (auto& system : sys) {
-        system->update();
+        if (system != NULL)system->update();
     }
 }

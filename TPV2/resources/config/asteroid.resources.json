@@ -59,6 +59,24 @@
       "text": "YOU WIN",
       "font": "ARIAL48",
       "color": "0xffffffff"
+    },
+    {
+      "id": "mainMenu1",
+      "text": "Pulsa 1 para jugar en solitario",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
+    },
+    {
+      "id": "mainMenu2",
+      "text": "Pulsa 2 para jugar en multijugador",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
+    },
+    {
+      "id": "nombre",
+      "text": "Introduce tu nombre (10 caracteres max)",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
     }
   ],
 

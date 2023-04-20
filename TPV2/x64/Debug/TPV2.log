@@ -1,7 +1,10 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  GameCtrlSystem.cpp
+  Game.cpp
 D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
 D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
   TPV2.vcxproj -> D:\GitHub\TPV2-PracticaNaves\bin\TPV2Debug.exe
