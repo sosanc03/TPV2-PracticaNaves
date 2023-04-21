@@ -1,7 +1,16 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "NetworkSystem.h"
-
+#include "../components/Transform.h"
+#include "../ecs/Manager.h"
+#include "../sdlutils/SDLNetUtils.h"
+#include "../utils/Vector2D.h"
+#include "GameCtrlSystem.h"
+#include "../ecs/network_messages.h"
+#include "FighterCtrlNetSystem.h"
+#include "BulletNetSystem.h"
+#include <iostream>
+#include "GameCtrlNetSystem.h"
 
 NetworkSystem::NetworkSystem() :
 	host_(false), //
@@ -47,13 +56,13 @@ void NetworkSystem::putName()
 	names[1] = "Player 2";
 	while (!done) {
 
-		std::cout << "Please, enter your UserName: \n";
+		std::cout << "Introduzca su nombre: \n";
 		std::cin >> name;
 		if (name.length() <= 10) {
 			done = true;
 		}
 		else
-			std::cout << "The name must have less than 10 characters\n";
+			std::cout << "Debe tener menos de 10 caracteres\n";
 	}
 }
 bool NetworkSystem::connect() {
@@ -64,7 +73,7 @@ bool NetworkSystem::connect() {
 
 	while (!done) {
 
-		std::cout << "Do you want to be host, client or exit [h/c/e]? "
+		std::cout << "Host o cliente [h/c]? "
 			<< std::endl;
 		std::cin >> choice;
 		switch (choice) {
@@ -76,10 +85,6 @@ bool NetworkSystem::connect() {
 		case 'c':
 		case 'C':
 			success = initClient();
-			done = true;
-			break;
-		case 'e':
-		case 'E':
 			done = true;
 			break;
 		default:

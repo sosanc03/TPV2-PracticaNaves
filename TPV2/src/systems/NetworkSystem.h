@@ -5,16 +5,7 @@
 #include "../ecs/System.h"
 #include <string>
 #include <array>
-#include "../components/Transform.h"
-#include "../ecs/Manager.h"
-#include "../sdlutils/SDLNetUtils.h"
-#include "../utils/Vector2D.h"
-#include "GameCtrlSystem.h"
-#include "../ecs/network_messages.h"
-#include "FighterCtrlNetSystem.h"
-#include "BulletNetSystem.h"
-#include <iostream>
-#include "GameCtrlNetSystem.h"
+
 
 struct Transform;
 

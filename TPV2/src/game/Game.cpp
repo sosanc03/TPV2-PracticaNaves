@@ -1,4 +1,10 @@
 #include "Game.h"
+#include "../systems/GameCtrlNetSystem.h"
+#include "../systems/FighterCtrlNetSystem.h"
+#include "../systems/BulletNetSystem.h"
+#include "../systems/RenderNetSystem.h"
+#include "../systems/CollisionsNetSystem.h"
+
 
 Game::Game() {
 	initSDL();// incio de SDL
@@ -7,6 +13,7 @@ Game::Game() {
 
 	pressed = started = exit = false;// salida de juego a false
 	manager = Manager::instance();
+	
 }
 
 void Game::initSDL() {
@@ -76,16 +83,16 @@ void Game::run(){ // bucle de juego
 					t.render((sdlutils().width() - t.width()) / 2,
 						sdlutils().height() / 2 - t.height());
 					SDL_RenderPresent(renderer);
-					/*netSys_ = manager->addSystem<NetworkSystem>(_SYS_NETWORK);
+					netSys_ = manager->addSystem<NetworkSystem>(_SYS_NETWORK);
 					netSys_->putName();
-					if (!netSys_->connect()) cout << "No hay Network >:(";*/
+					if (!netSys_->connect()) cout << "No hay Network >:(";
 
-					// add the systems
-					/*manager->addSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET);
+					
+					manager->addSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET);
 					manager->addSystem<FighterCtrlNetSystem>(_SYS_FIGHTERNET);
-					manager->addSystem<BulletNetSystem>(_SYS_BULLETNET);*/
-					/*manager->addSystem<RenderNetSystem>(_SYS_RENDERNET);
-					manager->addSystem<CollisionNetSystem>(_SYS_COLLISIONSNET);*/
+					manager->addSystem<BulletNetSystem>(_SYS_BULLETNET);
+					manager->addSystem<RenderNetSystem>(_SYS_RENDERNET);
+					manager->addSystem<CollisionsNetSystem>(_SYS_COLLISIONSNET);
 					started = true;
 				}
 			}

@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\systems\RenderNetSystem.h" />
+    <ClInclude Include="src\systems\CollisionsNetSystem.h" />
     <ClInclude Include="src\systems\GameCtrlNetSystem.h" />
     <ClInclude Include="src\components\FighterInfo.h" />
     <ClInclude Include="src\systems\BulletNetSystem.h" />
@@ -67,6 +69,8 @@
     <ClInclude Include="src\ecs\System.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\systems\RenderNetSystem.cpp" />
+    <ClCompile Include="src\systems\CollisionsNetSystem.cpp" />
     <ClCompile Include="src\systems\GameCtrlNetSystem.cpp" />
     <ClCompile Include="src\systems\BulletNetSystem.cpp" />
     <ClCompile Include="src\systems\FighterCtrlNetSystem.cpp" />

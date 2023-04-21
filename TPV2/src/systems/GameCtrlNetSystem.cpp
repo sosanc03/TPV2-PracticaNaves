@@ -1,4 +1,5 @@
 #include "GameCtrlNetSystem.h"
+#include "../ecs/Entity.h"
 
 GameCtrlNetSystem::GameCtrlNetSystem() :
 	state_(_STOPPED) {
@@ -73,6 +74,7 @@ void GameCtrlNetSystem::handleBulletHitFighter(const Message& m) {
 
 	Message msg;
 	msg.id = _MSG_GAMEOVER;
+	
 	msg.killed.playerId = m.bullet_fighter.fighter_->getComponent<FighterInfo>(FIGHTERINFO_H)->id_;
 	msg.bullet_fighter.fighter_ = m.bullet_fighter.fighter_;
 	mngr_->send(msg);
