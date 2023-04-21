@@ -10,7 +10,7 @@ Manager::Manager() : entsByGroup_() {
 Manager::~Manager() {
     for (auto& ents : entsByGroup_) {
         for (auto e : ents)
-            delete &e;
+           if (e != nullptr) delete &e;
     }
 }
 

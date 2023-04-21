@@ -64,13 +64,13 @@ void RenderNetSystem::update() {
 void RenderNetSystem::drawMsgs() {
 	if (!running_) {
 
-		auto& startMsg = sdlutils().msgs().at("start");
+		auto& startMsg = sdlutils().msgs().at("space");
 		startMsg.render((sdlutils().width() - startMsg.width()) / 2,
 			sdlutils().height() / 2 + startMsg.height() * 2);
 
 		if (over_) {
 			auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
-			auto& gameOverMsg = sdlutils().msgs().at("gameover");
+			auto& gameOverMsg = sdlutils().msgs().at("space");
 			gameOverMsg.render((sdlutils().width() - gameOverMsg.width()) / 2,
 				20);
 

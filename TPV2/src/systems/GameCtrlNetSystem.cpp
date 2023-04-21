@@ -12,7 +12,7 @@ void GameCtrlNetSystem::initSystem() {
 }
 
 void GameCtrlNetSystem::update() {
-	auto& ihldr = ih();
+	//auto& ihldr = ih();
 
 	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
@@ -20,7 +20,7 @@ void GameCtrlNetSystem::update() {
 		return;
 
 	if (state_ != _RUNNING) {
-		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) {
+		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
 			requestToStartGame();
 		}
 	}

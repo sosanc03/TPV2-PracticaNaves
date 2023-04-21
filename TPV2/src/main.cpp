@@ -5,11 +5,13 @@
 #include "./game/Game.h"
 
 #include "sdlutils/sdlutils_demo.h"
+#include "sdlutils/SDLNetUtils.h"
 
 using namespace std;
 
 int main(int ac, char **av) {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	SDLNetUtils::initSDLNet();
 	try {
 		Game* g = new Game(); // Crea el juego.
 		g->run(); // Inicia bucle de juego.
