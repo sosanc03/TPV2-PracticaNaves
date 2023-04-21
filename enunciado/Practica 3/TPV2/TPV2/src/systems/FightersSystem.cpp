@@ -41,8 +41,6 @@ void FightersSystem::initSystem() {
 	auto h = 50.0f;
 	auto w = 50.0f;
 
-
-
 	// Fighter 0
 	//
 	auto fighter0 = mngr_->addEntity(ecs::_grp_FIGHTERS);

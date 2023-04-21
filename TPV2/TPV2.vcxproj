@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\systems\FighterCtrlNetSystem.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\FighterCtrl.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="src\ecs\System.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\systems\FighterCtrlNetSystem.cpp" />
     <ClCompile Include="src\components\Image.cpp" />
     <ClCompile Include="src\ecs\ecs.cpp" />
     <ClCompile Include="src\ecs\Manager.cpp" />

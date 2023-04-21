@@ -213,7 +213,7 @@ bool NetworkSystem::initClient() {
 	m.id = net::_CONNECTION_REQUEST;
 	string_to_chars(name, m.nameSend);
 	p_->address = otherPlayerAddr_;
-
+	
 	SDLNetUtils::serializedSend(m, p_, sock_);
 
 	if (SDLNet_CheckSockets(sockSet_, 3000)) {

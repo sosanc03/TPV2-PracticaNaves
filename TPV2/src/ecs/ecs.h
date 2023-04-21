@@ -53,6 +53,7 @@ namespace ecs {
 		_MSG_COL_AST_PLAYER = 5,
 		_MSG_COL_AST_BULLET = 6,
 		_MSG_GAMEOVER = 7,
+		_MSG_COL_BULLET_PLAYER = 8,
 		_LAST_MSG_ID
 	};
 
