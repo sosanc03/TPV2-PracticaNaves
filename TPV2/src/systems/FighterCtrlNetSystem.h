@@ -11,6 +11,9 @@
 #include "../game/Game.h"
 #include "../sdlutils/InputHandler.h"
 #include "../components/ShowAtOpposideSide.h"
+#include "NetworkSystem.h"
+#include "../components/FighterInfo.h"
+
 class FighterCtrlNetSystem :
     public System
 {
@@ -20,7 +23,7 @@ public:
 	Entity* fighter1_;
 
 	FighterCtrlNetSystem();
-	virtual ~FighterCtrlNetSystem();
+	virtual ~FighterCtrlNetSystem() {};
 
 	void receive(const Message&) override;
 	void initSystem() override;

@@ -11,6 +11,7 @@
 #include "../systems/CollisionsSystem.h"
 #include "../systems/GameCtrlSystem.h"
 #include "../systems/RenderSystem.h"
+//#include "../systems/NetworkSystem.h"
 using namespace std;
 
 using uint = unsigned int;
@@ -27,6 +28,7 @@ private:
 	Manager* manager = nullptr;
 	bool exit, started, pressed, multi;// booleano de salida
 	string nombre;
+	//NetworkSystem* netSys_;
 public:
 	Game();// contructora
 	void initSDL();// inicio de SDL

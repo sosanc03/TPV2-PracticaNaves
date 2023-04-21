@@ -1,10 +1,186 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  GameCtrlNetSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  BulletNetSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletNetSystem.cpp(75,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+  FighterCtrlNetSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(35,53): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(52,89): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(52,45): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(105,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(112,34): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(39,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterCtrlNetSystem.cpp(39,100): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,const uint,const uint,int>(ecs::cmpId_type,Vector2D &,Vector2D &,const uint &,const uint &,int &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(39,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=const uint
+          ]
+  Image.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,35): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,35): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,53): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,53): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,60): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,60): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,69): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(28,69): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(32,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(33,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(36,14): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(38,15): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Image.cpp(39,15): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Game.cpp
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
-D:\GitHub\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  TPV2.vcxproj -> D:\GitHub\TPV2-PracticaNaves\bin\TPV2Debug.exe
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+  main.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  AsteroidsSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(32,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(32,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(194,34): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(99,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(99,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(131,32): warning C4018: '>=': no coinciden signed/unsigned
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(151,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(151,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(155,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(159,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(159,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(163,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(187,16): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\AsteroidsSystem.cpp(188,17): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  BulletSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(51,32): warning C4018: '>=': no coinciden signed/unsigned
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(194,34): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(61,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(61,32): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(94,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(95,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(97,16): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(98,17): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(39,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\BulletSystem.cpp(69,69): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,float>(ecs::cmpId_type,Vector2D &,Vector2D &,int &,int &,float &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  CollisionsSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  FighterSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(37,27): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(36,59): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(100,16): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(101,17): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(116,90): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(116,46): warning C4244: 'argumento': conversión de 'uint' a 'float'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(39,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\FighterSystem.cpp(40,125): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,const uint,const uint,int>(ecs::cmpId_type,Vector2D &,Vector2D &,const uint &,const uint &,int &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(39,27): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=const uint
+          ]
+  GameCtrlSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  NetworkSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\NetworkSystem.cpp(200,7): warning C4101: 'nameToSend': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLNetUtils.h(476,16): warning C4244: '=': conversión de '__int64' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\NetworkSystem.cpp(101,42): message : Vea la referencia a la creación de una instancia de la función plantilla "int SDLNetUtils::serializedSend<net::Message>(T &,UDPpacket *,UDPsocket)" que se está compilando
+          with
+          [
+              T=net::Message
+          ]
+  RenderSystem.cpp
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(77,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\ecs\Entity.h(83,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\Transform.h(6,24): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\components\DeAcceleration.h(7): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\RenderSystem.cpp(78,35): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\RenderSystem.cpp(78,35): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\RenderSystem.cpp(78,53): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\TPV2\src\systems\RenderSystem.cpp(78,53): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  Generando código...
+     Creando biblioteca C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\bin\TPV2Debug.lib y objeto C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\bin\TPV2Debug.exp
+  TPV2.vcxproj -> C:\Users\sofsa\OneDrive\Escritorio\Trabajos de Sofía\Segundo de carrera\Informática Gráfica\Practica 1\TPV2-PracticaNaves\bin\TPV2Debug.exe

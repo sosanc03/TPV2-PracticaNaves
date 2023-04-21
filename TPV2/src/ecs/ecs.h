@@ -15,6 +15,7 @@ namespace ecs {
 		FOLLOW_H = 7,
 		DISABLEONEXIT_H = 8,
 		GENERATIONS_H = 9,
+		FIGHTERINFO_H = 10,
 		// do not remove this
 		_LAST_CMP_ID
 	};
@@ -25,6 +26,7 @@ namespace ecs {
 		_grp_GENERAL = 0,
 		_grp_ASTEROIDS = 1,
 		_grp_BULLETS = 2,
+		_grp_FIGHTERS = 3,
 		
 		_LAST_GRP_ID
 	};
@@ -38,6 +40,12 @@ namespace ecs {
 		_SYS_FIGHTER = 3,
 		_SYS_GAMECTRL = 4,
 		_SYS_RENDER = 5,
+		_SYS_NETWORK = 6,
+		_SYS_FIGHTERNET = 7,
+		_SYS_BULLETNET = 8,
+		_SYS_GAMECTRLNET = 9,
+		_SYS_RENDERNET = 10,
+		_SYS_COLLISIONSNET = 11,
 		// do not remove this
 		_LAST_SYS_ID
 	};
@@ -74,6 +82,29 @@ namespace ecs {
 				float posX, posY, velX, velY, width, height, rotation;
 			};
 			fighterStruct fighterStruct;
+
+			struct shoot {
+				struct {
+					float x;
+					float y;
+				} pos;
+				struct {
+					float x;
+					float y;
+				} vel;
+			};
+			shoot shoot;
+
+			struct killed {
+				int playerId; // player id
+			};
+			killed killed;
+
+			struct bullet_fighter {
+				Entity* bullet_;
+				Entity* fighter_;
+			};
+			bullet_fighter bullet_fighter;
 		};
 	};
 

@@ -76,13 +76,16 @@ void Game::run(){ // bucle de juego
 					t.render((sdlutils().width() - t.width()) / 2,
 						sdlutils().height() / 2 - t.height());
 					SDL_RenderPresent(renderer);
+					/*netSys_ = manager->addSystem<NetworkSystem>(_SYS_NETWORK);
+					netSys_->putName();
+					if (!netSys_->connect()) cout << "No hay Network >:(";*/
 
-					nombre = "";
-					while (nombre.size() > 10 || nombre.size() == 0)
-						cin >> nombre;
-
-					/*manager->addSystem<FighterSystem>(_SYS_FIGHTER);
-					manager->addSystem<RenderSystem>(_SYS_RENDER);*/
+					// add the systems
+					/*manager->addSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET);
+					manager->addSystem<FighterCtrlNetSystem>(_SYS_FIGHTERNET);
+					manager->addSystem<BulletNetSystem>(_SYS_BULLETNET);*/
+					/*manager->addSystem<RenderNetSystem>(_SYS_RENDERNET);
+					manager->addSystem<CollisionNetSystem>(_SYS_COLLISIONSNET);*/
 					started = true;
 				}
 			}
