@@ -10,7 +10,7 @@ BulletNetSystem::~BulletNetSystem() {
 void BulletNetSystem::receive(const Message& m) {
 	switch (m.id) {
 	case _MSG_SHOT:
-		handleShoot(m);
+		shoot(m);
 		break;
 	case _MSG_GAMEOVER:
 		GameOver(m);
@@ -44,7 +44,7 @@ void BulletNetSystem::update() {
 	}
 }
 
-void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float velY, int id)
+void BulletNetSystem::createBullet(float posX, float posY, float velX, float velY, int id)
 {
 	if (sdlutils().currRealTime() >= cont_) {
 		cont_ = sdlutils().currRealTime() + 250; // 250ms
@@ -64,32 +64,6 @@ void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float 
 		bullet->addComponent<DisableOnExit>(DISABLEONEXIT_H);// conmponente de desactivar al desaparecer
 		bullet->addComponent<BulletInfo>(BULLETINFO_H, id);// información de la bala
 	}
-
-	/*Entity* b = mngr_->addEntity(_grp_BULLETS);
-
-	// the bottom/center of the bullet
-	Vector2D pos = Vector2D(posX, posY);
-
-	// the velocity of the bullet
-	Vector2D vel = Vector2D(velX, velY);
-
-	// the image rotation
-	float rot = Vector2D(0.0f, -1.0f).angle(vel);
-
-	float bh = 18.0f;
-	float bw = 6.f;
-
-	// left/top corner of the bullet
-	Vector2D bPos = pos + vel.normalize() * (bh / 2.0f)
-		- Vector2D(bw / 2.0f, bh / 2.0);
-
-	b->addComponent<Transform>(TRANSFORM_H, bPos, vel, bw, bh, rot);
-	auto t = &sdlutils().images().at("bullet");// transform
-	b->addComponent<Image>(IMAGE_H, t);// image
-	b->addComponent<BulletInfo>(BULLETINFO_H, id);// información de la bala
-	b->addComponent<DisableOnExit>(DISABLEONEXIT_H);// conmponente de desactivar al desaparecer
-
-	sdlutils().soundEffects().at("fire").play();*/
 }
 
 void BulletNetSystem::DisableOnExitUpdate(Entity* a, Transform* tr_) {
@@ -105,9 +79,9 @@ void BulletNetSystem::DisableOnExitUpdate(Entity* a, Transform* tr_) {
 	}
 }
 
-void BulletNetSystem::handleShoot(const Message& m) {
+void BulletNetSystem::shoot(const Message& m) {
 
-	createNewBullet(m.shoot.pos.x, m.shoot.pos.y, m.shoot.vel.x, m.shoot.vel.y, m.shoot.id);
+	createBullet(m.shoot.pos.x, m.shoot.pos.y, m.shoot.vel.x, m.shoot.vel.y, m.shoot.id);
 
 }
 

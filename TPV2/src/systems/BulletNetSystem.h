@@ -20,9 +20,9 @@ public:
 	void initSystem() override;
 	void update() override;
 
-	void createNewBullet(float posX, float posY, float velX, float velY, int id);
+	void createBullet(float posX, float posY, float velX, float velY, int id);
 private:
-	void handleShoot(const Message&);
+	void shoot(const Message&);
 	void GameOver(const Message&);
 	void GameStart(const Message&);
 
