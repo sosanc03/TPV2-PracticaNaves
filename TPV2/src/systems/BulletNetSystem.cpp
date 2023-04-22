@@ -54,7 +54,7 @@ void BulletNetSystem::changeBulletPos(float x, float y, float rot)
 {
 }
 
-void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float velY)
+void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float velY, int id)
 {
 	Entity* b = mngr_->addEntity(_grp_BULLETS);
 
@@ -77,13 +77,14 @@ void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float 
 	b->addComponent<Transform>(TRANSFORM_H, bPos, vel, bw, bh, rot);
 	auto t = &sdlutils().images().at("bullet");
 	b->addComponent<Image>(IMAGE_H, t);
+	b->addComponent<BulletInfo>(BULLETINFO_H, id);
 
 	sdlutils().soundEffects().at("fire").play();
 }
 
 void BulletNetSystem::handleShoot(const Message& m) {
 
-	createNewBullet(m.shoot.pos.x, m.shoot.pos.y, m.shoot.vel.x, m.shoot.vel.y);
+	createNewBullet(m.shoot.pos.x, m.shoot.pos.y, m.shoot.vel.x, m.shoot.vel.y, m.shoot.id);
 
 }
 

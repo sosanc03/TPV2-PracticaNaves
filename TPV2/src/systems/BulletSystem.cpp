@@ -5,8 +5,7 @@ void BulletSystem::receive(const ecs::Message& m) {
 	switch (m.id)
 	{
 	case _MSG_SHOT: // disparo
-		shoot(Vector2D(m.fighterStruct.posX, m.fighterStruct.posY), Vector2D(m.fighterStruct.velX,
-			m.fighterStruct.velY),m.fighterStruct.width, m.fighterStruct.height, m.fighterStruct.rotation);
+		shoot();
 		break;
 	case _MSG_COL_AST_BULLET: // bala con ast
 		onCollision_BulletAsteroid(m.hitBulAst.bullet_);
@@ -47,7 +46,7 @@ void BulletSystem::update() {
 	}
 }
 
-void BulletSystem::shoot(Vector2D pos, Vector2D vel, float width, float height, float rotation) {
+void BulletSystem::shoot() {
 	if (sdlutils().currRealTime() >= cont_){
 		cont_ = sdlutils().currRealTime() + 250; // 250ms
 

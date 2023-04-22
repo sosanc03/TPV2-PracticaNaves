@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\BulletInfo.h" />
     <ClInclude Include="src\systems\RenderNetSystem.h" />
     <ClInclude Include="src\systems\CollisionsNetSystem.h" />
     <ClInclude Include="src\systems\GameCtrlNetSystem.h" />

@@ -320,7 +320,7 @@ void NetworkSystem::handleBulletShot()
 {
 	net::BulletShotMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<BulletNetSystem>(_SYS_BULLETNET)->createNewBullet(m.posX, m.posY, m.velX, m.velY);
+	mngr_->getSystem<BulletNetSystem>(_SYS_BULLETNET)->createNewBullet(m.posX, m.posY, m.velX, m.velY, m.side);
 }
 
 void NetworkSystem::handleStartGameRequest() {

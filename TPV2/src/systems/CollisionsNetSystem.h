@@ -1,5 +1,7 @@
 #pragma once
 #include "../ecs/System.h"
+#include "../components/FighterInfo.h"
+#include "../components/BulletInfo.h"
 class CollisionsNetSystem :
     public System
 {

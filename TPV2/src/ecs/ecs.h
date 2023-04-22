@@ -16,6 +16,7 @@ namespace ecs {
 		DISABLEONEXIT_H = 8,
 		GENERATIONS_H = 9,
 		FIGHTERINFO_H = 10,
+		BULLETINFO_H = 11,
 		// do not remove this
 		_LAST_CMP_ID
 	};
@@ -92,6 +93,8 @@ namespace ecs {
 					float x;
 					float y;
 				} vel;
+
+				int id;
 			};
 			shoot shoot;
 

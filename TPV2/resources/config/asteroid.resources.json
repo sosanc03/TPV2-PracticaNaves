@@ -24,6 +24,10 @@
       "file": "resources/images/fighter.png"
     },
     {
+      "id": "fighter2",
+      "file": "resources/images/fighter2.png"
+    },
+    {
       "id": "bullet",
       "file": "resources/images/fire.png"
     },
@@ -45,6 +49,12 @@
     {
       "id": "space",
       "text": "Press SPACE to continue",
+      "font": "ARIAL48",
+      "color": "0xffffffff"
+    },
+    {
+      "id": "gameOver",
+      "text": "GAME OVER",
       "font": "ARIAL48",
       "color": "0xffffffff"
     },

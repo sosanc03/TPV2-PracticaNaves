@@ -33,7 +33,7 @@ void CollisionsNetSystem::update() {
 		return;
 
 	auto& fighters = mngr_->getEntitiesByGroup(_grp_FIGHTERS);
-	auto& bullets = mngr_->getEntitiesByGroup(_grp_BULLETS);
+	auto& bullets = mngr_->getEntitiesByGroup(_grp_BULLETS); 
 
 	for (Entity* b : bullets) {
 		if (!b->isAlive())
@@ -41,10 +41,12 @@ void CollisionsNetSystem::update() {
 
 		auto bTR = b->getComponent<Transform>(TRANSFORM_H);
 		for (Entity* e : fighters) {
+			FighterInfo* fi_ = e->getComponent<FighterInfo>(FIGHTERINFO_H);
+			BulletInfo* bu_ = b->getComponent<BulletInfo>(BULLETINFO_H);
+
 			auto eTR = e->getComponent<Transform>(TRANSFORM_H);
 
-
-			if (Collisions::collidesWithRotation(bTR->pos_, bTR->w_,
+			if (fi_->id_ != bu_->id_ && Collisions::collidesWithRotation(bTR->pos_, bTR->w_,
 				bTR->h_, bTR->rot_, //
 				eTR->pos_, eTR->w_, eTR->h_, eTR->rot_)) {
 

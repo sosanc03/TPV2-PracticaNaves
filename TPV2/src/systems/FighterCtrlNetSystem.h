@@ -5,7 +5,6 @@
 #include "../components/Image.h"
 #include "../components/FighterCtrl.h"
 #include "../components/DeAcceleration.h"
-#include "../components/Health.h"
 #include "../components/Transform.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
@@ -18,10 +17,6 @@ class FighterCtrlNetSystem :
     public System
 {
 public:
-
-	Entity* fighter0_;
-	Entity* fighter1_;
-
 	FighterCtrlNetSystem();
 	virtual ~FighterCtrlNetSystem() {};
 
@@ -29,20 +24,30 @@ public:
 	void initSystem() override;
 	void update() override;
 	void changeFighterPos(Uint16 side, float x, float y, float rot);
+
+	Entity* fighter0_;
+	Entity* fighter1_;
 private:
 	void createShip0();
 	void createShip1();
+
+
 	void handleGameStart(const Message&);
 	void handleGameOver(const Message&);
 	void handleBulletHitFighter(const Message&);
-	void showAtOppositeSide(Transform* tr);
+
+	void fighterCtrlUpdate(Transform* tr_, FighterCtrl* fi_);
+	void deAccelerationUpdate(Transform* tr_, DeAcceleration* de_);
+	void showAtOppositeSideUpdate(Transform* tr_, ShowAtOppositeSide* op_);
+
+
 	void reduceVelocity(Transform* tr);
 	void moveFighter(Entity* fighter);
 	
+	NetworkSystem* netSys;
+	
 	Transform* tr0_;
 	Transform* tr1_;
-	std::string myName;
-	std::string enemyName;
 	bool running_;
 };
 

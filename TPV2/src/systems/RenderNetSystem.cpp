@@ -70,7 +70,7 @@ void RenderNetSystem::drawMsgs() {
 
 		if (over_) {
 			auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
-			auto& gameOverMsg = sdlutils().msgs().at("space");
+			auto& gameOverMsg = sdlutils().msgs().at("gameOver");
 			gameOverMsg.render((sdlutils().width() - gameOverMsg.width()) / 2,
 				20);
 
@@ -88,11 +88,11 @@ void RenderNetSystem::drawMsgs() {
 }
 
 void RenderNetSystem::drawFighters() {
-	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
+	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 	auto side = netSys->getSide();
 	for (auto& g : mngr_->getEntitiesByGroup(_grp_FIGHTERS)) {
-		if (g == mngr_->getEntitiesByGroup(_grp_FIGHTERS).at(side))
-			drawBox(g);
+		//if (g == mngr_->getEntitiesByGroup(_grp_FIGHTERS).at(side))
+			//drawBox(g);
 		drawFigh(g);
 	}
 }
@@ -111,7 +111,7 @@ void RenderNetSystem::drawBullets() {
 
 void RenderNetSystem::draw(Entity* e) {
 	auto tr = e->getComponent<Transform>(TRANSFORM_H);
-	auto img = e->getComponent<Image>(TRANSFORM_H);
+	auto img = e->getComponent<Image>(IMAGE_H);
 
 	SDL_Rect dest = build_sdlrect(tr->pos_, tr->w_, tr->h_);
 	img->render();
@@ -126,7 +126,7 @@ void RenderNetSystem::drawId(Entity* e) {
 
 	Texture playeTag(sdlutils().renderer(), //
 		tag, //
-		sdlutils().fonts().at("ARIAL12"), //
+		sdlutils().fonts().at("ARIAL16"), //
 		build_sdlcolor(0xff0000ff));
 
 	Vector2D p =

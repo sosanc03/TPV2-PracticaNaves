@@ -12,18 +12,14 @@ void GameCtrlNetSystem::initSystem() {
 }
 
 void GameCtrlNetSystem::update() {
-	//auto& ihldr = ih();
 
-	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
+	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
 	if (!netSys->isReday())
 		return;
 
-	if (state_ != _RUNNING) {
-		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-			requestToStartGame();
-		}
-	}
+	if (state_ != _RUNNING && InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) 
+		requestToStartGame();
 }
 
 void GameCtrlNetSystem::receive(const Message& m) {
