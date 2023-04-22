@@ -93,7 +93,6 @@ namespace ecs {
 					float x;
 					float y;
 				} vel;
-
 				int id;
 			};
 			shoot shoot;

@@ -293,7 +293,7 @@ void NetworkSystem::sendStarGameRequest() {
 
 }
 
-void NetworkSystem::sendBulletShot(float posX, float posY, float velX, float velY)
+void NetworkSystem::sendBulletShot(float posX, float posY, float velX, float velY, float rot)
 {
 	net::BulletShotMsg m;
 	if (!connected_)

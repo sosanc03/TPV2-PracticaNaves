@@ -48,7 +48,7 @@ public:
 	void sendBulletPosition(Transform* tr);
 	
 	void sendStarGameRequest();
-	void sendBulletShot(float posX, float posY, float velX, float velY);
+	void sendBulletShot(float posX, float posY, float velX, float velY, float rot);
 
 	void string_to_chars(std::string& str, char c_str[11]);
 	void chars_to_string(std::string& str, char c_str[11]);

@@ -1,5 +1,3 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #include "BulletNetSystem.h"
 
 BulletNetSystem::BulletNetSystem() :
@@ -15,10 +13,10 @@ void BulletNetSystem::receive(const Message& m) {
 		handleShoot(m);
 		break;
 	case _MSG_GAMEOVER:
-		handleGameOver(m);
+		GameOver(m);
 		break;
 	case _MSG_START:
-		handleGameStart(m);
+		GameStart(m);
 		break;
 	default:
 		break;
@@ -36,27 +34,38 @@ void BulletNetSystem::update() {
 	for (Entity* b : mngr_->getEntitiesByGroup(_grp_BULLETS)) {
 		Transform* bTR = b->getComponent<Transform>(TRANSFORM_H);
 
+		// disable if exit from window
+		DisableOnExitUpdate(b, bTR);
+
 		// move the bullet
 		bTR->move();
 
-		// disable if exit from window
-		if ((bTR->pos_.getX() < -bTR->w_
-			|| bTR->pos_.getX() > sdlutils().width())
-			|| bTR->pos_.getY() < -bTR->h_
-			|| bTR->pos_.getY() > sdlutils().height()) {
-			b->setAlive(false);
-		}
 		netSys->sendBulletPosition(bTR);
 	}
 }
 
-void BulletNetSystem::changeBulletPos(float x, float y, float rot)
-{
-}
-
 void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float velY, int id)
 {
-	Entity* b = mngr_->addEntity(_grp_BULLETS);
+	if (sdlutils().currRealTime() >= cont_) {
+		cont_ = sdlutils().currRealTime() + 250; // 250ms
+
+		sdlutils().soundEffects().at("fire").play(); // sonido disparo
+
+		Entity* bullet = mngr_->addEntity(_grp_BULLETS);// bala
+
+		int w_ = 10;// ancho
+		int h_ = 25;// alto
+		auto t = &sdlutils().images().at("bullet");
+		Vector2D pos = Vector2D(posX, posY);
+		Vector2D vel = Vector2D(velX, velY);
+		float r = Vector2D(0.0f, -1.0f).angle(vel);
+		bullet->addComponent<Transform>(TRANSFORM_H, pos, vel, w_, h_, r);// transform
+		bullet->addComponent<Image>(IMAGE_H, t);// componente image
+		bullet->addComponent<DisableOnExit>(DISABLEONEXIT_H);// conmponente de desactivar al desaparecer
+		bullet->addComponent<BulletInfo>(BULLETINFO_H, id);// información de la bala
+	}
+
+	/*Entity* b = mngr_->addEntity(_grp_BULLETS);
 
 	// the bottom/center of the bullet
 	Vector2D pos = Vector2D(posX, posY);
@@ -75,11 +84,25 @@ void BulletNetSystem::createNewBullet(float posX, float posY, float velX, float 
 		- Vector2D(bw / 2.0f, bh / 2.0);
 
 	b->addComponent<Transform>(TRANSFORM_H, bPos, vel, bw, bh, rot);
-	auto t = &sdlutils().images().at("bullet");
-	b->addComponent<Image>(IMAGE_H, t);
-	b->addComponent<BulletInfo>(BULLETINFO_H, id);
+	auto t = &sdlutils().images().at("bullet");// transform
+	b->addComponent<Image>(IMAGE_H, t);// image
+	b->addComponent<BulletInfo>(BULLETINFO_H, id);// información de la bala
+	b->addComponent<DisableOnExit>(DISABLEONEXIT_H);// conmponente de desactivar al desaparecer
 
-	sdlutils().soundEffects().at("fire").play();
+	sdlutils().soundEffects().at("fire").play();*/
+}
+
+void BulletNetSystem::DisableOnExitUpdate(Entity* a, Transform* tr_) {
+	int x = tr_->pos_.getX();
+	int y = tr_->pos_.getY();
+
+	float wWidth_ = sdlutils().width();// ancho de ventana
+	float wHeight_ = sdlutils().height();// alto de ventana
+
+	// si se sale de los límites de la ventana elimina las balas
+	if ((x < 0 - tr_->w_) || (x + tr_->w_ > wWidth_) || (y < 0 - tr_->h_) || (y + tr_->h_ > wHeight_)) {
+		a->setAlive(false);
+	}
 }
 
 void BulletNetSystem::handleShoot(const Message& m) {
@@ -88,13 +111,13 @@ void BulletNetSystem::handleShoot(const Message& m) {
 
 }
 
-void BulletNetSystem::handleGameOver(const Message&) {
+void BulletNetSystem::GameOver(const Message&) {
 	running_ = false;
 	for (Entity* b : mngr_->getEntitiesByGroup(_grp_BULLETS)) {
 		b->setAlive(false);
 	}
 }
 
-void BulletNetSystem::handleGameStart(const Message&) {
+void BulletNetSystem::GameStart(const Message&) {
 	running_ = true;
 }

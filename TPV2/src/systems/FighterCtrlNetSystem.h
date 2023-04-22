@@ -39,10 +39,6 @@ private:
 	void fighterCtrlUpdate(Transform* tr_, FighterCtrl* fi_);
 	void deAccelerationUpdate(Transform* tr_, DeAcceleration* de_);
 	void showAtOppositeSideUpdate(Transform* tr_, ShowAtOppositeSide* op_);
-
-
-	void reduceVelocity(Transform* tr);
-	void moveFighter(Entity* fighter);
 	
 	NetworkSystem* netSys;
 	

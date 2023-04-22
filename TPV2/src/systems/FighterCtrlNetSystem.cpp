@@ -132,6 +132,8 @@ void FighterCtrlNetSystem::fighterCtrlUpdate(Transform* tr_, FighterCtrl* fi_) {
 			m.shoot.vel.y = bVel.getY();
 			m.shoot.id = netSys->getSide();
 			mngr_->send(m);
+
+			netSys->sendBulletShot(bPos.getX(), bPos.getY(), bVel.getX(), bVel.getY(), r);
 		}
 		//Movimiento
 		if (InputHandler::instance()->isKeyDown(SDL_SCANCODE_UP)) {
@@ -170,70 +172,3 @@ void FighterCtrlNetSystem::changeFighterPos(Uint16 side, float x, float y, float
 	tr->rot_ = rot;
 }
 
-
-void FighterCtrlNetSystem::reduceVelocity(Transform* tr)
-{
-	// reduce velocity
-	tr->speed_ = tr->speed_ * 0.995f;
-	if (tr->speed_.magnitude() < 0.1f)
-		tr->speed_ = Vector2D(0.0f, 0.0f);
-}
-
-void FighterCtrlNetSystem::moveFighter(Entity* fighter)
-{
-	auto& ihdlr = ih();
-
-	auto tr = fighter->getComponent<Transform>(TRANSFORM_H);
-	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
-	// handle input
-	if (ihdlr.isKeyDown(SDL_SCANCODE_UP)) {
-		auto thrust_ = 0.2f;
-		if (tr->speed_.magnitude() < 5.0f)
-			tr->speed_ = tr->speed_
-			+ Vector2D(0, -1).rotate(tr->rot_) * thrust_;
-	}
-	else if (ihdlr.isKeyDown(SDL_SCANCODE_RIGHT)) {
-		tr->rot_ += 2.0f;
-	}
-
-	if (ihdlr.isKeyDown(SDL_SCANCODE_DOWN)) {
-		tr->speed_ = tr->speed_ * 0.75f;
-	}
-	else if (ihdlr.isKeyDown(SDL_SCANCODE_LEFT)) {
-		tr->rot_ -= 2.0f;
-	}
-
-	//Shoot
-	if (ihdlr.isKeyDown(SDL_SCANCODE_S)) {
-		auto fInfo = fighter->getComponent<FighterInfo>(FIGHTERINFO_H);
-		if (fInfo->lastShoot_ + fInfo->shootRate_
-			< sdlutils().currRealTime()) {
-			int w = tr->w_; int h = tr->h_; float r = tr->rot_;// ancho, alto y rotación
-
-			Vector2D bPos = tr->pos_
-				+ Vector2D(w / 2.0f, h / 2.0f)
-				- Vector2D(0.0f, h / 2.0f + 5.0f + 12.0f).rotate(r)
-				- Vector2D(2.0f, 10.0f);// posición
-			Vector2D bVel = Vector2D(0.0f, -1.0f).rotate(r) * (tr->speed_.magnitude() + 5.0f);// velocidad
-
-			Message m;
-			m.id = _MSG_SHOT;
-			m.shoot.pos.x = bPos.getX();
-			m.shoot.pos.y = bPos.getY();
-			m.shoot.vel.x = bVel.getX();
-			m.shoot.vel.y = bVel.getY();
-			m.shoot.id = netSys->getSide();
-			mngr_->send(m);
-			fInfo->lastShoot_ = sdlutils().currRealTime();
-			netSys->sendBulletShot(bPos.getX(), bPos.getY(), bVel.getX(), bVel.getY());
-		}
-	}
-
-	// move
-	tr->move();
-
-	reduceVelocity(tr);
-
-	//showAtOppositeSide(tr);
-
-}
