@@ -12,10 +12,10 @@ CollisionsNetSystem::CollisionsNetSystem() :
 void CollisionsNetSystem::receive(const Message& m) {
 	switch (m.id) {
 	case _MSG_START:
-		handleGameStart(m);
+		GameStart(m);
 		break;
 	case _MSG_GAMEOVER:
-		handleGameOver(m);
+		GameOver(m);
 		break;
 	default:
 		break;
@@ -25,30 +25,28 @@ void CollisionsNetSystem::receive(const Message& m) {
 CollisionsNetSystem::~CollisionsNetSystem() {
 }
 
-void CollisionsNetSystem::initSystem() {
-}
-
 void CollisionsNetSystem::update() {
 	if (!running_)
 		return;
+	checkCollision();
+}
 
+void CollisionsNetSystem::checkCollision() {
 	auto& fighters = mngr_->getEntitiesByGroup(_grp_FIGHTERS);
-	auto& bullets = mngr_->getEntitiesByGroup(_grp_BULLETS); 
+	auto& bullets = mngr_->getEntitiesByGroup(_grp_BULLETS);
 
 	for (Entity* b : bullets) {
 		if (!b->isAlive())
 			continue;
 
-		auto bTR = b->getComponent<Transform>(TRANSFORM_H);
+		Transform* btr_ = b->getComponent<Transform>(TRANSFORM_H);
 		for (Entity* e : fighters) {
 			FighterInfo* fi_ = e->getComponent<FighterInfo>(FIGHTERINFO_H);
 			BulletInfo* bu_ = b->getComponent<BulletInfo>(BULLETINFO_H);
 
-			auto eTR = e->getComponent<Transform>(TRANSFORM_H);
+			Transform* etr_ = e->getComponent<Transform>(TRANSFORM_H);
 
-			if (fi_->id_ != bu_->id_ && Collisions::collidesWithRotation(bTR->pos_, bTR->w_,
-				bTR->h_, bTR->rot_, //
-				eTR->pos_, eTR->w_, eTR->h_, eTR->rot_)) {
+			if (fi_->id_ != bu_->id_ && collides(etr_, btr_)) {
 
 				Message m;
 				m.id = _MSG_COL_BULLET_PLAYER;
@@ -62,10 +60,16 @@ void CollisionsNetSystem::update() {
 	}
 }
 
-void CollisionsNetSystem::handleGameStart(const Message&) {
+bool CollisionsNetSystem::collides(Transform* obj1_, Transform* obj2_) {
+	return (Collisions::collidesWithRotation(obj1_->pos_, obj1_->w_,
+		obj1_->h_, obj1_->rot_, obj2_->pos_, obj2_->w_,
+		obj2_->h_, obj2_->rot_));
+}
+
+void CollisionsNetSystem::GameStart(const Message&) {
 	running_ = true;
 }
 
-void CollisionsNetSystem::handleGameOver(const Message&) {
+void CollisionsNetSystem::GameOver(const Message&) {
 	running_ = false;
 }

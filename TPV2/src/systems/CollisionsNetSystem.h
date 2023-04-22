@@ -2,6 +2,7 @@
 #include "../ecs/System.h"
 #include "../components/FighterInfo.h"
 #include "../components/BulletInfo.h"
+#include "../components/Transform.h"
 class CollisionsNetSystem :
     public System
 {
@@ -10,12 +11,13 @@ public:
 	virtual ~CollisionsNetSystem();
 
 	void receive(const Message&) override;
-	void initSystem() override;
 	void update() override;
 
 private:
-	void handleGameStart(const Message&);
-	void handleGameOver(const Message&);
+	void checkCollision();
+	bool collides(Transform* obj1_, Transform* obj2_);
+	void GameStart(const Message&);
+	void GameOver(const Message&);
 
 	bool running_;
 };
