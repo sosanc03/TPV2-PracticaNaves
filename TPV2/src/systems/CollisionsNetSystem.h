@@ -19,5 +19,5 @@ private:
 	void GameStart(const Message&);
 	void GameOver(const Message&);
 
-	bool running_;
+	bool active_;
 };

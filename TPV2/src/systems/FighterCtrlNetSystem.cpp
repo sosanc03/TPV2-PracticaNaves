@@ -1,8 +1,10 @@
 #include "FighterCtrlNetSystem.h"
 
 
-FighterCtrlNetSystem::FighterCtrlNetSystem() :
-	tr0_(nullptr), tr1_(nullptr), running_(false) {
+FighterCtrlNetSystem::FighterCtrlNetSystem(){
+	fighter0_ = fighter1_ = nullptr;
+	tr0_ = tr1_ = nullptr;
+	active_ = false;
 }
 
 void FighterCtrlNetSystem::receive(const Message& m) {
@@ -63,7 +65,7 @@ void FighterCtrlNetSystem::createShip1() {
 }
 
 void FighterCtrlNetSystem::update() {
-	if (!running_)
+	if (!active_)
 		return;
 	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 	auto side = netSys->getSide();
@@ -87,11 +89,11 @@ void FighterCtrlNetSystem::update() {
 }
 
 void FighterCtrlNetSystem::GameStart(const Message&) {
-	running_ = true;
+	active_ = true;
 }
 
 void FighterCtrlNetSystem::GameOver(const Message& m) {
-	running_ = false;
+	active_ = false;
 	tr0_->pos_ = Vector2D(10.0f, (sdlutils().height() - tr0_->h_) / 2.0f);
 	tr0_->speed_ = Vector2D();
 	tr0_->rot_ = 90.0f;

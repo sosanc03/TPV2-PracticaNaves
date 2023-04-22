@@ -5,8 +5,8 @@
 #include "../utils/Collisions.h"
 #include "../ecs/Entity.h"
 
-CollisionsNetSystem::CollisionsNetSystem() :
-	running_(false) {
+CollisionsNetSystem::CollisionsNetSystem() {
+	active_ = false;
 }
 
 void CollisionsNetSystem::receive(const Message& m) {
@@ -26,7 +26,7 @@ CollisionsNetSystem::~CollisionsNetSystem() {
 }
 
 void CollisionsNetSystem::update() {
-	if (!running_)
+	if (!active_)
 		return;
 	checkCollision();
 }
@@ -67,9 +67,9 @@ bool CollisionsNetSystem::collides(Transform* obj1_, Transform* obj2_) {
 }
 
 void CollisionsNetSystem::GameStart(const Message&) {
-	running_ = true;
+	active_ = true;
 }
 
 void CollisionsNetSystem::GameOver(const Message&) {
-	running_ = false;
+	active_ = false;
 }

@@ -29,5 +29,5 @@ private:
 	void DisableOnExitUpdate(Entity* a, Transform* tr_);
 
 	int cont_;
-	bool running_;
+	bool active_;
 };

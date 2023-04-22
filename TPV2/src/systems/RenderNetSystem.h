@@ -28,7 +28,7 @@ private:
 	void renderWaitingText();
 
 
-	bool running_;
+	bool active_;
 	bool gameOver_;
 	uint32_t killedId_;
 

@@ -1,7 +1,7 @@
 #include "BulletNetSystem.h"
 
 BulletNetSystem::BulletNetSystem() :
-	running_(false) {
+	active_(false) {
 }
 
 BulletNetSystem::~BulletNetSystem() {
@@ -27,7 +27,7 @@ void BulletNetSystem::initSystem() {
 }
 
 void BulletNetSystem::update() {
-	if (!running_)
+	if (!active_)
 		return;
 	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
@@ -86,12 +86,12 @@ void BulletNetSystem::shoot(const Message& m) {
 }
 
 void BulletNetSystem::GameOver(const Message&) {
-	running_ = false;
+	active_ = false;
 	for (Entity* b : mngr_->getEntitiesByGroup(_grp_BULLETS)) {
 		b->setAlive(false);
 	}
 }
 
 void BulletNetSystem::GameStart(const Message&) {
-	running_ = true;
+	active_ = true;
 }

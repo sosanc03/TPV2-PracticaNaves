@@ -44,6 +44,6 @@ private:
 	
 	Transform* tr0_;
 	Transform* tr1_;
-	bool running_;
+	bool active_;
 };
 

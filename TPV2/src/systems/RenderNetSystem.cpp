@@ -12,7 +12,7 @@
 #include "NetworkSystem.h"
 
 RenderNetSystem::RenderNetSystem()  {
-	running_ = false;
+	active_ = false;
 	gameOver_ = false;
 }
 
@@ -33,12 +33,12 @@ void RenderNetSystem::receive(const Message& m) {
 }
 
 void RenderNetSystem::GameStart(const Message&) {
-	running_ = true;
+	active_ = true;
 	gameOver_ = false;
 }
 
 void RenderNetSystem::GameOver(const Message& m) {
-	running_ = false;
+	active_ = false;
 	gameOver_ = true;
 	killedId_ = m.killed.playerId;
 }
@@ -55,7 +55,7 @@ void RenderNetSystem::update() {
 }
 
 void RenderNetSystem::renderText() {// dibuja los textos del juego
-	if (!running_) {
+	if (!active_) {
 
 		auto& t = sdlutils().msgs().at("space"); // espacio para continuar
 		t.render((sdlutils().width() - t.width()) / 2,
