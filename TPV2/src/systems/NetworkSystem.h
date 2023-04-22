@@ -28,7 +28,7 @@ public:
 		return side_;
 	}
 
-	inline bool isReday() {
+	inline bool isReady() {
 		return connected_;
 	}
 
@@ -64,8 +64,6 @@ private:
 
 	void handleStartGameRequest();
 	void handleStartTheGame();
-	void handleGameOver();
-	void handleDisconnecting();
 
 	void tellOtherClientToStartGame();
 

@@ -11,8 +11,9 @@
 #include "GameCtrlSystem.h"
 #include "NetworkSystem.h"
 
-RenderNetSystem::RenderNetSystem() :
-	running_(false), over_(false), killedId_() {
+RenderNetSystem::RenderNetSystem()  {
+	running_ = false;
+	gameOver_ = false;
 }
 
 RenderNetSystem::~RenderNetSystem() {
@@ -21,195 +22,122 @@ RenderNetSystem::~RenderNetSystem() {
 void RenderNetSystem::receive(const Message& m) {
 	switch (m.id) {
 	case _MSG_START:
-		handleGameStart(m);
+		GameStart(m);
 		break;
 	case _MSG_GAMEOVER:
-		handleGameOver(m);
+		GameOver(m);
 		break;
 	default:
 		break;
 	}
 }
 
-void RenderNetSystem::handleGameStart(const Message&) {
+void RenderNetSystem::GameStart(const Message&) {
 	running_ = true;
-	over_ = false;
+	gameOver_ = false;
 }
 
-void RenderNetSystem::handleGameOver(const Message& m) {
+void RenderNetSystem::GameOver(const Message& m) {
 	running_ = false;
-	over_ = true;
+	gameOver_ = true;
 	killedId_ = m.killed.playerId;
-}
-
-void RenderNetSystem::initSystem() {
 }
 
 void RenderNetSystem::update() {
 
+	if (mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->isReady()) {
+		renderText(); // dibuja textos
+		renderFighters();// dibuja players
+		renderBullets();// dibuja balas
+	}
+	else renderWaitingText();// texto de espera mientras no se haya conectado el segundo player
 
-	if (mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->isReday()) {
-		drawMsgs();
-		drawFighters();
-		drawBullets();
-	}
-	else {
-		drawWaitingMsg();
-	}
 }
 
-
-
-
-void RenderNetSystem::drawMsgs() {
+void RenderNetSystem::renderText() {// dibuja los textos del juego
 	if (!running_) {
 
-		auto& startMsg = sdlutils().msgs().at("space");
-		startMsg.render((sdlutils().width() - startMsg.width()) / 2,
-			sdlutils().height() / 2 + startMsg.height() * 2);
+		auto& t = sdlutils().msgs().at("space"); // espacio para continuar
+		t.render((sdlutils().width() - t.width()) / 2,
+			sdlutils().height() / 2 + t.height() * 2);
 
-		if (over_) {
-			auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
-			auto& gameOverMsg = sdlutils().msgs().at("gameOver");
-			gameOverMsg.render((sdlutils().width() - gameOverMsg.width()) / 2,
-				20);
+		if (gameOver_) {// game Over
+			NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
+			auto& gameOver = sdlutils().msgs().at("gameOver");
+			gameOver.render((sdlutils().width() - gameOver.width()) / 2, 20);// texto de GameOver
 
-			Texture winnerMsg(sdlutils().renderer(), //
-				netSys->getName(killedId_) + " has been shot!", //
-				sdlutils().fonts().at("ARIAL24"), //
-				build_sdlcolor(0xffAA44ff));
-
-			winnerMsg.render((sdlutils().width() - winnerMsg.width()) / 2,
-				gameOverMsg.height() + 50);
+			
+			Texture t(sdlutils().renderer(), 
+				netSys->getName(killedId_) + " has been shot!", 
+				sdlutils().fonts().at("ARIAL24"), 
+				build_sdlcolor(0xff0000ff));
+			t.render((sdlutils().width() - t.width()) / 2,
+				gameOver.height() + 50);// texto de jugador que ha sido disparado
 		}
-
-	}
-
-}
-
-void RenderNetSystem::drawFighters() {
-	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
-	auto side = netSys->getSide();
-	for (auto& g : mngr_->getEntitiesByGroup(_grp_FIGHTERS)) {
-		//if (g == mngr_->getEntitiesByGroup(_grp_FIGHTERS).at(side))
-			//drawBox(g);
-		drawFigh(g);
 	}
 }
 
-void RenderNetSystem::drawFigh(Entity* e)
+void RenderNetSystem::renderFighters() {// dibuja los players
+	for (auto& e : mngr_->getEntitiesByGroup(_grp_FIGHTERS)) {
+		renderFighter(e);
+	}
+}
+
+void RenderNetSystem::renderFighter(Entity* e)
 {
-	draw(e);
-	drawId(e);
+	renderEntity(e);// dibuja el player
+	renderName(e);// dibuja el nombre
 }
 
-void RenderNetSystem::drawBullets() {
+void RenderNetSystem::renderBullets() {// dibuja las balas
 	for (Entity* e : mngr_->getEntitiesByGroup(ecs::_grp_BULLETS)) {
-		draw(e);
+		renderEntity(e);
 	}
 }
 
-void RenderNetSystem::draw(Entity* e) {
-	auto tr = e->getComponent<Transform>(TRANSFORM_H);
-	auto img = e->getComponent<Image>(IMAGE_H);
-
-	SDL_Rect dest = build_sdlrect(tr->pos_, tr->w_, tr->h_);
+void RenderNetSystem::renderEntity(Entity* e) {// dibuja entidades
+	Image* img = e->getComponent<Image>(IMAGE_H);
 	img->render();
 }
 
-void RenderNetSystem::drawId(Entity* e) {
-	auto id = e->getComponent<FighterInfo>(FIGHTERINFO_H)->id_;
-	auto tr = e->getComponent<Transform>(TRANSFORM_H);
-	auto netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
+void RenderNetSystem::renderName(Entity* e) {// dibuja el nombre de los players
 
-	std::string tag = netSys->getName(id);
+	int id = e->getComponent<FighterInfo>(FIGHTERINFO_H)->id_;// guarda el id del fighter
+	Transform* tr = e->getComponent<Transform>(TRANSFORM_H);
+	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
-	Texture playeTag(sdlutils().renderer(), //
-		tag, //
-		sdlutils().fonts().at("ARIAL16"), //
-		build_sdlcolor(0xff0000ff));
+	string name = netSys->getName(id);// nombre
 
-	Vector2D p =
-		Vector2D(0.0f, (tr->h_ / 2.0f) + playeTag.height() / 2.0f).rotate(
-			tr->rot_) + tr->pos_
+	Texture playeName(sdlutils().renderer(), 
+		name, sdlutils().fonts().at("ARIAL16"),
+		build_sdlcolor(0xffffffff));// textura
+
+	Vector2D pos =
+		Vector2D(0.0f, (tr->h_ / 2.0f) + playeName.height() / 2.0f)
+		.rotate(tr->rot_) + tr->pos_
 		+ Vector2D(tr->w_ / 2.0f, tr->h_ / 2.0f);
 
-	SDL_Rect dest = build_sdlrect(p.getX() - playeTag.width() / 2.0f,
-		p.getY() - playeTag.height() / 2.0, playeTag.width(),
-		playeTag.height());
+	SDL_Rect dest = build_sdlrect(pos.getX() - playeName.width() / 2.0f,
+		pos.getY() - playeName.height() / 2.0, playeName.width(),
+		playeName.height());
 
-	playeTag.render(dest, tr->rot_);
-
-	//	SDL_RenderDrawLine(sdlutils().renderer(), , lb.getY() + y, lu.getX() + x,
-	//			lu.getY() + y);
-
+	playeName.render(dest, tr->rot_);// dibuja nombre
 }
 
-void RenderNetSystem::drawBox(Entity* e) {
-	SDL_Renderer* renderer = sdlutils().renderer();
-	auto tr = e->getComponent<Transform>(TRANSFORM_H);
-
-	// the rotation angle of the entity
-	float angle = tr->rot_;
-
-	// Assuming the (0,0) point is the middle of the entity, the following are
-	// vectors to the corners of its bounding rectangle
-	Vector2D lu = Vector2D(-tr->w_ / 2.0f, -tr->h_ / 2.0f);
-	Vector2D ru = Vector2D(tr->w_ / 2.0f, -tr->h_ / 2.0f);
-	Vector2D rb = Vector2D(tr->w_ / 2.0f, tr->h_ / 2.0f);
-	Vector2D lb = Vector2D(-tr->w_ / 2.0f, tr->h_ / 2.0f);
-
-	// rotate the corners, so we get a rotated rectangle
-	lu = lu.rotate(angle);
-	ru = ru.rotate(angle);
-	rb = rb.rotate(angle);
-	lb = lb.rotate(angle);
-
-	// the center of the entity
-	float x = tr->pos_.getX() + tr->w_ / 2.0f;
-	float y = tr->pos_.getY() + tr->h_ / 2.0f;
-
-	// draw lines between the corners, after shifting them by (x,y)
-	SDL_SetRenderDrawColor(renderer, COLOREXP(build_sdlcolor(0x0000ff00)));
-	SDL_RenderDrawLine(renderer, lu.getX() + x, lu.getY() + y, ru.getX() + x,
-		ru.getY() + y);
-	SDL_RenderDrawLine(renderer, ru.getX() + x, ru.getY() + y, rb.getX() + x,
-		rb.getY() + y);
-	SDL_RenderDrawLine(renderer, rb.getX() + x, rb.getY() + y, lb.getX() + x,
-		lb.getY() + y);
-	SDL_RenderDrawLine(renderer, lb.getX() + x, lb.getY() + y, lu.getX() + x,
-		lu.getY() + y);
-
-	/*
-	 // draw center point
-	 SDL_SetRenderDrawColor(renderer, COLOREXP(build_sdlcolor(0xff000000)));
-	 SDL_Rect dest = build_sdlrect(x - 1, y - 1, 3, 3);
-	 SDL_RenderFillRect(renderer, &dest);
-
-	 // draw velocity vector
-	 SDL_SetRenderDrawColor(renderer, COLOREXP(build_sdlcolor(0x00ff0011)));
-
-	 auto vel = tr->vel_;
-	 float wh = std::min(tr->height_, tr->width_) / 2.0f; // minimum of width an height
-	 vel = vel * wh / 2.0f;
-	 SDL_RenderDrawLine(renderer, x, y, vel.getX() + x, vel.getY() + y);
-	 */
-}
-
-void RenderNetSystem::drawWaitingMsg()
+void RenderNetSystem::renderWaitingText()// texto de espera
 {
-	auto port = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->getPort();
+	int port = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->getPort();
 
 	Texture waiting(
-		sdlutils().renderer(), //
+		sdlutils().renderer(), 
 		"Waiting for the other player to connect ...",
 		sdlutils().fonts().at("ARIAL16"), build_sdlcolor(0xccddaaaff));
-	waiting.render((sdlutils().width() - waiting.width()) / 2, 10);
+	waiting.render((sdlutils().width() - waiting.width()) / 2, 10); // texto de espera
 
 	Texture portmsg(
-		sdlutils().renderer(), //
+		sdlutils().renderer(), 
 		"Your are connected at port " + std::to_string(port),
 		sdlutils().fonts().at("ARIAL16"), build_sdlcolor(0x1155aaff));
 	portmsg.render((sdlutils().width() - portmsg.width()) / 2,
-		waiting.height() + 30);
+		waiting.height() + 30);// texto de puerto actual
 }

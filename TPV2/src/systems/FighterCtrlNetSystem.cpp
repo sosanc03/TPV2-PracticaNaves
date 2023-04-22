@@ -8,13 +8,13 @@ FighterCtrlNetSystem::FighterCtrlNetSystem() :
 void FighterCtrlNetSystem::receive(const Message& m) {
 	switch (m.id) {
 	case _MSG_START:
-		handleGameStart(m);
+		GameStart(m);
 		break;
 	case _MSG_GAMEOVER:
-		handleGameOver(m);
+		GameOver(m);
 		break;
 	case _MSG_COL_BULLET_PLAYER:
-		handleBulletHitFighter(m);
+		collision(m);
 		break;
 	default:
 		break;
@@ -86,11 +86,11 @@ void FighterCtrlNetSystem::update() {
 
 }
 
-void FighterCtrlNetSystem::handleGameStart(const Message&) {
+void FighterCtrlNetSystem::GameStart(const Message&) {
 	running_ = true;
 }
 
-void FighterCtrlNetSystem::handleGameOver(const Message& m) {
+void FighterCtrlNetSystem::GameOver(const Message& m) {
 	running_ = false;
 	tr0_->pos_ = Vector2D(10.0f, (sdlutils().height() - tr0_->h_) / 2.0f);
 	tr0_->speed_ = Vector2D();
@@ -105,7 +105,7 @@ void FighterCtrlNetSystem::handleGameOver(const Message& m) {
 	netSys->sendFighterPosition(sendTr);
 }
 
-void FighterCtrlNetSystem::handleBulletHitFighter(const Message&) {
+void FighterCtrlNetSystem::collision(const Message&) {
 	sdlutils().soundEffects().at("explosion").play();
 }
 
@@ -163,7 +163,6 @@ void FighterCtrlNetSystem::showAtOppositeSideUpdate(Transform* tr_, ShowAtOpposi
 	if (tr_->pos_.getY() > wHeight_ + op_->margin_) tr_->pos_ = Vector2D(tr_->pos_.getX(), (0 - op_->margin_));
 	else if (tr_->pos_.getY() < 0 - op_->margin_) tr_->pos_ = Vector2D(tr_->pos_.getX(), (wHeight_ + op_->margin_));
 }
-
 
 void FighterCtrlNetSystem::changeFighterPos(Uint16 side, float x, float y, float rot)
 {

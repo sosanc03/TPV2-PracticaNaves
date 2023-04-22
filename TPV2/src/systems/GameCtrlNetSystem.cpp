@@ -2,30 +2,24 @@
 #include "../ecs/Entity.h"
 
 GameCtrlNetSystem::GameCtrlNetSystem() :
-	state_(_STOPPED) {
+	state_(PAUSED) {
 }
 
 GameCtrlNetSystem::~GameCtrlNetSystem() {
-}
-
-void GameCtrlNetSystem::initSystem() {
 }
 
 void GameCtrlNetSystem::update() {
 
 	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
-	if (!netSys->isReday())
-		return;
-
-	if (state_ != _RUNNING && InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) 
-		requestToStartGame();
+	if (!netSys->isReady()) return;// compreuba que los dos jugadores están conectados
+	if (state_ != RUNNING && InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) requestToStartGame();// inicio de juego
 }
 
 void GameCtrlNetSystem::receive(const Message& m) {
 	switch (m.id) {
-	case _MSG_COL_BULLET_PLAYER:
-		handleBulletHitFighter(m);
+	case _MSG_COL_BULLET_PLAYER:// colision entre bala y jugador
+		GameOver(m);
 		break;
 	default:
 		break;
@@ -34,44 +28,32 @@ void GameCtrlNetSystem::receive(const Message& m) {
 
 void GameCtrlNetSystem::requestToStartGame()
 {
-	if (mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->isHost()) {
-		startGame();
-	}
-	else {
-		mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->sendStarGameRequest();
-	}
+	if (mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->isHost()) GameStart();// se inicia el juego si host es true
+	else mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->sendStarGameRequest();// se solicita inicio de juego
+
 }
 
-void GameCtrlNetSystem::startGame()
+void GameCtrlNetSystem::GameStart()
 {
-	if (state_ != _STOPPED)
-		return;
+	if (state_ != PAUSED) return;
 
-	state_ = _RUNNING;
+	// inicio de juego
+	state_ = RUNNING;
 	Message m;
 	m.id = _MSG_START;
 	mngr_->send(m);
 }
 
-
-
-void GameCtrlNetSystem::gameOver()
+void GameCtrlNetSystem::GameOver(const Message& m)
 {
-	Message m;
-	state_ = _STOPPED;
-
-	m.id = _MSG_GAMEOVER;
-	mngr_->send(m);
-}
-
-
-void GameCtrlNetSystem::handleBulletHitFighter(const Message& m) {
-	state_ = _STOPPED;
+	// fin de juego
+	state_ = PAUSED;
 
 	Message msg;
 	msg.id = _MSG_GAMEOVER;
-	
-	msg.killed.playerId = m.bullet_fighter.fighter_->getComponent<FighterInfo>(FIGHTERINFO_H)->id_;
+
+	msg.killed.playerId = m.bullet_fighter.fighter_->getComponent<FighterInfo>(FIGHTERINFO_H)->id_;// guarda el id del player golpeado por la bala
 	msg.bullet_fighter.fighter_ = m.bullet_fighter.fighter_;
 	mngr_->send(msg);
+
 }

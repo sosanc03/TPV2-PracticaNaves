@@ -32,9 +32,9 @@ private:
 	void createShip1();
 
 
-	void handleGameStart(const Message&);
-	void handleGameOver(const Message&);
-	void handleBulletHitFighter(const Message&);
+	void GameStart(const Message&);
+	void GameOver(const Message&);
+	void collision(const Message&);
 
 	void fighterCtrlUpdate(Transform* tr_, FighterCtrl* fi_);
 	void deAccelerationUpdate(Transform* tr_, DeAcceleration* de_);

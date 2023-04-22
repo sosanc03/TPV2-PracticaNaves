@@ -1,34 +1,35 @@
 #pragma once
 #include "../ecs/System.h"
 #include <string>
+
+using namespace std;
 class RenderNetSystem :
     public System
 {
 public:
 
-	void receive(const Message&) override;
 	RenderNetSystem();
 	virtual ~RenderNetSystem();
-	void initSystem() override;
+
+	void receive(const Message&) override;
 	void update() override;
 
 private:
-	void drawMsgs();
-	void drawFighters();
-	void drawFigh(Entity* e);
-	void drawBullets();
-	void draw(Entity* e);
-	void drawId(Entity* e);
+	void renderText();
+	void renderFighters();
+	void renderFighter(Entity* e);
+	void renderBullets();
+	void renderEntity(Entity* e);
+	void renderName(Entity* e);
 
-	void handleGameStart(const Message&);
-	void handleGameOver(const Message&);
-	void drawBox(Entity* e);
+	void GameStart(const Message&);
+	void GameOver(const Message&);
 
-	void drawWaitingMsg();
+	void renderWaitingText();
 
 
 	bool running_;
-	bool over_;
+	bool gameOver_;
 	uint32_t killedId_;
 
 };

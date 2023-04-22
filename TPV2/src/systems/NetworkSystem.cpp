@@ -126,9 +126,6 @@ void NetworkSystem::update() {
 		case net::_START_THE_GAME:
 			handleStartTheGame();
 			break;
-		case net::_DISCONNECTING:
-			handleDisconnecting();
-			break;
 		default:
 			break;
 		}
@@ -324,25 +321,12 @@ void NetworkSystem::handleBulletShot()
 }
 
 void NetworkSystem::handleStartGameRequest() {
-	mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->startGame();
+	mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->GameStart();
 }
 
 void NetworkSystem::handleStartTheGame() {
 	assert(!host_);
-	mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->startGame();
-}
-
-void NetworkSystem::handleGameOver() {
-	assert(!host_);
-	mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->gameOver();
-}
-
-void NetworkSystem::handleDisconnecting() {
-	//connected_ = false;
-	//host_ = true;
-	//side_ = 0;
-	//names[0] = name;
-	//mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->stopTheGame();
+	mngr_->getSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET)->GameStart();
 }
 
 void NetworkSystem::tellOtherClientToStartGame() {

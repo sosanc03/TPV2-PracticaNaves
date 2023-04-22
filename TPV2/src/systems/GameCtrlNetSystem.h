@@ -11,26 +11,21 @@ class GameCtrlNetSystem :
 public:
 
 	enum GameState : uint8_t {
-		_RUNNING, _STOPPED
+		RUNNING, PAUSED
 	};
 
 	GameCtrlNetSystem();
 	virtual ~GameCtrlNetSystem();
 
-
-	void initSystem() override;
-	void update() override;
 	void receive(const Message& m) override;
+	void update() override;
 
+	void GameStart();
 	void requestToStartGame();
-
-	void startGame();
-
-	void gameOver();
 
 private:
 
-	void handleBulletHitFighter(const Message&);
+	void GameOver(const Message&);
 
 	uint8_t state_;
 };
