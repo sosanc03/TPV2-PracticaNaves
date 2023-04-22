@@ -6,6 +6,7 @@
 #include <string>
 #include <array>
 
+using namespace std;
 
 struct Transform;
 
@@ -17,12 +18,11 @@ public:
 	virtual ~NetworkSystem();
 
 	void receive(const Message&) override;
-	void initSystem() override;
+	void initSystem() override {};
 	void update() override;
 
 	void putName();
 	bool connect();
-	void disconnect();
 
 	inline Uint8 getSide() {
 		return side_;
@@ -40,7 +40,7 @@ public:
 		return port_;
 	}
 	
-	inline std::string getName(int i) {
+	inline string getName(int i) {
 		return names[i];
 	}
 
@@ -50,20 +50,20 @@ public:
 	void sendStarGameRequest();
 	void sendBulletShot(float posX, float posY, float velX, float velY, float rot);
 
-	void string_to_chars(std::string& str, char c_str[11]);
-	void chars_to_string(std::string& str, char c_str[11]);
+	void string_to_chars(string& str, char c_str[11]);
+	void chars_to_string(string& str, char c_str[11]);
 private:
 
 	bool initHost();
 	bool initClient(); 
 	bool initConnection(Uint16 port);
 
-	void handleConnectionRequest();
-	void handleFighterPos();
-	void handleBulletShot();
+	void ConnectionRequest();
+	void FighterPos();
+	void BulletShot();
 
-	void handleStartGameRequest();
-	void handleStartTheGame();
+	void StartGameRequest();
+	void StartTheGame();
 
 	void tellOtherClientToStartGame();
 
@@ -78,7 +78,7 @@ private:
 	bool connected_;
 	IPaddress otherPlayerAddr_;
 
-	std::array<std::string, 2> names;
-	std::string name;
+	array<string, 2> names;
+	string name;
 };
 

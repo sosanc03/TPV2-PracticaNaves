@@ -1,5 +1,3 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #pragma once
 
 #include "../sdlutils/SDLNetUtils.h"
@@ -7,16 +5,15 @@
 namespace net {
 
 	enum MsgId : Uint8 {
-		_CONNECTION_REQUEST, //
-		_REQUEST_ACCEPTED, //
-		_REQUEST_REFUSED, //
-		_FIGHTER_POS, //
-		_BULLET_POS, //
-		_BULLET_SHOT,
-		_START_GAME_REQUEST, //
-		_START_THE_GAME, //
-		_GAME_OVER, //
-		_DISCONNECTING
+		_CONNECTION_REQUEST = 0, //
+		_REQUEST_ACCEPTED = 1, //
+		_START_GAME = 2, //
+		_START_GAME_REQUEST = 3, //
+		_FIGHTER_POS = 4, //
+		_BULLET_POS = 5, //
+		_BULLET_SHOT = 6,
+
+		_LASTMSG
 	};
 
 	struct Message {
@@ -26,7 +23,7 @@ namespace net {
 		_IMPL_SERIALIAZION_(id)
 	};
 	struct NameMessage :Message {
-		char nameSend[11];
+		char nameSend[11]; // nombre del player, 10 caracteres maximo
 
 		_IMPL_SERIALIAZION_WITH_BASE_(Message, nameSend)
 	};
@@ -34,7 +31,7 @@ namespace net {
 	struct ReqAccMsg : Message {
 
 		Uint8 side;
-		char nameSend[11];
+		char nameSend[11]; // nombre del player, 10 caracteres maximo
 		_IMPL_SERIALIAZION_WITH_BASE_(Message, side, nameSend)
 		//
 	};

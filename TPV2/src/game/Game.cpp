@@ -85,7 +85,7 @@ void Game::run(){ // bucle de juego
 					SDL_RenderPresent(renderer);
 					netSys_ = manager->addSystem<NetworkSystem>(_SYS_NETWORK);
 					netSys_->putName();
-					if (!netSys_->connect()) cout << "No hay Network >:(";
+					if (!netSys_->connect()) cout << ">:(";
 
 					
 					manager->addSystem<GameCtrlNetSystem>(_SYS_GAMECTRLNET);

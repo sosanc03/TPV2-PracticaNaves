@@ -12,7 +12,7 @@ void GameCtrlNetSystem::update() {
 
 	NetworkSystem* netSys = mngr_->getSystem<NetworkSystem>(_SYS_NETWORK);
 
-	if (!netSys->isReady()) return;// compreuba que los dos jugadores están conectados
+	if (!netSys->isReady()) return;// comprueba que los dos jugadores están conectados
 	if (state_ != RUNNING && InputHandler::instance()->isKeyDown(SDL_SCANCODE_SPACE)) requestToStartGame();// inicio de juego
 }
 
@@ -26,11 +26,10 @@ void GameCtrlNetSystem::receive(const Message& m) {
 	}
 }
 
-void GameCtrlNetSystem::requestToStartGame()
-{
+// se llama al pulsar espacio
+void GameCtrlNetSystem::requestToStartGame() {
 	if (mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->isHost()) GameStart();// se inicia el juego si host es true
 	else mngr_->getSystem<NetworkSystem>(_SYS_NETWORK)->sendStarGameRequest();// se solicita inicio de juego
-
 }
 
 void GameCtrlNetSystem::GameStart()
